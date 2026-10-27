@@ -264,39 +264,61 @@ window.PPCore = (function () {
 #pp-app .pp-w-head em { font-style: normal; color: var(--pp-gold); }
 #pp-app .pp-w-intro { margin-top: 24px; font-size: 1.16rem; line-height: 1.6; max-width: 54ch; }
 #pp-app .pp-hc { margin: 36px 0 0; }
-#pp-app .pp-hc-years { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: rgba(15, 61, 95, .08); margin-bottom: 14px; }
-#pp-app .pp-hc-year { font: 600 .92rem/1 var(--pp-f-body); color: var(--pp-admiral); background: none; border: 0; border-radius: 999px; padding: 10px 16px; cursor: pointer; }
-#pp-app .pp-hc-year[aria-pressed="true"] { background: var(--pp-admiral); color: var(--pp-ivory); }
-#pp-app .pp-hc-panel { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 24px; align-items: stretch; background-color: var(--pp-admiral); color: var(--pp-ivory); border-radius: 12px; padding: 22px 24px 18px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='40'%3E%3Cpath d='M0 39.5H7' stroke='%23C0780A' stroke-opacity='.45'/%3E%3C/svg%3E"); }
-#pp-app .pp-hc-plot { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; height: 340px; }
+#pp-app .pp-hc-panel { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 28px; align-items: center; background: var(--pp-admiral); color: var(--pp-ivory); border-radius: 12px; padding: 22px 26px 18px; }
+#pp-app .pp-hc-stage { position: relative; height: 360px; }
+#pp-app .pp-hc-grid { position: absolute; left: 0; right: 0; top: 0; bottom: 30px; pointer-events: none; }
+#pp-app .pp-hc-gl { position: absolute; left: 0; right: 0; height: 0; border-top: 1px dashed rgba(192, 120, 10, .5); transition: bottom 1.1s cubic-bezier(.65, 0, .35, 1), opacity .6s, visibility .6s; }
+#pp-app .pp-hc-gl span { position: absolute; right: 0; top: -17px; font: 600 .7rem/1 var(--pp-f-body); color: rgba(248, 241, 233, .78); transition: opacity .4s, visibility .4s; }
+#pp-app .pp-hc-plot { position: absolute; left: 0; right: 44px; top: 0; bottom: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
 #pp-app .pp-hc-col { display: flex; flex-direction: column; min-width: 0; }
-#pp-app .pp-hc-tot { flex: none; font-family: var(--pp-f-serif); font-size: 1.7rem; line-height: 1; margin: 0 0 8px; }
-#pp-app .pp-hc-bar { flex: 1; display: flex; flex-direction: column-reverse; justify-content: flex-start; min-height: 0; }
-#pp-app .pp-hc-name { margin: 8px 0 0; font-weight: 700; font-size: .95rem; }
-#pp-app .pp-hc-seg, #pp-app .pp-hc-def { display: block; width: 100%; flex: none; min-height: 0; border: 0; border-top: 1px solid var(--pp-admiral); padding: 0 8px; margin: 0; overflow: hidden; text-align: left; cursor: pointer;
-  font: 600 .74rem/1.15 var(--pp-f-body); color: var(--pp-admiral); transition: height .7s cubic-bezier(.16, 1, .3, 1), filter .15s; }
-#pp-app .pp-hc-seg span, #pp-app .pp-hc-def span, #pp-app .pp-hc-cut span { display: flex; justify-content: space-between; gap: 6px; padding-top: 5px; }
+#pp-app .pp-hc-bar { position: relative; flex: 1; min-height: 0; }
+#pp-app .pp-hc-name { margin: 8px 0 0; height: 24px; font-weight: 700; font-size: .95rem; white-space: nowrap; }
+#pp-app .pp-hc-name b { font-family: var(--pp-f-serif); font-weight: 400; font-size: 1.35rem; margin-left: 4px; }
+#pp-app .pp-hc-seg, #pp-app .pp-hc-def, #pp-app .pp-hc-cut { position: absolute; left: 0; right: 0; display: block; border: 0; border-top: 1px solid var(--pp-admiral); padding: 0 8px; margin: 0; overflow: hidden; text-align: left; cursor: pointer;
+  font: 600 .74rem/1.15 var(--pp-f-body); color: var(--pp-admiral);
+  transition: bottom 1.1s cubic-bezier(.65, 0, .35, 1), height 1.1s cubic-bezier(.65, 0, .35, 1), filter .15s; }
+#pp-app .pp-hc-seg span, #pp-app .pp-hc-def span, #pp-app .pp-hc-cut span { display: flex; justify-content: space-between; gap: 6px; padding-top: 5px; transition: opacity .4s, visibility .4s; }
 #pp-app .pp-hc-seg span i, #pp-app .pp-hc-def span i, #pp-app .pp-hc-cut span i { font-style: normal; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #pp-app .pp-hc-seg span b, #pp-app .pp-hc-def span b, #pp-app .pp-hc-cut span b { font-weight: 700; white-space: nowrap; }
 #pp-app .pp-hc-seg:hover, #pp-app .pp-hc-seg:focus-visible { filter: brightness(1.08); }
+#pp-app .pp-hc-plot.is-quiet .pp-hc-seg span, #pp-app .pp-hc-plot.is-quiet .pp-hc-def span { visibility: hidden !important; }
 #pp-app .is-spend .pp-hc-seg:nth-child(1) { background: #D9A35A; } #pp-app .is-spend .pp-hc-seg:nth-child(2) { background: #E1B474; }
 #pp-app .is-spend .pp-hc-seg:nth-child(3) { background: #E8C48F; } #pp-app .is-spend .pp-hc-seg:nth-child(4) { background: #EDD0A6; }
 #pp-app .is-spend .pp-hc-seg:nth-child(5) { background: #F2DDBE; } #pp-app .is-spend .pp-hc-seg:nth-child(6) { background: #F6E8D5; }
 #pp-app .is-take .pp-hc-seg:nth-child(1) { background: #F8F1E9; } #pp-app .is-take .pp-hc-seg:nth-child(2) { background: #E6DFD7; }
 #pp-app .is-take .pp-hc-seg:nth-child(n+3) { background: #CFC8C0; border-top-color: rgba(15, 61, 95, .35); }
-#pp-app .pp-hc-def { background: repeating-linear-gradient(135deg, rgba(234, 158, 131, .32) 0 6px, rgba(234, 158, 131, .12) 6px 12px); border: 2px dashed #EA9E83; color: var(--pp-ivory); }
-#pp-app .pp-hc-cut { flex: none; border: 2px dashed rgba(165, 233, 217, .9); color: #A5E9D9; font: 600 .74rem/1.15 var(--pp-f-body); padding: 0 8px; transition: height .7s cubic-bezier(.16, 1, .3, 1); overflow: hidden; }
-#pp-app .pp-hc-read { margin: 0; align-self: center; font-size: 1.02rem; line-height: 1.5; }
+#pp-app .pp-hc-def { background: repeating-linear-gradient(135deg, rgba(234, 158, 131, .34) 0 6px, rgba(234, 158, 131, .12) 6px 12px); border: 2px dashed #EA9E83; color: var(--pp-ivory); }
+#pp-app .pp-hc-cut { border: 2px dashed rgba(165, 233, 217, .95); color: #A5E9D9; cursor: default; opacity: 0; }
+#pp-app .pp-hc-cut.is-on { opacity: 1; }
+#pp-app .pp-hc-cut.is-whoosh { animation: pp-hc-whoosh 1.3s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes pp-hc-whoosh { 0% { background: rgba(165, 233, 217, .55); transform: translateX(0); } 45% { background: rgba(165, 233, 217, .35); transform: translateX(10px); } 100% { background: rgba(165, 233, 217, .08); transform: translateX(0); } }
+#pp-app .pp-hc-copy { min-width: 0; }
+#pp-app .pp-hc-yr { margin: 0 0 10px; font-family: var(--pp-f-display); text-transform: uppercase; font-size: 2.6rem; line-height: 1; transition: opacity .32s, transform .32s; }
+#pp-app .pp-hc-yr i { font-family: var(--pp-f-serif); text-transform: none; font-size: 1.4rem; color: var(--pp-gold-on-dark, #E2B46C); margin-left: 6px; }
+#pp-app .pp-hc-read { margin: 0; font-size: 1.05rem; line-height: 1.5; min-height: 6em; transition: opacity .32s, transform .32s; }
 #pp-app .pp-hc-read b { font-weight: 700; }
+#pp-app .pp-hc-yr.is-out, #pp-app .pp-hc-read.is-out { opacity: 0; transform: translateY(6px); }
 #pp-app .pp-hc-goals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
 #pp-app .pp-hc-goal { display: flex; flex-direction: column; gap: 4px; text-align: left; border: 2px solid var(--pp-admiral); background: #fff; color: var(--pp-admiral); border-radius: 12px; padding: 12px 14px; cursor: pointer; font-family: var(--pp-f-body); }
 #pp-app .pp-hc-goal .pp-g-amt { font-family: var(--pp-f-display); font-weight: 400; text-transform: uppercase; font-size: 1.55rem; line-height: 1; }
 #pp-app .pp-hc-goal .pp-g-name { font-size: .95rem; font-weight: 600; }
 #pp-app .pp-hc-goal:hover { background: var(--pp-ivory); }
 #pp-app .pp-hc-goal[aria-pressed="true"] { background: var(--pp-admiral); color: var(--pp-ivory); }
-#pp-app .pp-hc-src { margin-top: 8px; font-size: .78rem; color: var(--pp-gray); }
-#pp-app .pp-hc.is-pre .pp-hc-seg, #pp-app .pp-hc.is-pre .pp-hc-def, #pp-app .pp-hc.is-pre .pp-hc-cut { height: 0 !important; }
+#pp-app .pp-hc-ctrl { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+#pp-app .pp-hc-btn { font: 600 .85rem/1 var(--pp-f-body); color: var(--pp-admiral); background: none; border: 1px solid rgba(15, 61, 95, .4); border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+#pp-app .pp-hc-btn[aria-pressed="true"] { background: var(--pp-admiral); color: var(--pp-ivory); border-color: var(--pp-admiral); }
+#pp-app .pp-hc-still { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; background: var(--pp-admiral); color: var(--pp-ivory); border-radius: 12px; padding: 18px; }
+#pp-app .pp-hc-still[hidden] { display: none; }
+#pp-app .pp-hcs-yr { margin: 0 0 8px; font-family: var(--pp-f-display); text-transform: uppercase; font-size: 1.5rem; line-height: 1; }
+#pp-app .pp-hcs-yr i { font-family: var(--pp-f-serif); text-transform: none; font-size: 1rem; color: #E2B46C; margin-left: 4px; }
+#pp-app .pp-hcs-plot { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; height: 170px; }
+#pp-app .pp-hcs-bar { display: flex; flex-direction: column-reverse; }
+#pp-app .pp-hcs-bar span { display: block; border-top: 1px solid var(--pp-admiral); }
+#pp-app .pp-hcs-s:nth-child(1) { background: #D9A35A; } #pp-app .pp-hcs-s:nth-child(2) { background: #E1B474; } #pp-app .pp-hcs-s:nth-child(3) { background: #E8C48F; }
+#pp-app .pp-hcs-s:nth-child(4) { background: #EDD0A6; } #pp-app .pp-hcs-s:nth-child(5) { background: #F2DDBE; } #pp-app .pp-hcs-s:nth-child(6) { background: #F6E8D5; }
+#pp-app .pp-hcs-t { background: #F8F1E9; } #pp-app .pp-hcs-t:nth-child(2) { background: #E6DFD7; } #pp-app .pp-hcs-t:nth-child(n+3) { background: #CFC8C0; }
+#pp-app .pp-hcs-def { background: rgba(234, 158, 131, .3); border: 2px dashed #EA9E83 !important; }
+#pp-app .pp-hcs-txt { margin: 10px 0 0; font-size: .86rem; line-height: 1.45; }
 #pp-app .pp-w-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 44px; }
 #pp-app .pp-w-link { font-size: .95rem; color: var(--pp-gray); }
 #pp-app .pp-resume { margin-top: 20px; font-size: .95rem; color: var(--pp-gray); }
@@ -528,10 +550,14 @@ window.PPCore = (function () {
   #pp-app .pp-w-intro { font-size: 1.05rem; }
   #pp-app .pp-w-deco { right: -30%; top: -2%; bottom: auto; height: 52%; opacity: .07; }
   #pp-app .pp-hc-panel { grid-template-columns: minmax(0, 1fr); padding: 18px 16px 14px; gap: 14px; }
-  #pp-app .pp-hc-plot { height: 300px; gap: 12px; }
-  #pp-app .pp-hc-tot { font-size: 1.4rem; }
+  #pp-app .pp-hc-stage { height: 290px; }
+  #pp-app .pp-hc-plot { right: 36px; gap: 12px; }
+  #pp-app .pp-hc-name b { font-size: 1.15rem; }
+  #pp-app .pp-hc-yr { font-size: 2.1rem; }
+  #pp-app .pp-hc-read { min-height: 7.5em; font-size: 1rem; }
   #pp-app .pp-hc-goals { grid-template-columns: minmax(0, 1fr); }
   #pp-app .pp-hc-goal { flex-direction: row; align-items: baseline; gap: 10px; }
+  #pp-app .pp-hc-ctrl { justify-content: flex-start; }
   #pp-app .pp-w-actions .pp-btn { width: 100%; }
   #pp-app .pp-progress-row { padding-top: 8px; padding-bottom: 8px; }
   #pp-app .pp-progress ol { gap: 2px; }
@@ -618,16 +644,22 @@ window.PPCore = (function () {
         <h1 class="pp-w-title" id="pp-title"><span class="pp-w-lead">You&rsquo;ve just been elected to Congress.</span> <span class="pp-w-head">Now set the nation&rsquo;s <em>priorities</em>.</span></h1>
         <p class="pp-w-intro">Federal deficits are projected to total more than $20 trillion over the next 10 years. Choose from 39 policy options on spending and taxes, see what each one does to the deficit, and aim for one of three goals.</p>
         <figure class="pp-hc" id="pp-hc">
-          <div class="pp-hc-years" role="group" aria-label="Year">
-            <button type="button" class="pp-hc-year" data-year="2026" aria-pressed="true">2026 actual</button>
-            <button type="button" class="pp-hc-year" data-year="2036" aria-pressed="false">2036 projected</button>
+          <div class="pp-hc-panel" id="pp-hc-anim">
+            <div class="pp-hc-stage">
+              <div class="pp-hc-grid" id="pp-hc-grid" aria-hidden="true"></div>
+              <div class="pp-hc-plot" id="pp-hc-plot"></div>
+            </div>
+            <div class="pp-hc-copy">
+              <p class="pp-hc-yr" id="pp-hc-yr"></p>
+              <p class="pp-hc-read" id="pp-hc-read" aria-live="polite"></p>
+            </div>
           </div>
-          <div class="pp-hc-panel">
-            <div class="pp-hc-plot" id="pp-hc-plot"></div>
-            <p class="pp-hc-read" id="pp-hc-read" aria-live="polite"></p>
+          <div class="pp-hc-still" id="pp-hc-still" hidden></div>
+          <div class="pp-hc-goals" id="pp-goals" role="group" aria-label="Play what each goal takes"></div>
+          <div class="pp-hc-ctrl">
+            <button type="button" class="pp-hc-btn" id="pp-hc-play" aria-pressed="false">Pause</button>
+            <button type="button" class="pp-hc-btn" id="pp-hc-calm" aria-pressed="false">No animations</button>
           </div>
-          <div class="pp-hc-goals" id="pp-goals" role="group" aria-label="The three goals: show what each one means for 2036"></div>
-          <figcaption class="pp-hc-src">2026: U.S. Treasury, Monthly Treasury Statement, September 2026. 2036: CBO, February 2026, from the P&amp;P Workbook.</figcaption>
         </figure>
         <div class="pp-w-actions">
           <button type="button" class="pp-btn pp-btn-primary" id="pp-start" data-go="1">Start the exercise <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -862,83 +894,196 @@ window.PPCore = (function () {
   function isOn(id) { return state.selected.indexOf(id) !== -1; }
   function setSelected(ids) { state.selected = Core.score(M, ids).ids; }
   function sortedBench(sc) { return sc.benchmarks.slice().sort(function (a, b) { return a.amount - b.amount; }); }
-  var HC = {
-    max: 12000,
-    years: {
-      "2026": { label: "2026", out: 7395.8, rev: 5403.3,
-        spend: [["Social Security", 1667.1], ["Medicare", 1072.6], ["Medicaid & health", 1025.6], ["Defense", 965.2], ["Interest on the debt", 1051.8], ["Everything else", 1613.5]],
-        take: [["Income taxes", 2845.5], ["Payroll taxes", 1811.8], ["Corporate taxes", 381.4], ["Tariffs", 173.2], ["Other", 191.4]] },
-      "2036": { label: "2036", out: 11416, rev: 8301,
-        spend: [["Social Security", 2740], ["Medicare", 1941], ["Medicaid & health", 1142], ["Defense", 1142], ["Interest on the debt", 2169], ["Everything else", 2282]],
-        take: [["Income taxes", 4234], ["Payroll taxes", 2656], ["Corporate taxes", 581], ["Tariffs", 415], ["Other", 415]] }
-    },
-    goalDeficit2036: { debt100: 3115 - 1557.5 * 0.95, half: 3115 / 2, balance: 0 }
-  };
-  var hc = { year: "2026", goal: null, ready: false };
+  var HC_SPEND = [["ss", "Social Security"], ["mc", "Medicare"], ["md", "Medicaid & health"], ["def", "Defense"], ["int", "Interest on the debt"], ["oth", "Everything else"]];
+  var HC_TAKE = [["inc", "Income taxes"], ["pay", "Payroll taxes"], ["corp", "Corporate taxes"], ["tar", "Tariffs"], ["oth", "Other"]];
+  var HC_PROJ = [
+    { id: "2031", year: 2031, ahead: 5, out: 9155, rev: 6868,
+      spend: { ss: 2190, mc: 1437, md: 939, def: 986, int: 1548, oth: 2055 },
+      take: { inc: 3461, pay: 2216, corp: 493, tar: 405, oth: 293 } },
+    { id: "2036", year: 2036, ahead: 10, out: 11416, rev: 8301,
+      spend: { ss: 2747, mc: 1970, md: 1146, def: 1100, int: 2144, oth: 2309 },
+      take: { inc: 4249, pay: 2666, corp: 576, tar: 402, oth: 408 } },
+    { id: "2046", year: 2046, ahead: 20, out: 17559, rev: 12364,
+      spend: { ss: 3895, mc: 3374, md: 1726, def: 1535, int: 3829, oth: 3200 },
+      take: { inc: 6498, pay: 3834, corp: 866, tar: 507, oth: 660 } }
+  ];
+  var HC_STAGES = [
+    { id: "2026", year: 2026, ahead: 0, out: 7395.8, rev: 5403.3,
+      spend: { ss: 1667.1, mc: 1072.6, md: 1025.6, def: 965.2, int: 1051.8, oth: 1613.5 },
+      take: { inc: 2845.5, pay: 1811.8, corp: 381.4, tar: 173.2, oth: 191.4 } }
+  ].concat(HC_PROJ);
+  var HC_GOAL_STAGE = "2036";
+  var hc = { i: 0, playing: true, goal: null, calm: false, hover: false, seen: false, t: null, built: false, els: {} };
   function tr(b) { return "$" + String(+(b / 1000).toFixed(b >= 2500 ? 1 : 2)) + " trillion"; }
-  function trs(b) { return "$" + (Math.round(b / 100) / 10) + "T"; }
-  function hcRead(html) { $("#pp-hc-read").innerHTML = html; }
-  function hcDefault() {
-    var y = HC.years[hc.year], d = y.out - y.rev;
-    if (hc.goal) { return hcGoalText(); }
-    return hc.year === "2026"
-      ? "In 2026 the government spent <b>" + tr(y.out) + "</b> and collected <b>" + tr(y.rev) + "</b>, so it borrowed <b>" + tr(d) + "</b>."
-      : "By 2036, spending is projected at <b>" + tr(y.out) + "</b> and revenue at <b>" + tr(y.rev) + "</b>: a <b>" + tr(d) + "</b> deficit in that year alone.";
+  function trs(b) { return "$" + String(+(b / 1000).toFixed(1)) + "T"; }
+  function stageById(id) { return HC_STAGES.filter(function (x) { return x.id === id; })[0]; }
+  function goalLeft(g, st) { var d = st.out - st.rev; return g === "balance" ? 0 : g === "half" ? d / 2 : d - d / 2 * 0.95; }
+  function hcSay(st) {
+    var d = st.out - st.rev;
+    if (!st.ahead) { return "In " + st.year + " the government spent <b>" + tr(st.out) + "</b> and collected <b>" + tr(st.rev) + "</b>, so it borrowed <b>" + tr(d) + "</b>."; }
+    var t = "In " + st.ahead + " years, spending is projected at <b>" + tr(st.out) + "</b> and revenue at <b>" + tr(st.rev) + "</b>: a <b>" + tr(d) + "</b> deficit in " + st.year + " alone.";
+    if (st.spend.int > st.spend.def) { t += " Interest on the debt, <b>" + tr(st.spend.int) + "</b>, now costs more than defense."; }
+    return t;
   }
-  function hcGoalText() {
-    var bm = M.benchmarks.filter(function (b) { return b.id === hc.goal; })[0], left = HC.goalDeficit2036[hc.goal];
+  function hcGoalSay(g) {
+    var bm = M.benchmarks.filter(function (b) { return b.id === g; })[0], st = stageById(HC_GOAL_STAGE), left = goalLeft(g, st);
     return "<b>" + esc(bm.short) + ":</b> cut " + benchWords(bm.amount) + " over 10 years. " +
-      (hc.goal === "balance" ? "The 2036 deficit falls to zero." : hc.goal === "half" ? "The 2036 deficit falls by half, to about " + tr(left) + " (3% of GDP)." :
-        "Debt stops growing faster than the economy; the 2036 deficit falls to about " + tr(left) + ".");
+      (g === "balance" ? "The " + st.year + " deficit falls to zero." : g === "half" ? "The " + st.year + " deficit falls by half, to about " + tr(left) + " (3% of GDP)." :
+        "Debt stops growing faster than the economy; the " + st.year + " deficit falls to about " + tr(left) + ".");
   }
-  function hcSegs(list, total, kind) {
-    return list.map(function (p) {
-      var h = p[1] / HC.max * 100, share = Math.round(p[1] / total * 100);
-      return '<button type="button" class="pp-hc-seg" style="height:' + h.toFixed(3) + '%" data-tip="' + esc(p[0]) + '|' + p[1] + '|' + share + '|' + kind + '">' +
-        (p[1] / HC.max >= 0.06 ? '<span><i>' + esc(p[0]) + '</i><b>' + trs(p[1]) + '</b></span>' : '<span class="pp-sr">' + esc(p[0]) + ' ' + trs(p[1]) + '</span>') + '</button>';
+  function hcCaption(yr, html, instant) {
+    var r = $("#pp-hc-read"), y = $("#pp-hc-yr");
+    if (instant || reduceMotion) { r.innerHTML = html; y.innerHTML = yr; return; }
+    r.classList.add("is-out"); y.classList.add("is-out");
+    setTimeout(function () { r.innerHTML = html; y.innerHTML = yr; r.classList.remove("is-out"); y.classList.remove("is-out"); }, 320);
+  }
+  function hcYearLabel(st) { return st.year + ' <i>' + (st.ahead ? "projected" : "actual") + '</i>'; }
+  function hcBlock(kind, key, name) {
+    return '<button type="button" class="pp-hc-seg" data-k="' + kind + key + '" data-name="' + esc(name) + '" style="height:0;bottom:0"><span><i>' + esc(name) + '</i><b></b></span></button>';
+  }
+  function hcBuild() {
+    var grid = "";
+    for (var v = 2000; v <= 40000; v += 2000) { grid += '<div class="pp-hc-gl" data-v="' + v + '" style="bottom:0"><span>' + trs(v) + '</span></div>'; }
+    $("#pp-hc-grid").innerHTML = grid;
+    $("#pp-hc-plot").innerHTML =
+      '<div class="pp-hc-col"><div class="pp-hc-bar is-spend">' + HC_SPEND.map(function (c) { return hcBlock("s", c[0], c[1]); }).join("") +
+        '</div><p class="pp-hc-name">Spending <b data-k="tots"></b></p></div>' +
+      '<div class="pp-hc-col"><div class="pp-hc-bar is-take">' + HC_TAKE.map(function (c) { return hcBlock("t", c[0], c[1]); }).join("") +
+        '<button type="button" class="pp-hc-def" data-k="def" style="height:0;bottom:0"><span><i>Deficit</i><b></b></span></button>' +
+        '<div class="pp-hc-cut" data-k="cut" style="height:0;bottom:0"><span><i>Closed by the goal</i><b></b></span></div>' +
+        '</div><p class="pp-hc-name">Revenue <b data-k="tott"></b></p></div>';
+    hc.els = {};
+    $$("#pp-hc [data-k]").forEach(function (e) { hc.els[e.getAttribute("data-k")] = e; });
+    hc.built = true;
+  }
+  function hcPlace(e, bottom, h, delay) {
+    e.style.transitionDelay = (delay || 0) + "ms";
+    e.style.bottom = bottom.toFixed(1) + "px"; e.style.height = Math.max(0, h).toFixed(1) + "px";
+    var lab = e.querySelector("span"); if (lab) { lab.style.opacity = h >= 22 ? "1" : "0"; lab.style.visibility = h >= 22 ? "visible" : "hidden"; }
+  }
+  function hcLayout(st, opt) {
+    opt = opt || {};
+    var bar = $("#pp-hc .is-spend"), H = bar.clientHeight, max = st.out * 1.16, k = H / max, y = 0, n = 0;
+    var stagger = opt.build ? 140 : 0, d = st.out - st.rev, left = opt.goal ? goalLeft(opt.goal, st) : d, cut = d - left;
+    HC_SPEND.forEach(function (c) { var e = hc.els["s" + c[0]], v = st.spend[c[0]]; e.setAttribute("data-v", v); e.querySelector("b").textContent = trs(v); hcPlace(e, y * k, v * k, n++ * stagger); y += v; });
+    hc.els.tots.textContent = trs(st.out);
+    y = 0; n = 0;
+    HC_TAKE.forEach(function (c) { var e = hc.els["t" + c[0]], v = st.take[c[0]]; e.setAttribute("data-v", v); e.querySelector("b").textContent = trs(v); hcPlace(e, y * k, v * k, n++ * stagger); y += v; });
+    var dd = opt.build ? 1500 : (opt.goal ? 650 : 0);
+    hc.els.def.setAttribute("data-v", left); hc.els.def.querySelector("b").textContent = trs(left);
+    hcPlace(hc.els.def, st.rev * k, left * k, dd);
+    hc.els.cut.querySelector("b").textContent = trs(cut);
+    hcPlace(hc.els.cut, (st.rev + left) * k, cut * k, dd);
+    hc.els.cut.classList.toggle("is-on", cut > 0);
+    hc.els.tott.textContent = trs(st.rev);
+    var step = 2000 * k < 26 ? (4000 * k < 26 ? 10000 : 4000) : 2000;
+    $$("#pp-hc-grid .pp-hc-gl").forEach(function (g) {
+      var v = +g.getAttribute("data-v"), p = v * k;
+      var on = p <= H - 6, lab = g.querySelector("span");
+      g.style.bottom = p.toFixed(1) + "px"; g.style.opacity = on ? "1" : "0"; g.style.visibility = on ? "visible" : "hidden";
+      lab.style.opacity = v % step === 0 ? "1" : "0"; lab.style.visibility = on && v % step === 0 ? "visible" : "hidden";
+    });
+    $("#pp-hc").setAttribute("data-stage", st.id);
+  }
+  function hcQuiet(ms) {
+    var plot = $("#pp-hc-plot"); plot.classList.add("is-quiet");
+    clearTimeout(hc.qt); hc.qt = setTimeout(function () { plot.classList.remove("is-quiet"); }, ms);
+  }
+  function hcCollapse() {
+    hcQuiet(5000);
+    Object.keys(hc.els).forEach(function (key) { if (key.indexOf("tot") === 0) { return; } var e = hc.els[key]; e.style.transitionDelay = "0ms"; e.style.height = "0px"; e.style.bottom = "0px"; });
+  }
+  function hcClear() { if (hc.t) { clearTimeout(hc.t); hc.t = null; } }
+  function hcShow(i, build) {
+    var st = HC_STAGES[i]; hc.i = i; hc.goal = null;
+    $$(".pp-hc-goal").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+    if (build) { hcQuiet(2100); }
+    hcLayout(st, { build: build });
+    hcCaption(hcYearLabel(st), hcSay(st), build && !hc.seen);
+  }
+  function hcNext() {
+    hcClear();
+    if (!hc.playing || hc.hover || hc.calm) { return; }
+    var last = hc.i >= HC_STAGES.length - 1;
+    if (last) {
+      hcCollapse();
+      hc.t = setTimeout(function () { hcShow(0, true); hcSchedule(6500); }, 900);
+    } else { hcShow(hc.i + 1, false); hcSchedule(5200); }
+  }
+  function hcSchedule(ms) { hcClear(); if (hc.playing && !hc.calm) { hc.t = setTimeout(hcNext, ms); } }
+  function hcPlayGoal(g) {
+    hcClear(); hc.playing = false; hcSyncPlay();
+    var st = stageById(HC_GOAL_STAGE); hc.i = HC_STAGES.indexOf(st); hc.goal = g;
+    $$(".pp-hc-goal").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-goal") === g)); });
+    if (hc.calm) { hcSetCalm(false); }
+    hcLayout(st, {});
+    hcCaption(hcYearLabel(st), hcSay(st));
+    hc.t = setTimeout(function () {
+      hcLayout(st, { goal: g });
+      hc.els.cut.classList.remove("is-whoosh"); void hc.els.cut.offsetWidth; hc.els.cut.classList.add("is-whoosh");
+      hcCaption(hcYearLabel(st), hcGoalSay(g));
+    }, reduceMotion ? 0 : 1100);
+  }
+  function hcSyncPlay() { var b = $("#pp-hc-play"); b.textContent = hc.playing ? "Pause" : "Play"; b.setAttribute("aria-pressed", String(!hc.playing)); }
+  function hcStill() {
+    var max = Math.max.apply(null, HC_STAGES.map(function (x) { return x.out; })) * 1.05;
+    function col(st, list, kind, tot) {
+      return '<div class="pp-hcs-bar">' + list.map(function (c) { return '<span class="pp-hcs-' + kind + '" style="height:' + (st[kind === "s" ? "spend" : "take"][c[0]] / max * 100).toFixed(2) + '%"></span>'; }).join("") +
+        (kind === "t" ? '<span class="pp-hcs-def" style="height:' + ((st.out - st.rev) / max * 100).toFixed(2) + '%"></span>' : "") + '</div>';
+    }
+    $("#pp-hc-still").innerHTML = HC_STAGES.map(function (st) {
+      return '<div class="pp-hcs"><p class="pp-hcs-yr">' + hcYearLabel(st) + '</p><div class="pp-hcs-plot">' + col(st, HC_SPEND, "s") + col(st, HC_TAKE, "t") + '</div>' +
+        '<p class="pp-hcs-txt">Spent <b>' + tr(st.out) + '</b><br>Collected <b>' + tr(st.rev) + '</b><br>Deficit <b>' + tr(st.out - st.rev) + '</b></p></div>';
     }).join("");
   }
-  function renderHomeChart() {
-    var y = HC.years[hc.year], d = y.out - y.rev;
-    var left = hc.goal ? HC.goalDeficit2036[hc.goal] : d, cut = d - left;
-    $("#pp-hc-plot").innerHTML =
-      '<div class="pp-hc-col"><div class="pp-hc-bar is-spend">' + hcSegs(y.spend, y.out, "spending") + '<p class="pp-hc-tot">' + trs(y.out) + '</p></div><p class="pp-hc-name">Spending</p></div>' +
-      '<div class="pp-hc-col"><div class="pp-hc-bar is-take">' + hcSegs(y.take, y.rev, "revenue") +
-        (left > 0 ? '<button type="button" class="pp-hc-def" style="height:' + (left / HC.max * 100).toFixed(3) + '%" data-tip="Deficit|' + Math.round(left) + '|0|deficit"><span><i>Deficit</i><b>' + trs(left) + '</b></span></button>' : '') +
-        (cut > 0 ? '<div class="pp-hc-cut" style="height:' + (cut / HC.max * 100).toFixed(3) + '%"><span><i>Closed by the goal</i><b>' + trs(cut) + '</b></span></div>' : '') +
-        '<p class="pp-hc-tot">' + trs(y.rev) + '</p></div><p class="pp-hc-name">Revenue</p></div>';
-    hcRead(hcDefault());
-    $$(".pp-hc-year").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-year") === hc.year)); });
-    $$(".pp-hc-goal").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-goal") === hc.goal)); });
+  function hcSetCalm(on) {
+    hc.calm = on; hcClear();
+    $("#pp-hc-calm").setAttribute("aria-pressed", String(on));
+    $("#pp-hc-anim").hidden = on; $("#pp-hc-still").hidden = !on; $("#pp-hc-play").hidden = on;
+    if (on) { hcStill(); } else { hcShow(hc.i, false); if (hc.playing) { hcSchedule(5200); } }
   }
   function hcTip(btn) {
-    var t = btn.getAttribute("data-tip").split("|"), v = +t[1];
-    hcRead(t[3] === "deficit" ? "<b>Deficit:</b> " + tr(v) + " borrowed in " + HC.years[hc.year].label + "." :
-      "<b>" + esc(t[0]) + ":</b> " + tr(v) + ", " + t[2] + "% of " + t[3] + " in " + HC.years[hc.year].label + ".");
+    var name = btn.getAttribute("data-name") || "Deficit", v = +btn.getAttribute("data-v"), st = HC_STAGES[hc.i];
+    var of = btn.classList.contains("pp-hc-def") ? "" : ", " + Math.round(v / (btn.closest(".is-spend") ? st.out : st.rev) * 100) + "% of " + (btn.closest(".is-spend") ? "spending" : "revenue");
+    $("#pp-hc-read").innerHTML = "<b>" + esc(name) + ":</b> " + tr(v) + of + " in " + st.year + ".";
   }
-  function renderWelcome() {
+  function hcStart() {
+    if (!hc.built) { hcBuild(); }
     $("#pp-goals").innerHTML = M.benchmarks.slice().sort(function (x, y) { return x.amount - y.amount; }).map(function (bm) {
       return '<button type="button" class="pp-hc-goal" data-goal="' + esc(bm.id) + '" aria-pressed="false"><b class="pp-g-amt">' + benchWords(bm.amount) + '</b><span class="pp-g-name">' + esc(bm.short) + '</span></button>';
     }).join("");
-    renderHomeChart();
-    if (!hc.ready) {
-      hc.ready = true;
-      var root = $("#pp-hc");
-      root.addEventListener("click", function (e) {
-        var yb = e.target.closest(".pp-hc-year"), gb = e.target.closest(".pp-hc-goal"), sg = e.target.closest(".pp-hc-seg,.pp-hc-def");
-        if (yb) { hc.year = yb.getAttribute("data-year"); if (hc.year === "2026") { hc.goal = null; } renderHomeChart(); }
-        else if (gb) { var g = gb.getAttribute("data-goal"); hc.goal = hc.goal === g ? null : g; if (hc.goal) { hc.year = "2036"; } renderHomeChart(); }
-        else if (sg) { hcTip(sg); }
-      });
-      root.addEventListener("mouseover", function (e) { var sg = e.target.closest(".pp-hc-seg,.pp-hc-def"); if (sg) { hcTip(sg); } });
-      root.addEventListener("focusin", function (e) { var sg = e.target.closest(".pp-hc-seg,.pp-hc-def"); if (sg) { hcTip(sg); } });
-      root.addEventListener("mouseleave", function () { hcRead(hcDefault()); });
-      if (!reduceMotion && "IntersectionObserver" in window) {
-        root.classList.add("is-pre");
-        var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { root.classList.remove("is-pre"); io.disconnect(); } }, { threshold: 0.3 });
-        io.observe(root);
-      }
-    }
+    var root = $("#pp-hc");
+    root.addEventListener("click", function (e) {
+      var gb = e.target.closest(".pp-hc-goal"), sg = e.target.closest(".pp-hc-seg,.pp-hc-def");
+      if (gb) { hcPlayGoal(gb.getAttribute("data-goal")); }
+      else if (e.target.closest("#pp-hc-play")) { hc.playing = !hc.playing; hcSyncPlay(); if (hc.playing) { if (hc.goal) { hcShow(0, true); hcSchedule(6500); } else { hcNext(); } } else { hcClear(); } }
+      else if (e.target.closest("#pp-hc-calm")) { hcSetCalm(!hc.calm); }
+      else if (sg) { hcTip(sg); }
+    });
+    function enter(e) { var sg = e.target.closest(".pp-hc-seg,.pp-hc-def"); if (sg) { hc.hover = true; hcClear(); hcTip(sg); } }
+    root.addEventListener("mouseover", enter);
+    root.addEventListener("focusin", enter);
+    $("#pp-hc-anim").addEventListener("mouseleave", function () {
+      if (!hc.hover) { return; }
+      hc.hover = false; var st = HC_STAGES[hc.i];
+      $("#pp-hc-read").innerHTML = hc.goal ? hcGoalSay(hc.goal) : hcSay(st);
+      if (hc.playing && !hc.goal) { hcSchedule(3500); }
+    });
+    if (reduceMotion) { hc.playing = false; hcSyncPlay(); hcSetCalm(true); return; }
+    hcShow(0, false);
+    hcCaption(hcYearLabel(HC_STAGES[0]), hcSay(HC_STAGES[0]), true);
+    if ("IntersectionObserver" in window) {
+      hcCollapse();
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          if (en.isIntersecting && !hc.seen) { hc.seen = true; setTimeout(function () { hcShow(0, true); hcSchedule(6500); }, 60); }
+        });
+      }, { threshold: 0.35 });
+      io.observe(root);
+    } else { hc.seen = true; hcSchedule(6500); }
+  }
+  function renderWelcome() {
+    if (!hc.built) { hcStart(); }
     $$("[data-rich]").forEach(function (n) { n.innerHTML = richEscaped(n.innerHTML); n.removeAttribute("data-rich"); });
   }
   function renderProgress() {
