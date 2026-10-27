@@ -1,0 +1,1193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Principles &amp; Priorities: the online budget exercise (prototype for staff review)</title>
+<link rel="icon" type="image/svg+xml" href="brand/pp-favicon.svg">
+<!-- BEGIN WORDPRESS BLOCK -->
+<style>
+  @font-face { font-family: "Instrument Serif"; src: url("fonts/InstrumentSerif-Regular.ttf") format("truetype"); font-style: normal; font-display: swap; }
+  @font-face { font-family: "Instrument Serif"; src: url("fonts/InstrumentSerif-Italic.ttf") format("truetype"); font-style: italic; font-display: swap; }
+  @font-face { font-family: "Anton"; src: url("fonts/Anton-Regular.ttf") format("truetype"); font-display: swap; }
+  @font-face { font-family: "Instrument Sans"; src: url("fonts/InstrumentSans-VF.ttf") format("truetype"); font-weight: 400 700; font-display: swap; }
+  html, body { margin: 0; padding: 0; background: #fff; }
+  .cc-preview-footer { background: #fff; color: #5E6670; border-top: 1px solid rgba(15, 61, 95, .15); font-family: "Instrument Sans", system-ui, sans-serif; font-size: 13px; line-height: 1.5; }
+  .cc-preview-footer .cc-wrap { max-width: 1200px; margin: 0 auto; padding: 22px clamp(16px, 4vw, 40px) 28px; }
+  .cc-preview-footer a { color: #0F3D5F; }
+  .cc-preview-footer p { margin: 0 0 4px; }
+  @media print { .cc-preview-footer { display: none !important; } }
+</style>
+</head>
+<body>
+
+
+<!-- BEGIN WORDPRESS BLOCK -->
+
+
+<script id="pp-model">
+window.PP_MODEL = window.PP_MODEL || {
+  id: "public-2026-04",
+  label: "Public P&P materials, April 2026 edition (39 options)",
+  sources: {
+    workbook: "https://www.concordcoalition.org/wp-content/uploads/2025/02/PP-Workbook-4.10.2026-PDF.pdf",
+    optionsBook: "https://www.concordcoalition.org/wp-content/uploads/2025/02/PP-Options-Book-4.10.2026.pdf"
+  },
+  scoring: {
+    interestRate: 0.15
+  },
+  baseline: {
+    source: "Congressional Budget Office, February 2026 report The Budget and Economic Outlook: 2026 to 2036",
+    tenYearDeficitsFloor: 20000,
+    fy2025: { label: "FY 2025 (actual)", outlays: 7010, revenues: 5235, deficit: 1775 },
+    fy2036: { label: "FY 2036 (projected)", outlays: 11416, revenues: 8301, deficit: 3115 }
+  },
+  benchmarks: [
+    { id: "debt100", amount: 9500,  short: "Stabilize the debt", label: "Stabilize debt held by the public at 100% of GDP by the end of the decade" },
+    { id: "half",    amount: 10000, short: "Halve the deficit",  label: "Cut the deficit in half, reducing it to 3% of GDP by the end of the decade" },
+    { id: "balance", amount: 18500, short: "Balance the budget", label: "Achieve full budget balance by the end of the decade" }
+  ],
+  categories: [
+    { id: 1, name: "General Government Spending",           short: "Government",   workbookPage: "6" },
+    { id: 2, name: "National Security and Defense Spending", short: "Defense",      workbookPage: "7" },
+    { id: 3, name: "Health Care and Social Security",        short: "Health & SS",  workbookPage: "8" },
+    { id: 4, name: "Taxes and Revenues",                     short: "Taxes",        workbookPage: "9-10" }
+  ],
+  groups: [
+    { id: "26", label: "Option 26: raise the corporate income tax rate", options: ["26A", "26B"] },
+    { id: "32", label: "Option 32: a greenhouse gas tax or a value added tax", options: ["32A", "32B"] }
+  ],
+  limits: {
+    statedMaxReduction: "approximately $13 trillion before interest savings",
+    statedMaxIncrease: "almost $5 trillion"
+  },
+  options: [
+    {"id": "1", "cat": 1, "title": "Expand access to free, universal preschool", "summary": "Fund a federal-state partnership that provides free, universal preschool offered in the setting of a parent's choice.", "effect": 200, "group": null, "source": "The Office of Management and Budget, Budget of the United States Government for FY 2025, pg. 143.", "bookPage": 4, "workbookPage": 6, "pros": ["Investments in early childhood care are good for the economy in the long run because they set children up for success in later schooling and their careers.", "Existing childcare systems and preschool programs are out of reach for many American families due to their rising costs. This investment would provide more flexibility for parents in how they raise their children and pursue their careers."], "cons": ["It is the responsibility of parents and state governments, not the federal government, to provide childcare. Younger children are better off with a stay-at home parent than in lower-quality childcare programs, which the government is ill-equipped to evaluate and identify."], "flags": []},
+    {"id": "2", "cat": 1, "title": "Provide national, comprehensive paid family and medical leave", "summary": "Establish a national, comprehensive paid family and medical leave program administered by the Social Security Administration to care for family members, heal from their own illness, or address personal circumstances.", "effect": 325, "group": null, "source": "The Office of Management and Budget, Budget of the United States Government for FY 2025, pg. 138.", "bookPage": 5, "workbookPage": 6, "pros": ["Many American workers are unable to access paid family leave through their employer, especially lower income workers. As many as one in five retirees leave the workforce earlier than planned to care for an ill family member, which negatively impacts families as well as the nation's labor supply and productivity.", "As more and more families build their life around two working parents, family leave is critical in ensuring that Americans are able to care for their loved ones, spend time with their children, and properly recover from illness or injury."], "cons": ["The federal government should not be subsidizing leave programs for all Americans - it is too costly for not enough economic return, if any at all. Family leave should be provided by employers through the systems of the market.", "Workers taking long periods of leave creates a resume gap and they may lose job-specific skills making re-entry into their field or the general job market a difficult task. If too many workers take long leaves, it could have an adverse impact on economic productivity."], "flags": []},
+    {"id": "3", "cat": 1, "title": "Increase the maximum Pell grant", "summary": "Double the existing Pell Grant by 2029 and expand access to more students.", "effect": 123, "group": null, "source": "The Office of Management and Budget, Budget of the United States Government for FY 2025, pg. 141.", "bookPage": 6, "workbookPage": 6, "pros": ["Post-secondary education has become prohibitively expensive for many American families. Providing Pell Grants to low- and middle-income families will increase the potential for social mobility and a good-paying job for degree seeking Americans, young and old.", "Giving students no-risk support, unlike subsidized and unsubsidized loans, opens a path to a more sustainable working life for students directly out of their degree program. Minimizing debt from student loans relieves a common pressure experienced by college graduates."], "cons": ["Empirical studies have shown that when the federal government increases the maximum Pell Grant award, colleges and universities react by raising tuition. Government subsidies simply make higher education more expensive for everyone."], "flags": []},
+    {"id": "4", "cat": 1, "title": "Eliminate federal subsidies for Amtrak and other intercity rail systems", "summary": "Eliminate federal subsidies for Amtrak and other intercity rail systems, including high-speed projects.", "effect": -71, "group": null, "source": "Congressional Budget Office, Spending Projections, by Budget Account, January 2025. Total outlays 2025-2035 for Northeast Corridor Grants to the National Railroad Passenger Corporation (TID 069-1774-0-1-401) and National Network Grants to the National Railroad Passenger Corporation (TID 069-1775-0-1-401).", "bookPage": 7, "workbookPage": 6, "pros": ["Federal funding subsidizes uneconomical services and routes (including sleeper-class service and many long-distance routes) that are not used extensively and provide little public benefit in terms of reducing emissions of greenhouse gasses or reducing congestion on highways and in airports.", "Eliminating federal subsidies would force Amtrak to become more efficient and profitable. For example, Amtrak could focus on services that have the most potential for profit, such as high-speed service between Washington and New York."], "cons": ["The Amtrak corridor from Washington, D.C. to Boston makes up just 2 percent of the land area of the United States yet is home to 17 percent of the population and 20 percent of U.S. jobs. Rail service significantly improves productivity in an already congested region and helps drive U.S. economic growth.", "Rail subsidies should be viewed in the overall context of the U.S. transportation system. Highways and the airlines receive substantial federal support, while rail receives little by comparison.", "Continuing to subsidize Amtrak and intercity rail in general reduces highway and airport congestion and provides critical transportation options in many parts of the country."], "flags": []},
+    {"id": "5", "cat": 1, "title": "Reduce subsidies in the crop insurance program", "summary": "Reduce subsidies the federal government provides to agricultural producers and crop insurance companies to help purchase crop insurance.", "effect": -47, "group": null, "source": "Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 1, page 5.", "bookPage": 8, "workbookPage": 6, "pros": ["Increasing the farmers' share of premiums will not discourage them from obtaining crop insurance because private business lenders often require it.", "The government covers too much risk for farmers and provides overly generous subsidies. The benefits flow primarily to wealthy, corporate agricultural producers. Why should farmers get such extensive subsidies when other businesses do not?"], "cons": ["Crop insurance subsidies help smaller farms that otherwise would have substantial difficulties insuring against crop losses. Withdrawing federal support for buying crop insurance could bankrupt many of these farms or cause them to sell to larger agricultural producers.", "With lower premium subsidies, farmers would probably buy less insurance, making it more likely that Congress would enact special relief programs to help farmers deal with significant difficulties. That would offset some of the government's savings from cutting the premium subsidies.", "Maintaining domestic agricultural production is a national security interest. Our nation should always be able to feed itself and not be overly dependent on food sources grown in other countries. We need to protect our farms and farmers."], "flags": []},
+    {"id": "6", "cat": 1, "title": "Eliminate NASA's Deep Space Exploration Systems budget", "summary": "Terminate NASA's Deep Space Exploration Systems program and budget.", "effect": -93, "group": null, "source": "Congressional Budget Office, Spending Projections, by Budget Account, January 2025. Total outlays 2025-2035 for NASA's Space Explorations Account (TID 080-0124-0-1-252).", "bookPage": 9, "workbookPage": 6, "pros": ["The scientific instruments used to gather knowledge in space no longer rely on nearby human operation. NASA and other federal agencies have increasingly used robots to perform missions and keep humans out of harm's way. Resources might also be better spent on basic scientific research on earth.", "The fast-growing private space industry will take up the mantle for exploration and experimentation beyond Earth, which will no longer require NASA to spend federal funds in the same area of focus."], "cons": ["Eliminating human space flight beyond Earth would end the technical progress necessary to prepare for desired human missions to Mars. There are also scientific benefits to conducting experiments outside of low Earth orbit that could not be executed otherwise.", "The still budding private space industry (SpaceX, Blue Origin, Orbital, etc.) would likely face setbacks from lack of technical and institutional assistance from NASA and its contracts.", "If robotic missions prove too limiting, human space efforts would have to be restarted -- which would be inefficient and likely stall progress."], "flags": []},
+    {"id": "7", "cat": 1, "title": "Reduce the annual across-the-board adjustment for federal civilian employees' pay", "summary": "Reduce annual pay adjustments for federal civilian workers by 0.5 percentage points through the Federal Employees Pay Comparability Act of 1990.", "effect": -58, "group": null, "source": "Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 41, page 50.", "bookPage": 10, "workbookPage": 6, "pros": ["Standardized pay raises are uncompetitive and encourage federal employees to leave for the private sector. Merit-based pay raises and policies matching that of similar private employers would better suit employees and the federal budget.", "Providing substantial, annual adjustments is rewarding less qualified employees to stay in their position."], "cons": ["Shortages of government workers due to burnout and uncompetitive salaries is a regular occurrence over the past decade. Reducing this adjustment would only exacerbate the problem."], "flags": []},
+    {"id": "8", "cat": 2, "title": "Reduce the Department of Defense's manpower budget", "summary": "Reduce the Department of Defense's active military manpower across all branches by 17 percent by 2034.", "effect": -959, "group": null, "source": "Congressional Budget Office, Options for Reducing the Deficit: 2025-2034, Option No. 28, page 37.", "bookPage": 12, "workbookPage": 7, "pros": ["The defense budget is too big - it consumes more than 45 percent of all discretionary spending and over 10 percent of total federal spending. Reducing expenditures on defense activities would free up resources to invest in families, education, and infrastructure.", "Healthcare costs are rising for the military too, not just the private sector. To ensure the Department of Defense can care for its soldiers and their families in the face of rising healthcare costs, the military should \"rightsize\" its manpower budget."], "cons": ["With ongoing international conflicts and growing external threats, this is no time to make cuts that could deprive the armed forces of needed resources to adequately address the national security threats to the country.", "When measured as a percent of GDP, DoD's budget as a share of the economy has shrunk substantially. During the 1960s, national defense spending averaged 8-9 percent of GDP. Today, the ratio is now less than half that."], "flags": []},
+    {"id": "9", "cat": 2, "title": "Reduce the Department of Defense's procurement and research & development budget", "summary": "Reduce the Department of Defense's budget by delaying or halting development, research, and purchasing of advanced equipment or weapons.", "effect": -75, "group": null, "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option Nos. 31-35, pages 40-44.", "bookPage": 13, "workbookPage": 7, "pros": ["Since 1995, the Department of Defense's financial management practices routinely rank as \"high risk\" for waste, fraud, and abuse by the Government Accountability Office (the nation's auditors). Eliminating future programs that haven't started yet would help reduce future deficits without harming current programs.", "The United States has more nuclear weapons than it needs or could ever use.", "Allies of the United States need to spend more on their own national defense. We can't be the global police force."], "cons": ["With ongoing international conflicts and growing external threats, this is no time to make cuts that could deprive the armed forces of needed resources to adequately address the national security threats to the country.", "A nuclear axis hostile to the U.S. and its allies is forming among China, Russia, North Korea and now possibly Iran. We need a capable deterrence on all fronts and that means producing more technologically advanced weapons systems, including nuclear weapons."], "flags": []},
+    {"id": "10", "cat": 2, "title": "Repeal the One Big Beautiful Bill Act's increases to Homeland Security funding", "summary": "Repeal funding increases to Immigration and Customs Enforcement (ICE), Customs and Border Protection, and physical border security enacted by the July 2025 reconciliation legislation, commonly known as the OBBBA.", "effect": -176, "group": null, "source": "Committee for a Responsible Federal Budget, What's In the One Big Beautiful Bill Act?", "bookPage": 14, "workbookPage": 7, "pros": ["Immigration reform would be a more cost-efficient use of taxpayer dollars as opposed to increasing enforcement tactics. We have a broken migration system and are trying to brute force a solution."], "cons": ["Illegal immigration has become a serious threat to national security and should be treated as such. Additional funding to our law enforcement agencies is key to protecting our borders.", "Historically, ICE has had a smaller budget and a smaller caseload. With millions of unlawful immigrants in the United States the agency will need more funding to ensure the sustainability of its efforts."], "flags": []},
+    {"id": "11", "cat": 2, "title": "Introduce TRICARE for Life enrollment fees and out-of-pocket minimums", "summary": "Reform the TRICARE for Life program to introduce enrollment fees and out-of-pocket minimums.", "effect": -48, "group": null, "source": "Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option Nos. 10-11, pages 17-18.", "bookPage": 15, "workbookPage": 7, "pros": ["In the private sector, Medicare beneficiaries have cost-sharing requirements like monthly premiums and copays, and must meet minimum out-of-pocket costs before catastrophic coverage kicks in. Introducing similar cost-sharing arrangements for military retirees would help reduce healthcare costs in the defense budget, freeing up resources for active-duty personnel."], "cons": ["Current retirees joined the military with the understanding that they would receive free or very low-cost medical care in retirement in exchange for their years of service. It would be unfair to rewrite that social contract now.", "Many retirees are on fixed incomes and cannot readily adjust to unexpected additional expenses.", "Reducing healthcare benefits for retirees could affect future military recruitment and retention."], "flags": []},
+    {"id": "12", "cat": 2, "title": "Reduce funding for international affairs (\"foreign aid\")", "summary": "Reduce funding for international affairs programs by 30 percent.", "effect": -225, "group": null, "source": "Concord Coalition Calculation; Office of Management and Budget, Fiscal Year 2026 President's Discretionary Budget Request; Congressional Budget Office, Spending Projections, by Budget Account January 2025", "bookPage": 16, "workbookPage": 7, "pros": ["If we are going to reduce spending it makes sense to start with programs that primarily benefit other countries rather than our own.", "In a global economy like ours, the private sector will compensate for the lack of federal international support to protect their investments, their supply lines, their employees, and their business relationships abroad. The private sector might also be more efficient at deploying resources where needed."], "cons": ["Reducing foreign aid will make America less safe because it will harm bilateral and cooperative agreements with foreign governments and organizations that we rely on for security arrangements, including counter-terrorism and global health monitoring.", "If America retreats from the global community, authoritarian governments like China and Russia will step in to fill the void in developing economies, threatening democracy around the globe.", "Our relationships also contribute to increased economic opportunities in the United States and promote humanitarian and environmental efforts worldwide."], "flags": []},
+    {"id": "13", "cat": 2, "title": "Means test the Department of Veterans Affairs disability compensation", "summary": "Reduce VA payments to veterans eligible for disability compensation based on a gross household income threshold.", "effect": -253, "group": null, "source": "Congressional Budget Office, Options for Reducing the Deficit 2023-2032 - Volume I: Larger Reductions", "bookPage": 17, "workbookPage": 7, "pros": ["Veterans who are most in need should be the focus of a program. Means-testing benefits would prioritize disabled veterans going through the most financial hardship while decreasing the VA's caseload."], "cons": ["Tying disability compensation to income improperly implies that veterans with incomes above the threshold should need no additional assistance. The program should aid disabled and injured service members regardless of their income level.", "Service members who were willing to give their lives to our country should not be the first target when finding budget cuts. They deserve the unfettered support of the United States government upon their return home."], "flags": []},
+    {"id": "14", "cat": 3, "title": "Reduce payments for hospital outpatient departments", "summary": "Establish site-neutral reimbursement rates for Medicare services regardless of whether they are performed in a hospital outpatient department, a physician's office, or an ambulatory surgical center.", "effect": -157, "group": null, "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 16, page 23.", "bookPage": 19, "workbookPage": 8, "pros": ["Given the high and rising costs of healthcare in the federal budget, several bold policy changes will be needed to assure long-term affordability and sustainability of Medicare. Paying the same rate for the same service regardless of site-of-care makes sense.", "The historic rationale for higher payments in a hospital setting (regulatory burden, patient mix, complexity of services provided) no longer applies since hospitals are purchasing independent physician practices largely to take advantage of the higher rates by changing the office's designation. In these cases, the exact same services are delivered by the exact same personnel, but at a higher cost to public and private payers.", "This option has been endorsed by the independent Medicare Payment Advisory Commission (MedPAC). It was included in budgets proposed by Presidents Obama and Trump, indicating it has bipartisan support."], "cons": ["These differentials exist in the private sector as well and Medicare is just following standard industry practice. Commercial insurers generally pay more for the same services when they are delivered in a hospital outpatient department than in a physician's office."], "flags": []},
+    {"id": "15", "cat": 3, "title": "Move to a premium support model for Medicare", "summary": "This \"premium support\" option would restructure the Medicare program from fee-for-service to one that provides seniors with a set amount of money to purchase private insurance of their choice.", "effect": -1875, "group": null, "source": "American Action Forum, \"Is It Time for Premium Support?\" and \"Modernizing Medicare\" by Douglas Holtz-Eakin, May 2023.", "bookPage": 20, "workbookPage": 8, "pros": ["Medicare is on an unsustainable path and its cost growth must be slowed somehow. This proposal would reduce the federal government's overall commitment to healthcare and allow seniors more flexibility than under Medicare today.", "The marketplace would increase competition among health plans and lower costs."], "cons": ["Beneficiaries would face higher healthcare costs because of declining government assistance. The risk of healthcare inflation will be transferred to individuals instead of spread across the entire nation and the federal budget, where dramatic shifts are more easily absorbed.", "Beneficiaries would also face higher premiums in the private health insurance market than in a government-subsidized market since Medicare is more administratively efficient than the private insurance market. Furthermore, beneficiaries could face loss of their health plans in any given year since government support gets re-adjusted based on new insurance products each year."], "flags": []},
+    {"id": "16", "cat": 3, "title": "Reduce Medicare Advantage overpayments", "summary": "Modify Payments to Medicare Advantage Plans for Health Risk.", "effect": -1049, "group": null, "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 15, page 22.", "bookPage": 21, "workbookPage": 8, "pros": ["Providers in the MA program are being overpaid for the same services provided by the traditional FFS program. Failure to address the problem will allow MA health plans to profit from the overpayments rather than through improvements in quality and efficiency.", "As the MA program grows in popularity, overall Medicare care costs will accelerate unless this problem is corrected."], "cons": ["Medicare FFS beneficiaries typically purchase extra Medigap insurance to cover costs not covered by traditional Medicare, so the comparison of MA reimbursement to FFS is not \"apples-to-apples.\"", "Medicare Advantage program providers typically score higher on quality metrics than traditional FFS Medicare providers."], "flags": []},
+    {"id": "17", "cat": 3, "title": "Provide dental, vision, and hearing coverage under the Medicare program", "summary": "Provide dental, vision, and hearing coverage under the Medicare program.", "effect": 358, "group": null, "source": "The Congressional Budget Office, Letter to the Honorable Frank Pallone Jr., Chairman of the House Committee on Energy and Commerce, Regarding the Budgetary Effects of H.R. 3, the Elijah E. Cummings Lower Drug Costs Now Act, Pg. 10; Title VI.", "bookPage": 22, "workbookPage": 8, "pros": ["The average American must pay out of pocket for most dental, vision, and hearing services. More than 70% of those who need dental or hearing care did not receive it, and more than 40% of those who had trouble seeing had not been to the eye doctor in a year. Adding these benefits to Medicare could be life changing for senior citizens."], "cons": ["Medicare is already financially vulnerable. Adding additional costs without a dedicated revenue source would be irresponsible and would threaten the viability of the entire Medicare program.", "The savings from more efficient Medicare Advantage plans can be, and often are, used to pay for and supplement varying types of coverage, including dental, vision, and hearing. Program efficiency like this should be rewarded and enhanced, rather than adding to other plans within Medicare."], "flags": []},
+    {"id": "18", "cat": 3, "title": "Increase the premiums paid for Medicare Part B", "summary": "Raise the basic Medicare Part B premiums to 35 percent of the program's costs, phased in over five years.", "effect": -510, "group": null, "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 7, page 13.", "bookPage": 23, "workbookPage": 8, "pros": ["Congress has prevented Part B premiums from keeping pace with the 50-percent financing target. The more reliant Medicare is on general fund financing, the less funding there will be to address other important priorities like national defense, education, and climate change."], "cons": ["Asking current beneficiaries, many of whom are retired and on fixed incomes, to pay more for Medicare is unfair. They have fewer options to raise their income and pay the higher premium."], "flags": []},
+    {"id": "19", "cat": 3, "title": "Repeal Medicaid work requirements", "summary": "Remove \"community engagement\" requirements for Medicaid eligibility as enacted in the One Big Beautiful Bill Act.", "effect": 326, "group": null, "source": "Congressional Budget Office, Estimated Budgetary Effects of Public Law 119-21, to Provide for Reconciliation Pursuant to Title II of H. Con. Res. 14, Relative to CBO's January 2025 Baseline", "bookPage": 24, "workbookPage": 8, "pros": ["The enacted work requirements are too stringent. Adding bureaucracy and paperwork to government programs often drive individuals not to take advantage of benefits they are eligible to receive.", "Fewer Americans with access to preventative care and chronic illness management means more trips to the emergency room, straining our healthcare system and driving up costs."], "cons": ["Individuals who benefit from Medicaid today should be required to contribute to the funding mechanisms that ensure the program's sustainability for future generations and in times of economic hardship.", "By creating work requirements for eligibility, the federal government is ensuring that only those truly in need are able to access the available resources through what is effectively a screening process."], "flags": []},
+    {"id": "20", "cat": 3, "title": "Make permanent the Affordable Care Act's enhanced tax credit", "summary": "Permanently extend the enhanced premium tax credits for those above 400% of the poverty level.", "effect": 335, "group": null, "source": "Congressional Budget Office, Letter to Chairman Arrington and Chairman Smith", "bookPage": 25, "workbookPage": 8, "pros": ["If the enhanced PTC is not extended, 4.2 million fewer Americans will have health insurance by the year 2034 as a result. Fewer people on healthcare will mean less preventative care and more emergency room visits, putting upward pressure on costs and our provider system.", "The nation is in an affordability crisis and one of the inflection points is healthcare costs. Helping families better afford just one of the bare necessities amidst rising costs will make a tangible impact on quality of life."], "cons": ["The American Rescue Plan was a temporary measure designed to lift the country out of the COVID-19 pandemic economy. Extending the enhanced tax credit would be an overreach of the measure's original intent.", "Extending the credit would subsidize high earners with incomes four times greater than the poverty level. These are not the individuals who need the most help acquiring affordable health insurance."], "flags": []},
+    {"id": "21", "cat": 3, "title": "Gradually raise the full retirement age for Social Security", "summary": "Gradually raise the full retirement age for Social Security to 67 and 70 for staggered age groups.", "effect": -95, "group": null, "source": "Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 21, page 29.", "bookPage": 26, "workbookPage": 8, "pros": ["Raising the retirement age will help to adjust Social Security for gains in life expectancy. Life expectancy at age 65 in 1940 was 11.9 years for men and 13.4 for women. It is now averaging over 20, projected to continue rising for decades. Thus, Social Security costs will increase as people collect benefits over longer lifetimes.", "Workers in physically taxing jobs will still be able to receive early (reduced) benefits at age 62 or apply for disability benefits.", "While this option to raise the retirement age would not save a lot of money in the first 10 years, over time it would save a more substantial amount (0.5% of GDP) and would help put Social Security on a more sustainable course."], "cons": ["Current law applies a penalty for retiring early in the form of permanently reduced benefits. Raising the retirement age without reducing the penalty (or raising the early retirement age the same amount) would harm workers with physically-intense jobs who typically retire early.", "Ageism is real and it is hard for older Americans to keep their jobs. Highest paid employees are often the first to be let go. Health issues common to the aging process also make it hard for older workers to find and keep employment."], "flags": []},
+    {"id": "22", "cat": 3, "title": "Increase the maximum taxable earnings that are subject to Social Security payroll taxes", "summary": "Increase the maximum taxable earnings that are subject to Social Security payroll taxes.", "effect": -728, "group": null, "source": "Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 62, page 73.", "bookPage": 27, "workbookPage": 8, "pros": ["Within a decade, the Social Security trust fund will be insolvent. It is important to preserve Social Security for all generations of retirees - today's and tomorrow's.", "Social Security is a transfer payment system: today's workers pay taxes that support today's retirees. But there aren't enough workers to support the cost of retiring Baby Boomers and the generations that follow. This is one way to add more revenue without taxing low-income people or cutting benefits."], "cons": ["The payroll tax is paid by employees and employers. Raising the cap - this much and this fast - would devastate small businesses and the self-employed."], "flags": []},
+    {"id": "23", "cat": 3, "title": "Use an alternative measure of inflation to index Social Security and other mandatory programs", "summary": "Use chained CPI to index Social Security and other mandatory programs.", "effect": -278, "group": null, "source": "Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 27, page 35.", "bookPage": 28, "workbookPage": 8, "pros": ["This proposal would help restrain the long-term costs of Social Security and could be a responsible step towards making the program fiscally sustainable.", "Social Security benefits would still grow over time. This isn't a benefit cut, but a reduction in the rate of growth in benefits.", "The CPI is not the only available index to adjust for changes in the cost of living. Beneficiaries should not receive benefit increases larger than necessary to protect them against inflation."], "cons": ["One of the largest categories of spending for seniors is healthcare, and healthcare costs are growing faster than inflation.", "The whole purpose of automatic inflation adjustments was to take politics out of benefit increases. This option would reintroduce politics into the process, which could result in future irresponsible adjustments."], "flags": []},
+    {"id": "24", "cat": 4, "title": "Increase the tax on long term capital gains and dividends by 2 percentage points", "summary": "Under this option, each bracket of income would see a 2-percentage point increase in their tax rate on long term capital gains and dividends.", "effect": -103, "group": null, "source": "Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 47, page 57.", "bookPage": 30, "workbookPage": 9, "pros": ["By maintaining a preferential treatment to long term capital gains and dividends earnings, those who invest will still be rewarded for participating in economic growth. An incremental change will not disrupt existing markets while producing much needed revenue.", "This tax has been significantly higher in the past, during what some would consider a golden age of the American economy, without major hardship or consequence. A two percent increase will put us on the right track towards a balanced tax rate."], "cons": ["Moving investments and money around is difficult enough as it is. Under this option, it would only become more difficult and expensive for even the lowest tax bracket to become involved in investments.", "By increasing the tax by two percentage points, the government is giving itself an easy out with a minor policy change. If this option is implemented, it is uncertain when the political opportunity will once again be available to reach higher long term gains taxes."], "flags": []},
+    {"id": "25", "cat": 4, "title": "Eliminate estate taxes", "summary": "Eliminate the federal tax on estates.", "effect": 313, "group": null, "source": "The Congressional Budget Office, Estimated Budgetary Effects of Public Law 119-21, to Provide for Reconciliation Pursuant to Title II of H. Con. Res. 14, Relative to CBO's January 2025 Baseline and The Budget and Economic Outlook: 2025 to 2034, Table 1-8, page 36.", "bookPage": 31, "workbookPage": 9, "pros": ["The estate tax is unfair double taxation. It taxes the same dollar when it is earned and again when it is passed on to an heir.", "When estates that consist primarily of assets that aren't easily divisible are subject to the estate tax, it can force the heirs to sell family farms and small businesses to pay large tax bills."], "cons": ["Very few small businesses and family farms are subject to the estate tax: they account for less than 100 estates out of almost 3 million each year.", "Repealing the estate tax would only benefit the wealthiest who can amass such large estates. Repeal would do nothing to incentivize work or other activities that promote economic growth."], "flags": []},
+    {"id": "26A", "cat": 4, "title": "Raise the corporate income tax rate from 21 to 22 percent", "summary": "The Tax Cuts and Jobs Act of 2017 (TCJA) reduced the top corporate tax rate from 35 percent to 21 percent. This option would increase that rate from 21 percent to 22 percent.", "effect": -136, "group": "26", "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 64, page 75.", "bookPage": 32, "workbookPage": 9, "pros": ["When the corporate rate was cut in 2017, it was assumed the cut would \"pay for itself.\" Even though corporate tax collections rose after the cut, they would have risen even more without the rate cuts because corporate profits were growing before the new law was enacted."], "cons": ["According to the Organisation for Economic Co-operation and Development (OECD), prior to the 2017 tax cut, America's corporate income tax rate was among the highest among developed economies. The reduced rate makes businesses in the U.S. more competitive. It also discourages profit shifting to lower-tax jurisdictions, encourages new investment, higher wages, and increases employment.", "Economic research suggests that a large portion of the corporate income tax is shouldered by workers in the form of lower wages. If lawmakers raised the corporate income tax rate, it would reduce employment, hurt wages, and reduce economic growth."], "flags": []},
+    {"id": "26B", "cat": 4, "title": "Raise the corporate income tax rate from 21 to 28 percent", "summary": "This option would increase the current rate from 21 percent to 28 percent, an exact middle point between current law and the pre-TCJA rate.", "effect": -1350, "group": "26", "source": "The Office of Management and Budget, Budget for the United States Government for FY 2025, Table S-2, pg. 138.", "bookPage": 32, "workbookPage": 9, "pros": ["When the corporate rate was cut in 2017, it was assumed the cut would \"pay for itself.\" Even though corporate tax collections rose after the cut, they would have risen even more without the rate cuts because corporate profits were growing before the new law was enacted."], "cons": ["According to the Organisation for Economic Co-operation and Development (OECD), prior to the 2017 tax cut, America's corporate income tax rate was among the highest among developed economies. The reduced rate makes businesses in the U.S. more competitive. It also discourages profit shifting to lower-tax jurisdictions, encourages new investment, higher wages, and increases employment.", "Economic research suggests that a large portion of the corporate income tax is shouldered by workers in the form of lower wages. If lawmakers raised the corporate income tax rate, it would reduce employment, hurt wages, and reduce economic growth."], "flags": []},
+    {"id": "27", "cat": 4, "title": "Reduce tax subsidies for employment-based health insurance", "summary": "This option would limit the exemption for employer-provided health care contributions from an employee's income for tax purposes.", "effect": -521, "group": null, "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 56, page 66.", "bookPage": 33, "workbookPage": 9, "pros": ["The exclusion of employer-paid healthcare premiums distorts the health care market by encouraging higher levels of spending on health care (because employees don't see or pay the full cost). Taxing employer-provided benefits would generate new revenue and encourage lower levels of health care spending - two necessary steps to restore our nation's fiscal sustainability."], "cons": ["Taxing health care benefits will reduce overall healthcare spending because it decreases the generosity of one's health insurance plan. The flip side of the reduction in insurance is an increase in individuals' out-of-pocket costs for healthcare. As a result, sick individuals who utilize more healthcare services disproportionately suffer from this burden.", "This option represents a substantial middle-class tax increase and is no 'silver bullet' for containing healthcare costs: if individuals avoid consuming healthcare because of prohibitive costs, they might get sicker and more expensive to treat, defeating the money-saving goal of the option."], "flags": []},
+    {"id": "28", "cat": 4, "title": "Eliminate certain tax preferences for education expenses", "summary": "Eliminate the American Opportunity Tax Credit and Lifetime Learning Tax Credit.", "effect": -130, "group": null, "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 58, page 69.", "bookPage": 34, "workbookPage": 9, "pros": ["The current credits and deductions do not target their benefits to households that need assistance the most. Most low-income families do not have enough income tax liability to benefit from these provisions.", "Providing education benefits as tax expenditures instead of spending programs also adds complexity to the process of figuring out financial needs for education and fails to provide assistance during enrollment, when cash is needed most."], "cons": ["This option, especially if not combined with an increase in other forms of assistance, would increase the financial burden for education for those middle-class families that make too much income to qualify for current educational aid spending programs."], "flags": []},
+    {"id": "29", "cat": 4, "title": "Change the tax treatment of capital gains from sales of inherited assets", "summary": "Eliminate the \"stepped-up\" basis for determining capital gains taxes when inherited assets are sold.", "effect": -197, "group": null, "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 51, page 61.", "bookPage": 35, "workbookPage": 9, "pros": ["The original justification for the \"step-up basis\" was that heirs found it difficult to determine the original price paid for assets. In the digital age, such concerns are now overblown, if not moot.", "This option would increase productive investments during people's lifetimes instead of incentivizing people to hold onto assets longer than they would otherwise simply to take advantage of this tax preference. It would also cut down on wasted resources devoted to tax planning because many tax shelters exist as a way of using step-up rules to avoid taxes."], "cons": ["Heirs will find it difficult to determine the original value of an asset if the decedent did not keep good records."], "flags": []},
+    {"id": "30", "cat": 4, "title": "Impose a tax on financial transactions", "summary": "Impose a 0.01 percent tax on the purchase of stocks and bonds, and derivative transactions.", "effect": -297, "group": null, "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 74, page 86.", "bookPage": 36, "workbookPage": 9, "pros": ["A financial transaction tax would reduce short-term speculation and computerized trading. This type of trading is less productive and can destabilize markets, even leading to crashes that can potentially damage the economy.", "Even though the tax is small, it can generate significant revenue and increase the progressivity of the tax code since the major beneficiaries of high-frequency trading are wealthier individuals and corporations."], "cons": ["The tax would discourage all short-term trading, not just speculation, including some transactions by traders that help to stabilize markets by establishing efficient prices that reflect the fundamental value of assets. A transaction tax could make asset prices less stable.", "This tax could lead to traders developing alternative securities to avoid the tax or even cause them to move trading to another country. Even though some members of the European Union have similar taxes, there will always be places where trading could be set up to avoid taxation."], "flags": []},
+    {"id": "31", "cat": 4, "title": "Increase excise taxes on motor fuels by 15 cents per gallon and index them for inflation", "summary": "Increase the excise taxes on all motor fuels by 15 cents per gallon and index them for inflation.", "effect": -212, "group": null, "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 71, page 82.", "bookPage": 37, "workbookPage": 9, "pros": ["The Highway Trust Fund is in deficit and the government is running out of money to maintain and repair roads, let alone build new ones. This increase would help deal with huge infrastructure needs, which would increase economic growth.", "Higher taxes on motor fuels would have environmental benefits as well. Fuel efficiency would increase, people would drive less, and carbon dioxide emissions would be less."], "cons": ["Gas taxes are already too high. With state and local excise taxes included, total average tax rates nationwide are 57.09 cents per gallon for gasoline and 64.64 cents per gallon for diesel fuel.", "An increase in the gas tax would harm economic growth and there are better ways to address congestion, such as tolls and congestion fees.", "Higher fuel prices mean higher prices for transported goods. This would impose a disproportionate cost on rural households while the benefits from the additional government revenue would mainly be felt in urban areas."], "flags": []},
+    {"id": "32A", "cat": 4, "title": "Impose a tax on emissions of greenhouse gases", "summary": "This option would impose a tax of $25 per metric ton on most emissions of greenhouse gasses in the United States.", "effect": -919, "group": "32", "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 73, page 84.", "bookPage": 38, "workbookPage": 10, "pros": ["A carbon tax, according to most economists, is the most efficient way to reduce emissions and is a cost-effective way to steer the economy toward a greener future. Carbon pricing encourages changes in behavior by businesses and consumers and creates an incentive for investments in low-carbon technological improvements."], "cons": ["A carbon tax is regressive: by making fossil fuels more expensive, it imposes a harsher burden on those with lower incomes. It could also result in a sudden tax increase that could shock the economy, and it penalizes those who cannot switch to alternative energy sources."], "flags": []},
+    {"id": "32B", "cat": 4, "title": "Impose a value added tax (VAT)", "summary": "Impose a narrow-base, 5% consumption tax on the incremental increase in the value of a good or service.", "effect": -2180, "group": "32", "source": "The Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034, Option No. 72, page 83.", "bookPage": 39, "workbookPage": 10, "pros": ["A VAT is better for economic growth than an increase in the income tax because it does not tax savings or investment, and it tends to raise more tax revenue.", "Many economists agree it is an efficient and effective way to raise revenue, and policymakers could adjust the income tax at the same time to offset the relative shifting of the burden between the poor and the rich and ensure the U.S. tax code remains progressive."], "cons": ["A VAT would be regressive. Poorer households would spend a larger proportion of their income on taxes because they spend a greater share of their income on consumption than higher-income households, unless the VAT is introduced with other policy adjustments making it more progressive, which is not proposed in this option.", "A federal VAT could adversely affect states and the flexibility they now enjoy to tailor their sales taxes to their own needs and unique economies. States might also feel pressure to keep their sales tax rates within a narrow range, which would leave them little room to adjust to changes in their own tax base or to improve competitiveness with other states."], "flags": []},
+    {"id": "33", "cat": 4, "title": "Reinstate clean energy credits for consumers and businesses", "summary": "Reinstate credits for electric vehicles, infrastructure, and renewable energy production and repeal accelerated timelines.", "effect": 425, "group": null, "source": "Congressional Budget Office, Estimated Budgetary Effects of Public Law 119-21, to Provide for Reconciliation Pursuant to Title II of H. Con. Res. 14, Relative to CBO's January 2025 Baseline", "bookPage": 40, "workbookPage": 10, "pros": ["The federal government has a responsibility and the resources to move the needle on greenhouse gas emissions. Incentivizing better energy consumption and production practices are an important step in combatting climate change, which our nation is already feeling the effects of.", "Shortened timelines enacted by the OBBBA will leave projects rushed or unfinished, creating uncertainty and unrest in the energy sector."], "cons": ["EV credits do not generate enough sales of electric vehicles to those who wouldn't have otherwise purchased them to justify the fiscal and regulatory costs.", "Project requirements determining eligibility for the tax credits were far too complicated, invoking labor, location, and material guidelines. Tax incentives should be more streamlined and less disjointed to avoid a drag on productivity."], "flags": []},
+    {"id": "34", "cat": 4, "title": "Repeal certain executive branch tariffs", "summary": "Repeal a selection of the Trump administration's tariff regime that is under legal question.", "effect": 2400, "group": null, "source": "Congressional Budget Office, February 2026 The Budget and Economic Outlook: 2026 to 2036", "bookPage": 41, "workbookPage": 10, "pros": ["Tariffs on any scale are taxes that will be passed down to consumers through higher prices at the point of sale after import. Tariffs at a scale and scope as large as the ones in place are a burden on the middle-class, raising already unaffordable prices.", "The President does not have the authority to levy sweeping and changing tariffs without the authority of Congress. The power of the purse gives Congress the exclusive right to levy taxes and collect revenues. Congress should assert this authority in the matter and explicitly repeal them."], "cons": ["Tariffs are necessary to protect our most advanced technological and important historical industries. China and other nations are participating in intellectual theft and unfair trade practices, so we must level the global playing field.", "Smart tariff policy will encourage consumers to buy American goods, increasing investment and tax revenue in the United States."], "flags": []},
+    {"id": "35", "cat": 4, "title": "Introduce a new payroll tax of 1 percent on all earnings", "summary": "Impose a 1 percent payroll tax on all earnings that will contribute to the federal government's general revenues.", "effect": -1282, "group": null, "source": "Congressional Budget Office, Options for Reducing the Deficit: 2025 to 2034", "bookPage": 42, "workbookPage": 10, "pros": ["Our federal budget is perennially underfunded. Adding more than $1 trillion in revenues would put us on the right track to pay for programs that are worth pursuing.", "Non-targeted revenues allow for flexibility in discretionary and mandatory spending. Adding a new payroll tax would open up Congress' budgeting options while also providing cushion for our mandatory programs (e.g. Social Security, Medicare) when they are in need of support."], "cons": ["The American people should not trust the federal government with additional, unassigned taxpayer dollars. Writing Congress a blank check would only empower them to continue their irresponsible budget and spending practices. The House and Senate have not completed a full budget since 1996 and have not shown a willingness to get our fiscal house in order.", "The amount of waste, fraud, and abuse that exists in our system today would funnel these revenues away from the programs that need it most. A payroll tax should have a program it is exclusively tied to."], "flags": []},
+    {"id": "36", "cat": 4, "title": "Repeal the increased Child Tax Credit", "summary": "Return the Child Tax Credit (CTC) to its pre-2017 value of $1,000 per eligible dependent.", "effect": -817, "group": null, "source": "Tax Policy Center; Congressional Budget Office, Estimated Budgetary Effects of Public Law 119-21, to Provide for Reconciliation Pursuant to Title II of H. Con. Res. 14, Relative to CBO's January 2025 Baseline", "bookPage": 43, "workbookPage": 10, "pros": ["Childhood poverty is not only an indicator of negative outcomes but can also generate negative outcomes relating to a child's health or cognitive development. Healthier children more prepared to become educated members of society are more likely to be productive and taxpaying members of society later on in life. It is in the federal government's interest to limit child poverty and invest in the future of the nation.", "Reducing poverty through a refundable tax credit will reduce reliance on other, already strained government programs. Benefitting children will reduce duplicative efforts in other sectors of the social safety net."], "cons": ["The lowest income families do not always take advantage of, or even qualify for, this tax credit. It is poorly targeted and the tax dollars lost could be used in more effective and specific welfare programs. The child tax credit is not fully refundable, meaning families who do not owe the full equivalent of the credit in taxes cannot take full advantage of the money. If the credit must be extended or expanded, it should be made fully refundable."], "flags": []},
+    {"id": "37", "cat": 4, "title": "Raise individual tax rates to pre-2017 levels", "summary": "Raise tax rates and shift tax brackets to pre-Tax Cuts and Jobs Act levels.", "effect": -2193, "group": null, "source": "Tax Policy Center; Congressional Budget Office, Estimated Budgetary Effects of Public Law 119-21, to Provide for Reconciliation Pursuant to Title II of H. Con. Res. 14, Relative to CBO's January 2025 Baseline", "bookPage": 44, "workbookPage": 10, "pros": ["The OBBBA and the TCJA tax cuts did more for the wealthy than it did for the middle and working class. The wealthy were paying more of their fair share under the previous rates.", "Lowering tax rates without having paid for them in 2017 and 2025 has left our nation burdened with trillions of dollars more in debt. We must right the ship by raising revenues."], "cons": ["TCJA and OBBBA produced the largest tax cut for the middle class in the 21st century, lowering bills for families across the country. Reversing these victories would cause unneeded economic hardship for those just getting on their feet with the help of the original TCJA tax cuts.", "The economic growth produced by the tax cuts is consistently underestimated. Increased productivity will offset revenue losses over the long term. Current Brackets Option Brackets Bracket Rate Rate Begins at Rate Rate Begins at 10.0% $0 10.0% $0 12.0% $12,250 15.0% $12,200 22.0% $49,750 25.0% $49,600 24.0% $106,100 28.0% $120,100 32.0% $202,550 33.0% $250,450 35.0% $257,200 35.0% $544,550 37.0% $642,950 39.6% $546,750"], "flags": []},
+    {"id": "38", "cat": 4, "title": "Repeal temporary tax provisions, including tipped and overtime workers", "summary": "Repeal temporary tax relief provisions that expire in 2028.", "effect": -252, "group": null, "source": "Congressional Budget Office, Estimated Budgetary Effects of Public Law 119-21, to Provide for Reconciliation Pursuant to Title II of H. Con. Res. 14, Relative to CBO's January 2025 Baseline", "bookPage": 45, "workbookPage": 10, "pros": ["These changes make the tax code more complicated and serve small populations for a short period of time. The goal of tax reform should be to treat individuals with similar amounts of income similarly, and these provisions buck such principles.", "A no tax on tips policy could incentivize employers or employees to game the system and classify payments or earnings differently. Even non-tipped workers could shift their earnings to be classified as tips for tax avoidance purposes."], "cons": ["Rewarding working class Americans for their income and extra hours, instead of punishing them, will unlock the productive potential of individuals across the nation in the industries that support our day-to-day life."], "flags": []},
+    {"id": "39", "cat": 4, "title": "Eliminate the state and local tax deduction (SALT)", "summary": "Eliminate the state and local tax deduction, more commonly known as SALT, from the tax code.", "effect": -1107, "group": null, "source": "Committee for a Responsible Federal Budget, Build Your Own Tax Extensions; Congressional Budget Office, Estimated Budgetary Effects of Public Law 119-21, to Provide for Reconciliation Pursuant to Title II of H. Con. Res. 14, Relative to CBO's January 2025 Baseline", "bookPage": 46, "workbookPage": 10, "pros": ["The state and local tax deduction is a distributionally flawed tax policy. It benefits mainly high earners who already have a high tax burden due to a significant amount of wealth. Those earning less than $100,000 annually see little benefits from SALT as opposed to their wealthy counterparts. We should not allow the wealthy to write off their federal taxes just because they live in a high-tax state.", "It is unsustainable revenue policy for the federal government to provide tax relief to a group of filers concentrated in just a few states. The federal government's deficit problem would be greatly alleviated by actually collecting the taxes it is owed."], "cons": ["Our tax system should be designed with horizontal equity in mind and SALT embodies that principle. In other words, those who have similar incomes should be paying relatively similar tax rates. State and local taxes are expenditures that reduce available income to pay federal taxes, so the federal government is trying to level the playing field and achieve a similar tax burden despite where else an individual is being taxed."], "flags": []}
+  ]
+};
+</script>
+
+<script id="pp-core">
+window.PPCore = (function () {
+  "use strict";
+  function round2(x) { return Math.round(x * 100) / 100; }
+  function indexById(model) {
+    var m = {};
+    model.options.forEach(function (o, i) { m[o.id] = { o: o, i: i }; });
+    return m;
+  }
+  function score(model, ids) {
+    var byId = indexById(model), chosen = [], groupPick = {}, errors = [];
+    (ids || []).forEach(function (id) {
+      var hit = byId[id];
+      if (!hit) { errors.push("Unknown option " + id + " ignored."); return; }
+      if (chosen.indexOf(hit) !== -1) { return; }
+      var g = hit.o.group;
+      if (g) {
+        if (groupPick[g]) { errors.push("Either/or: " + id + " ignored because " + groupPick[g] + " is already chosen."); return; }
+        groupPick[g] = id;
+      }
+      chosen.push(hit);
+    });
+    chosen.sort(function (a, b) { return a.i - b.i; });
+    var subtotals = {};
+    model.categories.forEach(function (c) { subtotals[c.id] = 0; });
+    chosen.forEach(function (h) { subtotals[h.o.cat] += h.o.effect; });
+    var sum = 0;
+    model.categories.forEach(function (c) { sum += subtotals[c.id]; });
+    var interest = round2(sum * model.scoring.interestRate);
+    var total = round2(sum + interest);
+    var reduction = total === 0 ? 0 : -total;
+    var benchmarks = model.benchmarks.map(function (b) {
+      return { id: b.id, amount: b.amount, short: b.short, label: b.label,
+               met: reduction >= b.amount, toGo: round2(Math.max(0, b.amount - reduction)) };
+    });
+    return { ids: chosen.map(function (h) { return h.o.id; }), subtotals: subtotals, sum: sum,
+             interest: interest, total: total, reduction: reduction, benchmarks: benchmarks, errors: errors };
+  }
+  function encodeShare(model, ids) {
+    return "pp=" + score(model, ids).ids.map(encodeURIComponent).join("~") + "&m=" + encodeURIComponent(model.id);
+  }
+  function decodeShare(hash) {
+    var h = String(hash || "").replace(/^#/, "");
+    if (!/(^|&)pp=/.test(h)) { return null; }
+    var out = { ids: [], modelId: null, edit: false, step: null };
+    h.split("&").forEach(function (part) {
+      var i = part.indexOf("="), k = i < 0 ? part : part.slice(0, i), v = i < 0 ? "" : part.slice(i + 1);
+      if (k === "pp") { out.ids = v ? v.split("~").map(function (s) { return decodeURIComponent(s); }) : []; }
+      if (k === "m") { out.modelId = decodeURIComponent(v); }
+      if (k === "edit") { out.edit = v === "1"; }
+      if (k === "step") { out.step = parseInt(v, 10) || null; }
+    });
+    return out;
+  }
+  return { score: score, encodeShare: encodeShare, decodeShare: decodeShare, round2: round2 };
+})();
+</script>
+
+<style id="pp-style">
+#pp-app {
+  --pp-admiral: #0F3D5F; --pp-ivory: #F8F1E9; --pp-gold: #C0780A; --pp-money: #0A6A54; --pp-cardinal: #CA2D2D;
+  --pp-rouge: #EA9E83; --pp-mint: #A5E9D9;
+  --pp-admiral-deep: #0B2F4A; --pp-paper: #FFFCF7; --pp-gold-tint: #F7E9D2; --pp-green-tint: #E4EFEA; --pp-gray: #5E6670;
+  --pp-line: rgba(15, 61, 95, .15); --pp-line-2: rgba(15, 61, 95, .3);
+  --pp-f-display: "Ruder Plakat LL", "Anton", "Arial Narrow", Impact, sans-serif;
+  --pp-f-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --pp-f-body: "MNKY Klaus", "Instrument Sans", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --pp-sticky-top: 16px; --pp-maxw: 1200px; --pp-gutter: clamp(16px, 4vw, 40px);
+  position: relative; background: var(--pp-ivory); color: var(--pp-admiral);
+  font-family: var(--pp-f-body); font-size: 1.0625rem; line-height: 1.55; -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+#pp-app *, #pp-app *::before, #pp-app *::after { box-sizing: border-box; }
+#pp-app h1, #pp-app h2, #pp-app h3, #pp-app h4, #pp-app p, #pp-app ul, #pp-app ol, #pp-app figure, #pp-app dl, #pp-app dd, #pp-app fieldset { margin: 0; }
+#pp-app ul, #pp-app ol { padding: 0; list-style: none; }
+#pp-app fieldset { border: 0; padding: 0; min-width: 0; }
+#pp-app a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+#pp-app a:hover { text-decoration-thickness: 2px; }
+#pp-app button, #pp-app input { font: inherit; color: inherit; }
+#pp-app svg { display: block; }
+#pp-app [hidden] { display: none !important; }
+#pp-app :focus { outline: none; }
+#pp-app :focus-visible { outline: 3px solid var(--pp-gold); outline-offset: 3px; border-radius: 6px; }
+#pp-app .pp-wrap { max-width: var(--pp-maxw); margin: 0 auto; padding-left: var(--pp-gutter); padding-right: var(--pp-gutter); }
+#pp-app .pp-sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+#pp-app .pp-print-only { display: none; }
+#pp-app .pp-eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--pp-money); margin-bottom: 12px; }
+#pp-app .pp-h2 { font-family: var(--pp-f-display); font-weight: 400; text-transform: uppercase; font-size: clamp(2.05rem, 1.25rem + 2.6vw, 3.35rem); line-height: .94; letter-spacing: .012em; word-spacing: .06em; text-wrap: balance; }
+#pp-app .pp-lead { font-family: var(--pp-f-serif); font-size: clamp(1.3rem, 1.1rem + .8vw, 1.72rem); line-height: 1.24; max-width: 40ch; text-wrap: pretty; }
+#pp-app .pp-source { font-size: .8rem; line-height: 1.45; opacity: .78; max-width: 80ch; }
+#pp-app .pp-serif { font-family: var(--pp-f-serif); font-weight: 400; }
+#pp-app .pp-btn { display: inline-flex; align-items: center; justify-content: center; gap: .55em; min-height: 48px; padding: .72em 1.45em; border-radius: 999px; border: 2px solid transparent; font-weight: 700; font-size: 1rem; line-height: 1.1; text-decoration: none; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s, transform .2s; white-space: nowrap; }
+#pp-app .pp-btn:hover { transform: translateY(-1px); }
+#pp-app .pp-btn svg { width: 18px; height: 18px; flex: none; }
+#pp-app .pp-btn-primary { background: var(--pp-admiral); color: var(--pp-ivory); }
+#pp-app .pp-btn-primary:hover { background: var(--pp-admiral-deep); }
+#pp-app .pp-btn-light { background: var(--pp-ivory); color: var(--pp-admiral); }
+#pp-app .pp-btn-light:hover { background: #fff; }
+#pp-app .pp-btn-ghost { background: transparent; border-color: var(--pp-admiral); color: var(--pp-admiral); }
+#pp-app .pp-btn-ghost:hover { background: rgba(15, 61, 95, .07); }
+#pp-app .pp-btn-ghost-light { background: transparent; border-color: rgba(248, 241, 233, .55); color: var(--pp-ivory); }
+#pp-app .pp-btn-ghost-light:hover { border-color: var(--pp-ivory); background: rgba(248, 241, 233, .08); }
+#pp-app .pp-linkbtn { background: none; border: 0; padding: 0; cursor: pointer; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+#pp-app .pp-btn-light:focus-visible, #pp-app .pp-btn-ghost-light:focus-visible { outline-color: var(--pp-ivory); }
+#pp-app .pp-term { display: inline; background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; cursor: help; text-align: inherit;
+  text-decoration: underline dotted; text-decoration-color: var(--pp-gold); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+#pp-app .pp-term:hover, #pp-app .pp-term[aria-expanded="true"] { text-decoration-style: solid; }
+#pp-app .pp-tip { position: absolute; z-index: 80; left: 0; top: 0; width: max-content; max-width: min(340px, calc(100vw - 24px)); background: var(--pp-admiral); color: var(--pp-ivory);
+  padding: 14px 16px 15px; border-radius: 12px; font-size: .93rem; line-height: 1.45; box-shadow: 0 16px 36px -14px rgba(11, 47, 74, .6); border-top: 3px solid var(--pp-gold); }
+#pp-app .pp-tip:empty { display: none; }
+#pp-app .pp-tip strong { display: block; font-family: var(--pp-f-serif); font-weight: 400; font-size: 1.25rem; line-height: 1.1; margin-bottom: 4px; }
+#pp-app .pp-tip .pp-tip-x { position: absolute; top: 6px; right: 6px; width: 30px; height: 30px; border: 0; border-radius: 50%; background: transparent; color: var(--pp-ivory); cursor: pointer; font-size: 1.2rem; line-height: 1; }
+#pp-app .pp-tip .pp-tip-x:focus-visible { outline-color: var(--pp-ivory); }
+#pp-app .pp-mast { background: #fff; color: var(--pp-admiral); border-bottom: 1px solid var(--pp-gold); }
+#pp-app .pp-mast-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
+#pp-app .pp-brand { display: flex; align-items: center; gap: 12px; color: var(--pp-admiral); text-decoration: none; border-radius: 4px; }
+#pp-app .pp-brand svg { height: 38px; width: auto; display: block; }
+#pp-app .pp-attrib { display: flex; align-items: center; gap: 18px; }
+#pp-app .pp-attrib a { display: block; line-height: 0; border-radius: 4px; }
+#pp-app .pp-attrib svg { height: 32px; width: auto; }
+#pp-app .pp-proto { font-size: .78rem; color: var(--pp-gray); white-space: nowrap; }
+#pp-app[data-view="welcome"] { background: #fff; }
+#pp-app .pp-welcome { background: #fff; padding: clamp(56px, 10vh, 112px) 0 clamp(72px, 12vh, 128px); }
+#pp-app .pp-welcome-col { max-width: 700px; margin: 0 auto; padding-left: var(--pp-gutter); padding-right: var(--pp-gutter); box-sizing: content-box; }
+#pp-app .pp-w-logo { margin-bottom: clamp(36px, 6vh, 56px); line-height: 0; }
+#pp-app .pp-w-logo svg { height: clamp(84px, 8vw + 40px, 132px); width: auto; max-width: 100%; display: block; }
+#pp-app .pp-w-title { font-family: var(--pp-f-serif); font-weight: 400; font-size: clamp(2.25rem, 1.5rem + 2.4vw, 3.25rem); line-height: 1.06; letter-spacing: -.01em; text-wrap: balance; }
+#pp-app .pp-w-rule { display: block; width: 44px; height: 2px; background: var(--pp-gold); margin: 26px 0 24px; }
+#pp-app .pp-w-intro { font-size: 1.14rem; line-height: 1.6; max-width: 56ch; }
+#pp-app .pp-goals { margin-top: 30px; border-top: 1px solid var(--pp-line); }
+#pp-app .pp-goals li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--pp-line); }
+#pp-app .pp-goals b { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+#pp-app .pp-w-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 36px; }
+#pp-app .pp-w-link { font-size: .95rem; color: var(--pp-gray); }
+#pp-app .pp-resume { margin-top: 20px; font-size: .95rem; color: var(--pp-gray); }
+#pp-app .pp-resume .pp-linkbtn { color: var(--pp-admiral); }
+#pp-app .pp-progress { background: var(--pp-paper); border-bottom: 1px solid var(--pp-line); }
+#pp-app .pp-progress-row { display: flex; align-items: center; gap: 24px; padding-top: 12px; padding-bottom: 12px; }
+#pp-app .pp-progress-label { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+#pp-app .pp-progress ol { flex: 1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+#pp-app .pp-pstep { width: 100%; display: flex; align-items: center; gap: 10px; padding: 6px 8px; border: 0; background: none; border-radius: 10px; cursor: pointer; text-align: left; min-height: 48px; }
+#pp-app .pp-pstep:hover { background: rgba(15, 61, 95, .06); }
+#pp-app .pp-pstep-n { flex: none; width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--pp-line-2); display: grid; place-items: center; font-weight: 700; font-size: .88rem; background: var(--pp-ivory); }
+#pp-app .pp-pstep-n svg { width: 15px; height: 15px; }
+#pp-app .pp-pstep.is-done .pp-pstep-n { border-color: var(--pp-gold); background: var(--pp-gold-tint); }
+#pp-app .pp-pstep[aria-current="step"] .pp-pstep-n { background: var(--pp-admiral); border-color: var(--pp-admiral); color: var(--pp-ivory); }
+#pp-app .pp-pstep-text { display: flex; flex-direction: column; min-width: 0; }
+#pp-app .pp-pstep-name { font-weight: 700; font-size: .9rem; line-height: 1.15; }
+#pp-app .pp-pstep-sub { font-size: .76rem; line-height: 1.2; opacity: .72; margin-top: 2px; }
+#pp-app .pp-pbar { height: 4px; background: var(--pp-line); }
+#pp-app .pp-pbar span { display: block; height: 100%; background: var(--pp-gold); transition: width .5s cubic-bezier(.16, 1, .3, 1); }
+#pp-app .pp-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 44px; align-items: start; padding-top: 44px; padding-bottom: 88px; }
+#pp-app .pp-layout.is-wide { grid-template-columns: minmax(0, 1fr); }
+#pp-app #pp-panel:focus { outline: none; }
+#pp-app .pp-step-head { margin-bottom: 30px; }
+#pp-app .pp-step-head .pp-h2 { outline: none; }
+#pp-app .pp-step-intro { margin-top: 14px; font-size: 1.08rem; line-height: 1.55; max-width: 62ch; }
+#pp-app .pp-howto { margin-top: 10px; font-size: 1.08rem; line-height: 1.55; max-width: 62ch; }
+#pp-app .pp-cards { display: grid; gap: 16px; }
+#pp-app .pp-card { position: relative; display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 4px 18px; padding: 22px 24px 18px 20px; background: var(--pp-paper); border: 1px solid var(--pp-line); border-radius: 16px; transition: border-color .2s, background-color .2s, box-shadow .2s; }
+#pp-app .pp-card::before { content: ""; position: absolute; left: -1px; top: 18px; bottom: 18px; width: 5px; border-radius: 0 4px 4px 0; background: transparent; transition: background-color .2s; }
+#pp-app .pp-card.is-on { border-color: rgba(192, 120, 10, .55); background: #FFF8EC; box-shadow: 0 10px 26px -20px rgba(192, 120, 10, .9); }
+#pp-app .pp-card.is-on::before { background: var(--pp-gold); }
+#pp-app .pp-card-num { font-family: var(--pp-f-serif); font-size: 2.35rem; line-height: .95; color: rgba(15, 61, 95, .55); text-align: center; padding-top: 2px; }
+#pp-app .pp-card.is-on .pp-card-num { color: var(--pp-gold); }
+#pp-app .pp-card-body { min-width: 0; }
+#pp-app .pp-card h3 { font-size: 1.14rem; line-height: 1.3; font-weight: 700; text-wrap: pretty; }
+#pp-app .pp-effect { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 8px; }
+#pp-app .pp-effect-words { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; font-size: 1rem; }
+#pp-app .pp-effect-words svg { width: 16px; height: 16px; flex: none; align-self: center; }
+#pp-app .pp-effect.is-save .pp-effect-words { color: var(--pp-money); }
+#pp-app .pp-effect.is-add .pp-effect-words { color: var(--pp-cardinal); }
+#pp-app .pp-effect-wb { font-size: .8rem; opacity: .7; font-variant-numeric: tabular-nums; }
+#pp-app .pp-means { margin-top: 10px; font-size: 1rem; max-width: 62ch; }
+#pp-app .pp-means-label { display: block; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--pp-money); margin-bottom: 2px; }
+#pp-app .pp-card-act { align-self: start; }
+#pp-app .pp-enact { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 8px 16px 8px 10px; border-radius: 999px; border: 2px solid var(--pp-admiral); background: transparent; color: var(--pp-admiral); font-weight: 700; font-size: .95rem; cursor: pointer; white-space: nowrap; transition: background-color .2s, color .2s; }
+#pp-app .pp-enact:hover { background: rgba(15, 61, 95, .07); }
+#pp-app .pp-switch { position: relative; width: 40px; height: 24px; border-radius: 999px; background: rgba(15, 61, 95, .2); flex: none; transition: background-color .2s; }
+#pp-app .pp-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(15, 61, 95, .4); transition: transform .2s; }
+#pp-app .pp-enact[aria-pressed="true"] { background: var(--pp-admiral); color: var(--pp-ivory); }
+#pp-app .pp-enact[aria-pressed="true"] .pp-switch { background: var(--pp-gold); }
+#pp-app .pp-enact[aria-pressed="true"] .pp-switch::after { transform: translateX(16px); }
+#pp-app .pp-enact .pp-on-text { display: none; }
+#pp-app .pp-enact[aria-pressed="true"] .pp-on-text { display: inline; }
+#pp-app .pp-enact[aria-pressed="true"] .pp-off-text { display: none; }
+#pp-app .pp-args { grid-column: 2 / -1; margin-top: 12px; border-top: 1px solid var(--pp-line); }
+#pp-app .pp-args summary { display: flex; align-items: center; gap: 8px; min-height: 44px; padding-top: 8px; cursor: pointer; list-style: none; font-weight: 700; font-size: .93rem; width: max-content; max-width: 100%; border-radius: 6px; }
+#pp-app .pp-args summary::-webkit-details-marker { display: none; }
+#pp-app .pp-args summary .pp-plus { position: relative; width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--pp-admiral); flex: none; }
+#pp-app .pp-args summary .pp-plus::before, #pp-app .pp-args summary .pp-plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 9px; height: 2px; margin: -1px 0 0 -4.5px; background: var(--pp-admiral); transition: transform .2s; }
+#pp-app .pp-args summary .pp-plus::after { transform: rotate(90deg); }
+#pp-app .pp-args[open] summary .pp-plus::after { transform: rotate(0deg); }
+#pp-app .pp-args summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+#pp-app .pp-args-body { padding: 8px 0 6px; }
+#pp-app .pp-asw { font-size: .95rem; margin-bottom: 14px; max-width: 70ch; }
+#pp-app .pp-asw b { font-weight: 700; }
+#pp-app .pp-args-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+#pp-app .pp-args-col { background: var(--pp-ivory); border-radius: 12px; padding: 14px 16px 6px; border-top: 3px solid var(--pp-admiral); }
+#pp-app .pp-args-col.is-con { border-top-color: var(--pp-gold); }
+#pp-app .pp-args-col h4 { font-family: var(--pp-f-serif); font-weight: 400; font-size: 1.3rem; line-height: 1.1; margin-bottom: 8px; }
+#pp-app .pp-args-col li { position: relative; padding-left: 16px; margin-bottom: 10px; font-size: .94rem; line-height: 1.5; }
+#pp-app .pp-args-col li::before { content: ""; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; background: var(--pp-admiral); }
+#pp-app .pp-args-col.is-con li::before { background: var(--pp-gold); }
+#pp-app .pp-args-alt { grid-column: 1 / -1; font-weight: 700; margin-top: 6px; }
+#pp-app .pp-args-src { margin-top: 10px; font-size: .8rem; line-height: 1.45; opacity: .78; }
+#pp-app .pp-pair-note { margin-top: 6px; font-size: .97rem; }
+#pp-app .pp-choices { display: grid; gap: 10px; margin-top: 14px; }
+#pp-app .pp-choice { position: relative; display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; padding: 14px 16px; border: 2px solid var(--pp-line); border-radius: 14px; background: var(--pp-ivory); cursor: pointer; transition: border-color .2s, background-color .2s; }
+#pp-app .pp-choice:hover { border-color: var(--pp-line-2); }
+#pp-app .pp-choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+#pp-app .pp-radio { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--pp-admiral); background: #fff; margin-top: 1px; display: grid; place-items: center; }
+#pp-app .pp-choice input:checked + .pp-radio::after { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--pp-admiral); }
+#pp-app .pp-choice:has(input:checked) { border-color: var(--pp-admiral); background: #fff; }
+#pp-app .pp-choice.is-picked { border-color: var(--pp-gold); background: #FFF8EC; }
+#pp-app .pp-choice:has(input:focus-visible) { outline: 3px solid var(--pp-gold); outline-offset: 2px; }
+#pp-app .pp-choice-title { font-weight: 700; line-height: 1.3; }
+#pp-app .pp-choice-title small { font-weight: 700; opacity: .65; margin-right: 6px; }
+#pp-app .pp-choice .pp-effect { margin-top: 4px; }
+#pp-app .pp-choice .pp-means { margin-top: 6px; font-size: .95rem; }
+#pp-app .pp-pair .pp-args { grid-column: 2 / -1; }
+#pp-app .pp-stepnav { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 36px; padding-top: 24px; border-top: 2px solid var(--pp-admiral); }
+#pp-app .pp-stepnav-sub { text-align: center; font-size: .92rem; }
+#pp-app .pp-stepnav-sub b { display: block; font-family: var(--pp-f-serif); font-weight: 400; font-size: 1.5rem; line-height: 1.1; }
+#pp-app .pp-tracker { position: sticky; top: var(--pp-sticky-top); background: var(--pp-admiral); color: var(--pp-ivory); border-radius: 20px; padding: 24px 24px 22px; }
+#pp-app .pp-trk-label { font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .85; }
+#pp-app .pp-trk-big { font-family: var(--pp-f-serif); font-size: clamp(2.4rem, 1.9rem + 1.2vw, 3.05rem); line-height: 1; margin-top: 8px; letter-spacing: -.01em; font-variant-numeric: lining-nums; }
+#pp-app .pp-trk-sub { font-size: .9rem; margin-top: 6px; opacity: .92; }
+#pp-app .pp-trk-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+#pp-app .pp-trk-toggle { display: none; }
+#pp-app .pp-meter { position: relative; height: 14px; margin-top: 34px; background: rgba(248, 241, 233, .14); }
+#pp-app .pp-meter-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--pp-gold); transition: width .5s cubic-bezier(.16, 1, .3, 1); }
+#pp-app .pp-tick { position: absolute; top: -8px; bottom: -4px; width: 0; }
+#pp-app .pp-tick::before { content: ""; position: absolute; top: 0; bottom: 0; left: -1px; width: 2px; background: var(--pp-ivory); }
+#pp-app .pp-tick span { position: absolute; bottom: calc(100% + 3px); font-size: .7rem; font-weight: 700; white-space: nowrap; line-height: 1; }
+#pp-app .pp-tick.is-left span { right: 3px; }
+#pp-app .pp-tick.is-right span { left: 3px; }
+#pp-app .pp-tick.is-end span { right: -1px; }
+#pp-app .pp-meter-scale { display: flex; justify-content: space-between; font-size: .72rem; opacity: .75; margin-top: 6px; }
+#pp-app .pp-trk-bench { margin-top: 20px; display: grid; gap: 12px; }
+#pp-app .pp-trk-bench li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; font-size: .88rem; line-height: 1.35; }
+#pp-app .pp-dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid rgba(248, 241, 233, .55); margin-top: 1px; display: grid; place-items: center; }
+#pp-app .pp-dot svg { width: 12px; height: 12px; color: var(--pp-admiral); }
+#pp-app .is-met .pp-dot { background: var(--pp-gold); border-color: var(--pp-gold); }
+#pp-app .pp-trk-bench b { font-weight: 700; display: block; }
+#pp-app .pp-trk-bench small { display: block; font-size: .8rem; opacity: .8; }
+#pp-app .pp-trk-bench .pp-status { display: block; font-weight: 700; color: var(--pp-mint); margin-top: 2px; }
+#pp-app .pp-trk-bench .is-togo .pp-status { color: var(--pp-ivory); font-weight: 600; opacity: .92; }
+#pp-app .pp-tally { display: grid; grid-template-columns: 1fr auto; gap: 6px 0; margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(248, 241, 233, .2); font-size: .9rem; }
+#pp-app .pp-tally dd { padding-left: 12px; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+#pp-app .pp-tally .pp-tot { font-weight: 700; border-top: 1px solid rgba(248, 241, 233, .2); padding-top: 6px; }
+#pp-app .pp-trk-note { font-size: .82rem; opacity: .88; margin-top: 12px; }
+#pp-app .pp-trk-note .pp-term { text-decoration-color: var(--pp-mint); }
+#pp-app .pp-trk-finish { width: 100%; margin-top: 18px; }
+#pp-app .pp-fin-top { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 28px; margin-top: 26px; align-items: stretch; }
+#pp-app .pp-verdict { background: var(--pp-admiral); color: var(--pp-ivory); border-radius: 20px; padding: 30px 32px 30px; display: flex; flex-direction: column; justify-content: center; }
+#pp-app .pp-verdict-num { font-family: var(--pp-f-serif); font-size: clamp(3rem, 2rem + 3vw, 4.6rem); line-height: .95; letter-spacing: -.015em; margin-top: 10px; }
+#pp-app .pp-verdict-sub { font-size: 1.05rem; margin-top: 10px; max-width: 34ch; }
+#pp-app .pp-verdict .pp-tally { margin-top: 22px; }
+#pp-app .pp-verdict-line { font-family: var(--pp-f-serif); font-size: 1.45rem; line-height: 1.2; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(248, 241, 233, .22); }
+#pp-app .pp-ladder { background: var(--pp-paper); border: 1px solid var(--pp-line); border-radius: 20px; padding: 26px 28px; }
+#pp-app .pp-ladder h3 { font-size: 1.05rem; margin-bottom: 14px; }
+#pp-app .pp-ladder li { padding: 14px 0; border-top: 1px solid var(--pp-line); display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; }
+#pp-app .pp-ladder li:first-child { border-top: 0; padding-top: 0; }
+#pp-app .pp-ladder li:last-child { padding-bottom: 0; }
+#pp-app .pp-ladder .pp-dot { width: 26px; height: 26px; border-color: var(--pp-line-2); }
+#pp-app .pp-ladder .is-met .pp-dot svg { width: 14px; height: 14px; color: var(--pp-ivory); }
+#pp-app .pp-ladder-name { font-weight: 700; }
+#pp-app .pp-ladder-name span { font-family: var(--pp-f-serif); font-weight: 400; font-size: 1.25rem; margin-left: 6px; }
+#pp-app .pp-ladder-label { font-size: .88rem; opacity: .8; }
+#pp-app .pp-ladder-status { margin-top: 6px; font-size: .9rem; font-weight: 700; }
+#pp-app .pp-ladder .is-met .pp-ladder-status { color: var(--pp-money); }
+#pp-app .pp-ladder-bar { height: 6px; background: var(--pp-line); margin-top: 8px; }
+#pp-app .pp-ladder-bar span { display: block; height: 100%; background: var(--pp-gold); }
+#pp-app .pp-interest { margin-top: 18px; font-size: .92rem; line-height: 1.5; opacity: .8; max-width: 80ch; }
+#pp-app .pp-interest b.pp-big-i { font-family: var(--pp-f-serif); font-weight: 400; font-size: 2.2rem; line-height: .9; color: var(--pp-money); flex: none; }
+#pp-app .pp-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+#pp-app .pp-share-box { display: none; margin-top: 14px; padding: 16px 18px; border: 1px dashed var(--pp-line-2); border-radius: 14px; background: var(--pp-paper); }
+#pp-app .pp-share-box.is-open { display: grid; gap: 10px; }
+#pp-app .pp-share-box input { width: 100%; min-height: 44px; padding: 8px 12px; border: 1px solid var(--pp-line-2); border-radius: 10px; background: #fff; font-size: .9rem; }
+#pp-app .pp-readonly { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; padding: 16px 20px; margin-bottom: 26px; border-radius: 14px; background: var(--pp-gold-tint); border: 1px solid rgba(192, 120, 10, .45); }
+#pp-app .pp-fin-sec { margin-top: 56px; }
+#pp-app .pp-fin-sec > h3 { font-family: var(--pp-f-display); font-weight: 400; text-transform: uppercase; font-size: 1.85rem; line-height: 1; letter-spacing: .015em; margin-bottom: 18px; }
+#pp-app .pp-chosen { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+#pp-app .pp-chosen section { background: var(--pp-paper); border: 1px solid var(--pp-line); border-radius: 16px; padding: 20px 22px; }
+#pp-app .pp-chosen h4 { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 1rem; padding-bottom: 10px; border-bottom: 2px solid var(--pp-admiral); }
+#pp-app .pp-chosen h4 span { font-family: var(--pp-f-serif); font-weight: 400; font-size: 1.25rem; white-space: nowrap; }
+#pp-app .pp-chosen li { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--pp-line); font-size: .93rem; line-height: 1.35; }
+#pp-app .pp-chosen li:last-child { border-bottom: 0; }
+#pp-app .pp-chosen li > span:first-child { font-family: var(--pp-f-serif); font-size: 1.2rem; line-height: 1.1; color: var(--pp-money); }
+#pp-app .pp-chosen li > span:last-child { white-space: nowrap; font-weight: 700; font-variant-numeric: tabular-nums; }
+#pp-app .pp-chosen .pp-none { display: block; opacity: .7; font-style: italic; }
+#pp-app .pp-table { width: 100%; border-collapse: collapse; font-size: .95rem; background: var(--pp-paper); border-radius: 14px; overflow: hidden; }
+@media screen { #pp-app .pp-printonly { display: none; } }
+#pp-app .pp-table caption { text-align: left; font-size: .85rem; opacity: .8; padding-bottom: 8px; }
+#pp-app .pp-table th, #pp-app .pp-table td { padding: 10px 14px; border-bottom: 1px solid var(--pp-line); text-align: left; }
+#pp-app .pp-table th { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; background: var(--pp-admiral); color: var(--pp-ivory); }
+#pp-app .pp-table .pp-num-col { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+#pp-app .pp-table .pp-row-sum td { font-weight: 700; border-top: 2px solid var(--pp-admiral); }
+#pp-app .pp-table .pp-row-total td { font-weight: 700; background: var(--pp-gold-tint); }
+#pp-app .pp-tradeoff { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px 48px; padding: 36px 36px 34px; border-radius: 20px; background: var(--pp-money); color: var(--pp-ivory); }
+#pp-app .pp-fin-sec.pp-tradeoff > h3 { text-transform: none; letter-spacing: -.005em; margin: 0; font-family: var(--pp-f-serif); font-weight: 400; font-size: clamp(1.9rem, 1.5rem + 1.3vw, 2.6rem); line-height: 1.05; }
+#pp-app .pp-tradeoff p + p { margin-top: 12px; }
+#pp-app .pp-questions { display: grid; gap: 10px; max-width: 72ch; }
+#pp-app .pp-questions li { font-size: 1.02rem; line-height: 1.5; padding-left: 18px; border-left: 2px solid var(--pp-gold); }
+#pp-app .pp-questions b { font-weight: 700; }
+#pp-app .pp-host { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 1.2fr) auto; gap: 24px 40px; align-items: center; padding: 40px 40px; background: var(--pp-admiral); color: var(--pp-ivory); border-radius: 22px; border-bottom: 6px solid var(--pp-gold); }
+#pp-app .pp-host h3 { font-family: var(--pp-f-display); font-weight: 400; text-transform: uppercase; font-size: clamp(2rem, 1.4rem + 2vw, 3rem); line-height: .95; }
+#pp-app .pp-host p { margin-top: 12px; max-width: 56ch; }
+#pp-app .pp-host-actions { display: grid; gap: 12px; justify-items: stretch; }
+#pp-app .pp-host-ph { font-size: .78rem; opacity: .8; text-align: center; }
+#pp-app .pp-print-head, #pp-app .pp-print-foot { display: none; }
+#pp-app .pp-modal { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: 16px; background: rgba(11, 47, 74, .62); }
+#pp-app .pp-modal-card { width: min(480px, 100%); max-height: calc(100vh - 32px); overflow: auto; background: var(--pp-ivory); border-radius: 20px; padding: 28px 28px 24px; border-top: 6px solid var(--pp-gold); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .6); }
+#pp-app .pp-modal-card h2 { font-family: var(--pp-f-display); font-weight: 400; text-transform: uppercase; font-size: 2rem; line-height: 1; }
+#pp-app .pp-modal-card > p { margin: 10px 0 18px; }
+#pp-app .pp-field { margin-bottom: 14px; }
+#pp-app .pp-field label { display: block; font-weight: 700; margin-bottom: 6px; }
+#pp-app .pp-field input { width: 100%; min-height: 48px; padding: 10px 14px; border: 2px solid var(--pp-line-2); border-radius: 12px; background: #fff; font-size: 1rem; }
+#pp-app .pp-field input:focus-visible { border-color: var(--pp-admiral); outline-offset: 1px; }
+#pp-app .pp-field input[aria-invalid="true"] { border-color: var(--pp-cardinal); }
+#pp-app .pp-err { color: #A82424; font-size: .9rem; font-weight: 600; margin-top: 6px; min-height: 0; }
+#pp-app .pp-err:empty { display: none; }
+#pp-app .pp-check { display: flex; gap: 10px; align-items: flex-start; font-size: .93rem; margin: 6px 0 12px; cursor: pointer; }
+#pp-app .pp-check input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--pp-admiral); flex: none; }
+#pp-app .pp-fine { font-size: .82rem; opacity: .85; }
+#pp-app .pp-modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+#pp-app .pp-toast { position: fixed; z-index: 95; left: 50%; bottom: 96px; transform: translateX(-50%); max-width: calc(100vw - 32px); padding: 12px 18px; border-radius: 12px; background: var(--pp-money); color: var(--pp-ivory); font-weight: 600; box-shadow: 0 16px 30px -16px rgba(0, 0, 0, .5); }
+@media (max-width: 1023px) {
+  #pp-app .pp-layout { grid-template-columns: minmax(0, 1fr); padding-bottom: 150px; }
+  #pp-app .pp-layout.is-wide { padding-bottom: 72px; }
+  #pp-app .pp-tracker { position: fixed; z-index: 70; left: 0; right: 0; bottom: 0; top: auto; border-radius: 18px 18px 0 0; padding: 12px var(--pp-gutter) 14px; max-height: 78vh; overflow: auto; box-shadow: 0 -12px 30px -18px rgba(11, 47, 74, .7); }
+  #pp-app .pp-trk-head { align-items: center; }
+  #pp-app .pp-trk-big { font-size: 1.85rem; margin-top: 2px; }
+  #pp-app .pp-trk-sub { font-size: .8rem; margin-top: 2px; }
+  #pp-app .pp-trk-sub .pp-long { display: none; }
+  #pp-app .pp-trk-label { font-size: .66rem; }
+  #pp-app .pp-trk-toggle { display: inline-flex; min-height: 44px; padding: .5em 1.05em; font-size: .9rem; }
+  #pp-app .pp-meter { margin-top: 26px; height: 10px; }
+  #pp-app .pp-tracker:not(.is-open) .pp-trk-more { display: none; }
+  #pp-app .pp-tracker:not(.is-open) .pp-meter-scale { display: none; }
+  #pp-app .pp-questions { grid-template-columns: minmax(0, 1fr); }
+  #pp-app .pp-fin-top, #pp-app .pp-tradeoff, #pp-app .pp-host { grid-template-columns: minmax(0, 1fr); }
+  #pp-app .pp-progress-label { display: none; }
+  #pp-app .pp-toast { bottom: 150px; }
+}
+@media (max-width: 760px) {
+  #pp-app { font-size: 1rem; }
+  #pp-app .pp-mast-row { padding-top: 11px; padding-bottom: 11px; gap: 10px; }
+  #pp-app .pp-brand { gap: 9px; }
+  #pp-app .pp-brand svg { height: 30px; }
+  #pp-app .pp-attrib { gap: 10px; }
+  #pp-app .pp-attrib svg { height: 26px; }
+  #pp-app .pp-proto { font-size: .7rem; }
+  #pp-app .pp-w-intro { font-size: 1.05rem; }
+  #pp-app .pp-w-actions .pp-btn { width: 100%; }
+  #pp-app .pp-progress-row { padding-top: 8px; padding-bottom: 8px; }
+  #pp-app .pp-progress ol { gap: 2px; }
+  #pp-app .pp-pstep { flex-direction: column; gap: 4px; padding: 6px 2px; text-align: center; }
+  #pp-app .pp-pstep-sub { display: none; }
+  #pp-app .pp-pstep-name { font-size: .7rem; font-weight: 600; }
+  #pp-app .pp-layout { padding-top: 28px; }
+  #pp-app .pp-card { grid-template-columns: 34px minmax(0, 1fr); gap: 4px 12px; padding: 18px 16px 12px 12px; }
+  #pp-app .pp-card-num { font-size: 1.75rem; }
+  #pp-app .pp-card-act { grid-column: 1 / -1; margin-top: 12px; }
+  #pp-app .pp-enact { width: 100%; justify-content: center; }
+  #pp-app .pp-args { grid-column: 1 / -1; }
+  #pp-app .pp-pair .pp-args { grid-column: 1 / -1; }
+  #pp-app .pp-args-cols { grid-template-columns: minmax(0, 1fr); }
+  #pp-app .pp-choices { margin-left: -46px; }
+  #pp-app .pp-stepnav { flex-wrap: wrap; }
+  #pp-app .pp-stepnav-sub { order: -1; width: 100%; text-align: left; }
+  #pp-app .pp-stepnav .pp-btn { flex: 1; padding-left: 1em; padding-right: 1em; }
+  #pp-app .pp-verdict, #pp-app .pp-ladder { padding: 24px 22px; }
+  #pp-app .pp-chosen { grid-template-columns: minmax(0, 1fr); }
+  #pp-app .pp-actions .pp-btn { flex: 1 1 100%; }
+  #pp-app .pp-tradeoff, #pp-app .pp-host { padding: 28px 24px; }
+  #pp-app .pp-table th, #pp-app .pp-table td { padding: 9px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #pp-app *, #pp-app *::before, #pp-app *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  #pp-app .pp-btn:hover { transform: none; }
+}
+@media print {
+  @page { margin: 14mm; }
+  #pp-app { background: #fff; color: #0F3D5F; font-size: 10.5pt; }
+  #pp-app .pp-mast, #pp-app .pp-progress, #pp-app #pp-welcome, #pp-app .pp-tracker, #pp-app .pp-modal, #pp-app .pp-toast, #pp-app .pp-tip, #pp-app .pp-noprint { display: none !important; }
+  #pp-app #pp-exercise { display: block !important; }
+  #pp-app .pp-layout { display: block; padding: 0; }
+  #pp-app .pp-wrap { padding: 0; max-width: none; }
+  #pp-app .pp-print-head { display: flex !important; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 10px; margin-bottom: 14px; border-bottom: 2px solid #0F3D5F; }
+  #pp-app .pp-print-head svg { height: 52px; width: auto; }
+  #pp-app .pp-print-head .pp-print-meta { text-align: right; font-size: 9.5pt; line-height: 1.4; }
+  #pp-app .pp-print-foot { display: block !important; margin-top: 14px; font-size: 8pt; line-height: 1.4; color: #333; }
+  #pp-app .pp-verdict { background: #fff; color: #0F3D5F; border: 1.5pt solid #0F3D5F; }
+  #pp-app .pp-verdict-line { border-top-color: #ccc; }
+  #pp-app .pp-fin-top { grid-template-columns: 1fr 1fr; gap: 12px; }
+  #pp-app .pp-ladder, #pp-app .pp-chosen section, #pp-app .pp-table { background: #fff; }
+  #pp-app .pp-interest { background: #fff; border: 1pt solid #0A6A54; }
+  #pp-app .pp-tradeoff { background: #fff; color: #0F3D5F; border: 1pt solid #0A6A54; padding: 14px 16px; }
+  #pp-app .pp-questions li { padding: 10px 12px; }
+  #pp-app .pp-table th { background: #fff; color: #0F3D5F; border-bottom: 1.5pt solid #0F3D5F; }
+  #pp-app .pp-fin-sec { margin-top: 16px; break-inside: avoid; }
+  #pp-app .pp-chosen { grid-template-columns: 1fr 1fr; gap: 10px; }
+  #pp-app .pp-chosen section { break-inside: avoid; padding: 10px 12px; }
+  #pp-app .pp-card, #pp-app .pp-chosen li { break-inside: avoid; }
+  #pp-app .pp-term { text-decoration: none; }
+  #pp-app a { text-decoration: none; }
+}
+</style>
+
+<div id="pp-app">
+  <header class="pp-mast" id="pp-top">
+    <div class="pp-wrap pp-mast-row">
+      <a class="pp-brand" href="#pp-top" id="pp-home" aria-label="Principles and Priorities: back to the start">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.16 -6.16 1797.62 652.68" role="img" focusable="false" aria-label="Principles and Priorities, a program of The Concord Coalition"><g transform="translate(0 0)"><path fill="#0F3D5F" d="M0 307.83H62.97V204.44H103.39C128.65 204.44 142.64 199 152.75 188.9C162.47 179.18 167.91 165.58 167.91 140.7V63.74C167.91 38.87 162.47 25.26 152.75 15.55C142.64 5.44 128.65 0 103.39 0H0ZM62.97 153.14V51.31H80.07C90.17 51.31 96 53.64 99.5 57.14C102.61 60.24 104.94 65.69 104.94 76.18V125.15C104.94 137.2 102.61 143.81 99.5 147.31C96 151.19 90.17 153.14 80.07 153.14ZM177.88 307.83H240.85V172.57H257.95C268.05 172.57 273.88 174.9 277.38 178.4C280.49 181.51 282.82 186.95 282.82 197.45V307.83H345.79V203.28C345.79 184.62 343.46 174.9 338.79 167.13C332.96 157.41 323.63 150.03 311.97 146.14C319.75 143.81 325.58 139.92 330.63 134.87C340.35 125.15 345.79 111.55 345.79 86.67V63.74C345.79 38.87 340.35 25.26 330.63 15.55C320.52 5.44 306.53 0 281.27 0H177.88ZM240.85 121.27V51.31H257.95C268.05 51.31 273.88 53.64 277.38 57.14C280.49 60.24 282.82 65.69 282.82 76.18V93.28C282.82 105.33 280.49 111.94 277.38 115.44C273.88 119.32 268.05 121.27 257.95 121.27ZM355.76 307.83H418.73V0H355.76ZM428.7 307.83H483.89V129.04L533.64 307.83H603.6V0H548.41V150.42L506.44 0H428.7ZM697.53 309.38C729.79 309.38 750 302 763.22 288.78C774.88 277.12 781.49 260.8 781.49 233.98V191.23H718.52V241.76C718.52 252.25 716.19 257.69 713.08 260.8C709.58 264.3 704.14 266.63 697.53 266.63C690.92 266.63 685.48 264.3 681.99 260.8C678.88 257.69 676.54 252.25 676.54 241.76V66.07C676.54 55.58 678.88 50.14 681.99 47.03C685.48 43.53 690.92 41.2 697.53 41.2C704.14 41.2 709.58 43.53 713.08 47.03C716.19 50.14 718.52 55.58 718.52 66.07V107.27H781.49V73.85C781.49 47.03 774.88 30.71 763.22 19.05C750 5.83 729.79 -1.55 697.53 -1.55C665.27 -1.55 645.06 5.83 631.85 19.05C620.19 30.71 613.58 47.03 613.58 73.85V233.98C613.58 260.8 620.19 277.12 631.85 288.78C645.06 302 665.27 309.38 697.53 309.38ZM791.46 307.83H854.42V0H791.46ZM864.4 307.83H927.36V204.44H967.79C993.05 204.44 1007.04 199 1017.15 188.9C1026.86 179.18 1032.31 165.58 1032.31 140.7V63.74C1032.31 38.87 1026.86 25.26 1017.15 15.55C1007.04 5.44 993.05 0 967.79 0H864.4ZM927.36 153.14V51.31H944.47C954.57 51.31 960.4 53.64 963.9 57.14C967.01 60.24 969.34 65.69 969.34 76.18V125.15C969.34 137.2 967.01 143.81 963.9 147.31C960.4 151.19 954.57 153.14 944.47 153.14ZM1042.28 307.83H1184.53V256.52H1105.24V0H1042.28ZM1194.51 307.83H1336.76V256.52H1257.47V172.57H1336.76V121.27H1257.47V51.31H1336.76V0H1194.51ZM1427.58 309.38C1454.79 309.38 1475.78 302.39 1490.16 289.95C1504.15 277.51 1511.92 260.41 1511.92 234.76C1511.92 203.28 1498.32 181.12 1478.89 158.58L1430.69 102.22C1415.92 84.73 1409.31 74.63 1409.31 62.97C1409.31 52.86 1416.7 45.86 1428.36 45.86C1440.02 45.86 1447.4 52.86 1447.4 66.85V107.27H1510.37V70.74C1510.37 45.09 1502.21 26.82 1488.21 14.77C1475 3.11 1455.18 -1.55 1428.36 -1.55C1401.93 -1.55 1382.88 3.89 1370.06 13.6C1353.73 25.65 1345.57 44.7 1345.57 66.85C1345.57 98.33 1357.62 115.05 1377.05 137.59L1427.97 197.06C1440.02 211.05 1448.18 223.88 1448.18 239.81C1448.18 254.58 1440.8 261.97 1427.58 261.97C1414.37 261.97 1406.98 254.19 1406.98 238.65V191.23H1344.02V234.76C1344.02 260.8 1350.62 279.07 1362.67 290.34C1376.66 303.17 1397.26 309.38 1427.58 309.38Z"/><path fill="#C0780A" d="M1637.88 326.3Q1609.42 326.3 1587.96 314.17Q1566.5 302.04 1554.6 280.58Q1542.71 259.12 1542.71 230.66Q1542.71 203.13 1553.67 179.34Q1564.63 155.55 1583.53 138.29Q1602.42 121.02 1626.22 113.56Q1612.22 95.36 1612.22 67.84Q1612.22 43.58 1623.18 23.98Q1634.15 4.39 1653.04 -7.04Q1671.94 -18.47 1695.26 -18.47Q1710.19 -18.47 1723.96 -13.57Q1737.72 -8.67 1746.58 -0.27Q1753.11 5.79 1751.25 15.12L1738.18 83.23Q1736.79 90.23 1731.65 90.23Q1726.05 90.23 1725.59 82.3L1725.12 72.5Q1723.26 33.78 1714.39 17.69Q1705.53 1.59 1685.47 1.59Q1668.67 1.59 1655.37 10.46Q1642.08 19.32 1634.15 34.72Q1626.22 50.11 1626.22 69.71Q1626.22 97.23 1641.15 110.29Q1648.14 109.36 1655.14 109.36Q1679.87 109.36 1679.87 121.49Q1679.87 132.69 1662.14 132.69Q1647.68 132.69 1635.55 123.36Q1576.3 141.55 1576.3 220.4Q1576.3 263.32 1594.96 287.34Q1613.62 311.37 1646.28 311.37Q1669.6 311.37 1688.5 299.71Q1707.39 288.04 1718.59 268.68Q1729.79 249.32 1729.79 225.53Q1729.79 189.14 1695.26 189.14Q1681.73 189.14 1674.04 194.5Q1666.34 199.87 1666.34 207.8Q1666.34 214.8 1671 217.13Q1675.67 219.46 1681.73 220.86Q1687.8 222.26 1692.46 225.76Q1697.13 229.26 1697.13 238.59Q1697.13 246.99 1691.06 251.89Q1685 256.79 1675.2 256.79Q1662.61 256.79 1655.14 247.46Q1647.68 238.12 1647.68 222.73Q1647.68 205.47 1657.94 192.87Q1668.2 180.27 1685.7 174.68Q1703.19 169.08 1724.19 172.81L1738.65 175.14Q1768.98 179.81 1768.98 167.68Q1768.98 162.08 1763.84 159.75Q1758.71 157.41 1752.18 155.31Q1745.65 153.22 1740.52 149.25Q1735.39 145.28 1735.39 136.89Q1735.39 128.96 1740.98 123.82Q1746.58 118.69 1756.85 118.69Q1770.38 118.69 1777.84 128.26Q1785.3 137.82 1785.3 153.68Q1785.3 173.74 1772.71 185.87Q1760.11 198 1740.52 196.6Q1743.78 207.33 1743.78 222.26Q1743.78 252.12 1730.02 275.68Q1716.26 299.24 1692.46 312.77Q1668.67 326.3 1637.88 326.3Z"/></g><g transform="translate(179.83 0)"><path fill="#C0780A" d="M0 640.37H62.97V536.98H103.39C128.65 536.98 142.64 531.54 152.75 521.44C162.47 511.72 167.91 498.12 167.91 473.24V396.28C167.91 371.41 162.47 357.8 152.75 348.09C142.64 337.98 128.65 332.54 103.39 332.54H0ZM62.97 485.68V383.85H80.07C90.17 383.85 96 386.18 99.5 389.68C102.61 392.78 104.94 398.23 104.94 408.72V457.69C104.94 469.74 102.61 476.35 99.5 479.85C96 483.73 90.17 485.68 80.07 485.68ZM177.88 640.37H240.85V505.11H257.95C268.05 505.11 273.88 507.44 277.38 510.94C280.49 514.05 282.82 519.49 282.82 529.99V640.37H345.79V535.82C345.79 517.16 343.46 507.44 338.79 499.67C332.96 489.95 323.63 482.57 311.97 478.68C319.75 476.35 325.58 472.46 330.63 467.41C340.35 457.69 345.79 444.09 345.79 419.21V396.28C345.79 371.41 340.35 357.8 330.63 348.09C320.52 337.98 306.53 332.54 281.27 332.54H177.88ZM240.85 453.81V383.85H257.95C268.05 383.85 273.88 386.18 277.38 389.68C280.49 392.78 282.82 398.23 282.82 408.72V425.82C282.82 437.87 280.49 444.48 277.38 447.98C273.88 451.86 268.05 453.81 257.95 453.81ZM355.76 640.37H418.73V332.54H355.76ZM606.58 640.37H669.55V505.11H686.65C696.75 505.11 702.58 507.44 706.08 510.94C709.19 514.05 711.52 519.49 711.52 529.99V640.37H774.49V535.82C774.49 517.16 772.16 507.44 767.49 499.67C761.66 489.95 752.34 482.57 740.67 478.68C748.45 476.35 754.28 472.46 759.33 467.41C769.05 457.69 774.49 444.09 774.49 419.21V396.28C774.49 371.41 769.05 357.8 759.33 348.09C749.23 337.98 735.23 332.54 709.97 332.54H606.58ZM669.55 453.81V383.85H686.65C696.75 383.85 702.58 386.18 706.08 389.68C709.19 392.78 711.52 398.23 711.52 408.72V425.82C711.52 437.87 709.19 444.48 706.08 447.98C702.58 451.86 696.75 453.81 686.65 453.81ZM784.46 640.37H847.43V332.54H784.46ZM909.87 640.37H972.84V383.85H1025.31V332.54H857.4V383.85H909.87ZM1035.28 640.37H1098.25V332.54H1035.28ZM1108.22 640.37H1250.48V589.07H1171.19V505.11H1250.48V453.81H1171.19V383.85H1250.48V332.54H1108.22ZM1341.3 641.92C1368.5 641.92 1389.49 634.93 1403.87 622.49C1417.86 610.05 1425.64 592.95 1425.64 567.3C1425.64 535.82 1412.03 513.66 1392.6 491.12L1344.4 434.76C1329.64 417.27 1323.03 407.17 1323.03 395.51C1323.03 385.4 1330.41 378.4 1342.07 378.4C1353.73 378.4 1361.12 385.4 1361.12 399.39V439.81H1424.08V403.28C1424.08 377.63 1415.92 359.36 1401.93 347.31C1388.71 335.65 1368.89 330.99 1342.07 330.99C1315.64 330.99 1296.6 336.43 1283.77 346.14C1267.45 358.19 1259.29 377.24 1259.29 399.39C1259.29 430.87 1271.33 447.59 1290.77 470.13L1341.68 529.6C1353.73 543.59 1361.9 556.42 1361.9 572.35C1361.9 587.12 1354.51 594.51 1341.3 594.51C1328.08 594.51 1320.7 586.73 1320.7 571.19V523.77H1257.73V567.3C1257.73 593.34 1264.34 611.61 1276.39 622.88C1290.38 635.71 1310.98 641.92 1341.3 641.92Z"/><path fill="#C0780A" d="M596.6 405.97V439.46C595.54 436.22 594.18 433.21 593.42 431.62C593.06 430.86 592.44 430.27 591.67 429.94C571.52 421.36 557.92 423.13 554.26 423.85C553.63 423.98 553.06 424.28 552.6 424.71L545.64 431.22C531.34 432.8 520.45 437.99 510.73 446.75C509.56 447.8 509.72 449.68 511.04 450.54C516.89 454.34 530.99 463.27 534.59 463.37L536.99 462.61C536.99 462.61 538.18 467.61 538.72 469C539.27 470.37 534.06 475.8 534.35 478.54C534.64 481.28 538.05 482.17 538.05 482.17C538.05 482.17 537.42 486.95 538.08 487.68C538.73 488.41 541.49 489.36 541.48 490.15C541.47 490.94 539.83 492.39 542.01 493.94C544.19 495.5 543.9 499.86 544.73 500.43C545.57 501 551.49 502.34 558.15 499.75L561.09 510.57L556.92 513.18C555.92 513.8 555.63 515.12 556.27 516.1C557.96 518.64 560.8 523.19 560.72 524.64C560.6 526.7 554.42 550.23 557.58 569.33C557.58 569.33 558.3 572.01 550.8 568.78C543.3 565.56 544.8 565.49 538.27 565.22C531.74 564.94 518.14 553.72 511.6 552.78C505.04 551.83 489.69 542.27 489.69 542.27L487.86 546.15C487.86 546.15 482.92 546.13 479.22 541.87C476.22 538.45 471.62 536.01 467.64 535.28L437.13 470.94C443.96 458.05 464.86 424.12 496.32 422.47C535.22 420.43 565.97 413.5 590.4 383.27C591.54 381.85 592.68 380.6 593.82 379.49C595.65 387.01 596.61 395.71 596.61 405.95L596.6 405.97ZM571.75 626.99C559.55 635.99 542.52 641.21 518.2 641.88L485.52 572.98C494.34 578.49 506.84 585.53 514.91 588.75C525.79 593.1 529.15 596.09 537.27 598.46C545.4 600.84 558.24 608.04 562.2 606.98L566.16 605.9L571.75 626.99ZM508.67 641.92C478.72 641.34 459.63 634.02 446.97 621.32C435.3 609.63 428.7 593.28 428.7 566.41V473.32L457.98 535.04C455.99 535.73 453.41 536.32 452.94 537.79C452.46 539.26 452.8 543.58 454.95 545.2C454.95 545.2 453.97 550.36 458.04 552.15C458.04 552.15 457.25 556.75 460.25 557.8C460.25 557.8 458.58 564.17 464.43 565.64C468.21 566.59 470.05 565.66 472.52 565.67L508.68 641.9L508.67 641.92ZM587.08 362.4C580.21 366.21 573.02 371.72 563.91 378.62C539.66 396.98 530.98 394.74 481.83 404.64C459.01 409.24 439.02 433.76 428.7 448.76V417.28C430.99 414.82 433.54 412.23 436.38 409.54C458.47 388.55 479.54 384.41 505.78 380.9C529.95 377.67 556.46 359.61 576.17 349.01C576.92 349.67 577.64 350.36 578.33 351.06C581.68 354.41 584.61 358.15 587.08 362.4V362.4ZM559.39 338.32C533.47 353.61 525.36 354.83 479.78 367.1C458.98 372.69 441.82 383.82 429.14 394.48C430.09 382.92 432.54 373.63 436.32 365.94C468.98 347.14 482.01 354.25 523.08 333.14C524.54 332.39 525.97 331.67 527.39 330.99C540.17 332.04 550.68 334.53 559.39 338.32H559.39Z"/></g></svg>
+      </a>
+      <div class="pp-attrib">
+        <span class="pp-proto" id="pp-proto" hidden>Prototype</span>
+        <a href="https://www.concordcoalition.org/" aria-label="A program of The Concord Coalition (concordcoalition.org)">
+          <svg aria-hidden="true" focusable="false" class="pp-cc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366.33 640"><path fill="#1d3c5c" d="M80.2,288c-11.57-11.57-18.12-27.76-18.12-54.36V74.8c0-26.6,6.55-42.8,18.12-54.36C93.3,7.33,113.35,0,145.35,0s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v33.16h-62.46v-40.87c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78c3.08-3.08,5.4-8.48,5.4-18.89v-50.12h62.46v42.41c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43Z"/><path fill="#1d3c5c" d="M406.74,74.8v33.16c-1.05-3.21-2.4-6.19-3.15-7.76-.36-.75-.98-1.34-1.74-1.66-19.99-8.5-33.48-6.75-37.11-6.03-.62.12-1.19.42-1.65.85l-6.9,6.44c-14.18,1.57-24.99,6.7-34.63,15.38-1.16,1.04-1,2.9.31,3.75,5.8,3.76,19.79,12.6,23.36,12.7l2.38-.75s1.18,4.95,1.72,6.32c.54,1.36-4.63,6.74-4.34,9.45.29,2.71,3.67,3.59,3.67,3.59,0,0-.62,4.74.03,5.46.65.72,3.38,1.66,3.37,2.44-.01.79-1.63,2.22.53,3.76,2.16,1.54,1.87,5.86,2.7,6.42.83.56,6.7,1.89,13.31-.67l2.92,10.71-4.14,2.58c-.99.62-1.28,1.92-.64,2.89,1.67,2.52,4.49,7.02,4.41,8.46-.12,2.04-6.25,25.33-3.12,44.24,0,0,.72,2.65-6.72-.54-7.44-3.19-5.95-3.26-12.43-3.53-6.48-.27-19.97-11.38-26.46-12.31-6.5-.94-21.73-10.41-21.73-10.41l-1.82,3.84s-4.9-.02-8.57-4.23c-2.97-3.39-7.54-5.81-11.48-6.53l-30.27-63.69c6.78-12.77,27.51-46.36,58.72-47.99,38.58-2.02,69.09-8.88,93.32-38.81,1.13-1.4,2.26-2.64,3.39-3.74,1.82,7.44,2.77,16.06,2.77,26.2Z"/><path fill="#1d3c5c" d="M382.09,293.61c-12.1,8.91-28.99,14.08-53.12,14.75l-32.42-68.22c8.75,5.46,21.15,12.43,29.16,15.62,10.79,4.3,14.12,7.26,22.18,9.61,8.06,2.36,20.8,9.48,24.73,8.43l3.93-1.06,5.54,20.87Z"/><path fill="#1d3c5c" d="M319.52,308.4c-29.71-.58-48.65-7.83-61.21-20.4-11.57-11.57-18.12-27.76-18.12-54.36v-92.16l29.04,61.1c-1.97.69-4.53,1.27-5,2.73-.47,1.45-.13,5.73,2,7.33,0,0-.97,5.11,3.06,6.88,0,0-.78,4.56,2.2,5.6,0,0-1.66,6.3,4.14,7.76,3.75.94,5.58.02,8.03.03l35.87,75.47Z"/><path fill="#1d3c5c" d="M397.3,31.67c-6.82,3.77-13.95,9.23-22.99,16.06-24.05,18.17-32.66,15.96-81.42,25.76-22.63,4.55-42.46,28.83-52.7,43.68v-31.17c2.27-2.43,4.8-5,7.62-7.66,21.91-20.78,42.81-24.88,68.84-28.35,23.98-3.2,50.27-21.08,69.83-31.58.74.66,1.45,1.34,2.14,2.03,3.32,3.32,6.23,7.02,8.68,11.23Z"/><path fill="#1d3c5c" d="M369.83,7.83c-25.71,15.14-33.76,16.35-78.97,28.49-20.63,5.54-37.66,16.56-50.23,27.11.94-11.44,3.37-20.64,7.12-28.25,32.4-18.62,45.32-11.58,86.06-32.48,1.45-.74,2.87-1.45,4.28-2.13,12.67,1.04,23.1,3.51,31.74,7.26Z"/><path fill="#1d3c5c" d="M418.3,1.54h77.11l41.64,149.2V1.54h54.75v305.35h-69.4l-49.35-177.35v177.35h-54.75V1.54Z"/><path fill="#1d3c5c" d="M621.48,288c-11.57-11.57-18.12-27.76-18.12-54.36V74.8c0-26.6,6.55-42.8,18.12-54.36,13.11-13.11,33.16-20.43,65.16-20.43s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v33.16h-62.46v-40.87c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78c3.08-3.08,5.4-8.48,5.4-18.89v-50.12h62.46v42.41c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43Z"/><path fill="#1d3c5c" d="M799.6,288c-11.57-11.57-18.12-27.76-18.12-54.36V74.8c0-26.6,6.55-42.8,18.12-54.36,13.11-13.11,33.16-20.43,65.16-20.43s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v158.84c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43ZM880.18,260.24c3.08-3.08,5.4-8.48,5.4-18.89V67.08c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78Z"/><path fill="#1d3c5c" d="M959.59,1.54h102.55c25.06,0,38.94,5.4,48.96,15.42,9.64,9.64,15.04,23.13,15.04,47.81v22.75c0,24.67-5.4,38.17-15.04,47.81-5.01,5.01-10.8,8.87-18.51,11.18,11.57,3.86,20.82,11.18,26.6,20.82,4.63,7.71,6.94,17.35,6.94,35.86v103.71h-62.46v-109.49c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-9.25-5.78-19.28-5.78h-16.96v134.17h-62.46V1.54ZM1039.01,121.83c10.02,0,15.81-1.93,19.28-5.78,3.08-3.47,5.4-10.02,5.4-21.98v-16.96c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-9.25-5.78-19.28-5.78h-16.96v69.4h16.96Z"/><path fill="#1d3c5c" d="M1137.71,1.54h95.23c26.99,0,42.8,6.17,53.98,17.35,11.18,11.18,17.35,27.37,17.35,53.98v162.7c0,26.6-6.17,42.8-17.35,53.98-11.18,11.18-26.99,17.35-53.98,17.35h-95.23V1.54ZM1217.51,256c10.02,0,15.81-1.93,19.28-5.78,3.08-3.47,5.4-10.02,5.4-21.98V77.11c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-9.25-5.78-19.28-5.78h-16.96v203.57h16.96Z"/><path fill="#b57b2c" d="M18.12,619.57c-11.57-11.57-18.12-27.76-18.12-54.36v-158.84c0-26.6,6.55-42.8,18.12-54.36,13.11-13.11,33.16-20.43,65.16-20.43s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v33.16h-62.46v-40.87c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78c3.08-3.08,5.4-8.48,5.4-18.89v-50.12h62.46v42.41c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43Z"/><path fill="#b57b2c" d="M196.24,619.57c-11.57-11.57-18.12-27.76-18.12-54.36v-158.84c0-26.6,6.55-42.8,18.12-54.36,13.11-13.11,33.16-20.43,65.16-20.43s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v158.84c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43ZM276.81,591.81c3.08-3.08,5.4-8.48,5.4-18.89v-174.27c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78Z"/><path fill="#b57b2c" d="M388.62,333.11h96l41.64,305.35h-62.84l-7.33-55.13h-43.18l-7.33,55.13h-58.99l42.02-305.35ZM451.46,534.36l-16.96-149.2-16.96,149.2h33.93Z"/><path fill="#b57b2c" d="M535.89,333.11h62.46v254.46h78.65v50.89h-141.11v-305.35Z"/><path fill="#b57b2c" d="M688.56,333.11h62.46v305.35h-62.46v-305.35Z"/><path fill="#b57b2c" d="M814.63,384h-52.05v-50.89h166.55v50.89h-52.05v254.46h-62.46v-254.46Z"/><path fill="#b57b2c" d="M940.7,333.11h62.46v305.35h-62.46v-305.35Z"/><path fill="#b57b2c" d="M1032.85,619.57c-11.57-11.57-18.12-27.76-18.12-54.36v-158.84c0-26.6,6.55-42.8,18.12-54.36,13.11-13.11,33.16-20.43,65.16-20.43s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v158.84c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43ZM1113.42,591.81c3.08-3.08,5.4-8.48,5.4-18.89v-174.27c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78Z"/><path fill="#b57b2c" d="M1192.84,333.11h77.11l41.64,149.2v-149.2h54.75v305.35h-69.4l-49.35-177.35v177.35h-54.75v-305.35Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  
+  <div id="pp-welcome">
+    <section class="pp-welcome" aria-labelledby="pp-title">
+      <div class="pp-welcome-col">
+        <div class="pp-w-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.16 -6.16 1797.62 652.68" role="img" focusable="false" aria-label="Principles and Priorities, a program of The Concord Coalition"><g transform="translate(0 0)"><path fill="#0F3D5F" d="M0 307.83H62.97V204.44H103.39C128.65 204.44 142.64 199 152.75 188.9C162.47 179.18 167.91 165.58 167.91 140.7V63.74C167.91 38.87 162.47 25.26 152.75 15.55C142.64 5.44 128.65 0 103.39 0H0ZM62.97 153.14V51.31H80.07C90.17 51.31 96 53.64 99.5 57.14C102.61 60.24 104.94 65.69 104.94 76.18V125.15C104.94 137.2 102.61 143.81 99.5 147.31C96 151.19 90.17 153.14 80.07 153.14ZM177.88 307.83H240.85V172.57H257.95C268.05 172.57 273.88 174.9 277.38 178.4C280.49 181.51 282.82 186.95 282.82 197.45V307.83H345.79V203.28C345.79 184.62 343.46 174.9 338.79 167.13C332.96 157.41 323.63 150.03 311.97 146.14C319.75 143.81 325.58 139.92 330.63 134.87C340.35 125.15 345.79 111.55 345.79 86.67V63.74C345.79 38.87 340.35 25.26 330.63 15.55C320.52 5.44 306.53 0 281.27 0H177.88ZM240.85 121.27V51.31H257.95C268.05 51.31 273.88 53.64 277.38 57.14C280.49 60.24 282.82 65.69 282.82 76.18V93.28C282.82 105.33 280.49 111.94 277.38 115.44C273.88 119.32 268.05 121.27 257.95 121.27ZM355.76 307.83H418.73V0H355.76ZM428.7 307.83H483.89V129.04L533.64 307.83H603.6V0H548.41V150.42L506.44 0H428.7ZM697.53 309.38C729.79 309.38 750 302 763.22 288.78C774.88 277.12 781.49 260.8 781.49 233.98V191.23H718.52V241.76C718.52 252.25 716.19 257.69 713.08 260.8C709.58 264.3 704.14 266.63 697.53 266.63C690.92 266.63 685.48 264.3 681.99 260.8C678.88 257.69 676.54 252.25 676.54 241.76V66.07C676.54 55.58 678.88 50.14 681.99 47.03C685.48 43.53 690.92 41.2 697.53 41.2C704.14 41.2 709.58 43.53 713.08 47.03C716.19 50.14 718.52 55.58 718.52 66.07V107.27H781.49V73.85C781.49 47.03 774.88 30.71 763.22 19.05C750 5.83 729.79 -1.55 697.53 -1.55C665.27 -1.55 645.06 5.83 631.85 19.05C620.19 30.71 613.58 47.03 613.58 73.85V233.98C613.58 260.8 620.19 277.12 631.85 288.78C645.06 302 665.27 309.38 697.53 309.38ZM791.46 307.83H854.42V0H791.46ZM864.4 307.83H927.36V204.44H967.79C993.05 204.44 1007.04 199 1017.15 188.9C1026.86 179.18 1032.31 165.58 1032.31 140.7V63.74C1032.31 38.87 1026.86 25.26 1017.15 15.55C1007.04 5.44 993.05 0 967.79 0H864.4ZM927.36 153.14V51.31H944.47C954.57 51.31 960.4 53.64 963.9 57.14C967.01 60.24 969.34 65.69 969.34 76.18V125.15C969.34 137.2 967.01 143.81 963.9 147.31C960.4 151.19 954.57 153.14 944.47 153.14ZM1042.28 307.83H1184.53V256.52H1105.24V0H1042.28ZM1194.51 307.83H1336.76V256.52H1257.47V172.57H1336.76V121.27H1257.47V51.31H1336.76V0H1194.51ZM1427.58 309.38C1454.79 309.38 1475.78 302.39 1490.16 289.95C1504.15 277.51 1511.92 260.41 1511.92 234.76C1511.92 203.28 1498.32 181.12 1478.89 158.58L1430.69 102.22C1415.92 84.73 1409.31 74.63 1409.31 62.97C1409.31 52.86 1416.7 45.86 1428.36 45.86C1440.02 45.86 1447.4 52.86 1447.4 66.85V107.27H1510.37V70.74C1510.37 45.09 1502.21 26.82 1488.21 14.77C1475 3.11 1455.18 -1.55 1428.36 -1.55C1401.93 -1.55 1382.88 3.89 1370.06 13.6C1353.73 25.65 1345.57 44.7 1345.57 66.85C1345.57 98.33 1357.62 115.05 1377.05 137.59L1427.97 197.06C1440.02 211.05 1448.18 223.88 1448.18 239.81C1448.18 254.58 1440.8 261.97 1427.58 261.97C1414.37 261.97 1406.98 254.19 1406.98 238.65V191.23H1344.02V234.76C1344.02 260.8 1350.62 279.07 1362.67 290.34C1376.66 303.17 1397.26 309.38 1427.58 309.38Z"/><path fill="#C0780A" d="M1637.88 326.3Q1609.42 326.3 1587.96 314.17Q1566.5 302.04 1554.6 280.58Q1542.71 259.12 1542.71 230.66Q1542.71 203.13 1553.67 179.34Q1564.63 155.55 1583.53 138.29Q1602.42 121.02 1626.22 113.56Q1612.22 95.36 1612.22 67.84Q1612.22 43.58 1623.18 23.98Q1634.15 4.39 1653.04 -7.04Q1671.94 -18.47 1695.26 -18.47Q1710.19 -18.47 1723.96 -13.57Q1737.72 -8.67 1746.58 -0.27Q1753.11 5.79 1751.25 15.12L1738.18 83.23Q1736.79 90.23 1731.65 90.23Q1726.05 90.23 1725.59 82.3L1725.12 72.5Q1723.26 33.78 1714.39 17.69Q1705.53 1.59 1685.47 1.59Q1668.67 1.59 1655.37 10.46Q1642.08 19.32 1634.15 34.72Q1626.22 50.11 1626.22 69.71Q1626.22 97.23 1641.15 110.29Q1648.14 109.36 1655.14 109.36Q1679.87 109.36 1679.87 121.49Q1679.87 132.69 1662.14 132.69Q1647.68 132.69 1635.55 123.36Q1576.3 141.55 1576.3 220.4Q1576.3 263.32 1594.96 287.34Q1613.62 311.37 1646.28 311.37Q1669.6 311.37 1688.5 299.71Q1707.39 288.04 1718.59 268.68Q1729.79 249.32 1729.79 225.53Q1729.79 189.14 1695.26 189.14Q1681.73 189.14 1674.04 194.5Q1666.34 199.87 1666.34 207.8Q1666.34 214.8 1671 217.13Q1675.67 219.46 1681.73 220.86Q1687.8 222.26 1692.46 225.76Q1697.13 229.26 1697.13 238.59Q1697.13 246.99 1691.06 251.89Q1685 256.79 1675.2 256.79Q1662.61 256.79 1655.14 247.46Q1647.68 238.12 1647.68 222.73Q1647.68 205.47 1657.94 192.87Q1668.2 180.27 1685.7 174.68Q1703.19 169.08 1724.19 172.81L1738.65 175.14Q1768.98 179.81 1768.98 167.68Q1768.98 162.08 1763.84 159.75Q1758.71 157.41 1752.18 155.31Q1745.65 153.22 1740.52 149.25Q1735.39 145.28 1735.39 136.89Q1735.39 128.96 1740.98 123.82Q1746.58 118.69 1756.85 118.69Q1770.38 118.69 1777.84 128.26Q1785.3 137.82 1785.3 153.68Q1785.3 173.74 1772.71 185.87Q1760.11 198 1740.52 196.6Q1743.78 207.33 1743.78 222.26Q1743.78 252.12 1730.02 275.68Q1716.26 299.24 1692.46 312.77Q1668.67 326.3 1637.88 326.3Z"/></g><g transform="translate(179.83 0)"><path fill="#C0780A" d="M0 640.37H62.97V536.98H103.39C128.65 536.98 142.64 531.54 152.75 521.44C162.47 511.72 167.91 498.12 167.91 473.24V396.28C167.91 371.41 162.47 357.8 152.75 348.09C142.64 337.98 128.65 332.54 103.39 332.54H0ZM62.97 485.68V383.85H80.07C90.17 383.85 96 386.18 99.5 389.68C102.61 392.78 104.94 398.23 104.94 408.72V457.69C104.94 469.74 102.61 476.35 99.5 479.85C96 483.73 90.17 485.68 80.07 485.68ZM177.88 640.37H240.85V505.11H257.95C268.05 505.11 273.88 507.44 277.38 510.94C280.49 514.05 282.82 519.49 282.82 529.99V640.37H345.79V535.82C345.79 517.16 343.46 507.44 338.79 499.67C332.96 489.95 323.63 482.57 311.97 478.68C319.75 476.35 325.58 472.46 330.63 467.41C340.35 457.69 345.79 444.09 345.79 419.21V396.28C345.79 371.41 340.35 357.8 330.63 348.09C320.52 337.98 306.53 332.54 281.27 332.54H177.88ZM240.85 453.81V383.85H257.95C268.05 383.85 273.88 386.18 277.38 389.68C280.49 392.78 282.82 398.23 282.82 408.72V425.82C282.82 437.87 280.49 444.48 277.38 447.98C273.88 451.86 268.05 453.81 257.95 453.81ZM355.76 640.37H418.73V332.54H355.76ZM606.58 640.37H669.55V505.11H686.65C696.75 505.11 702.58 507.44 706.08 510.94C709.19 514.05 711.52 519.49 711.52 529.99V640.37H774.49V535.82C774.49 517.16 772.16 507.44 767.49 499.67C761.66 489.95 752.34 482.57 740.67 478.68C748.45 476.35 754.28 472.46 759.33 467.41C769.05 457.69 774.49 444.09 774.49 419.21V396.28C774.49 371.41 769.05 357.8 759.33 348.09C749.23 337.98 735.23 332.54 709.97 332.54H606.58ZM669.55 453.81V383.85H686.65C696.75 383.85 702.58 386.18 706.08 389.68C709.19 392.78 711.52 398.23 711.52 408.72V425.82C711.52 437.87 709.19 444.48 706.08 447.98C702.58 451.86 696.75 453.81 686.65 453.81ZM784.46 640.37H847.43V332.54H784.46ZM909.87 640.37H972.84V383.85H1025.31V332.54H857.4V383.85H909.87ZM1035.28 640.37H1098.25V332.54H1035.28ZM1108.22 640.37H1250.48V589.07H1171.19V505.11H1250.48V453.81H1171.19V383.85H1250.48V332.54H1108.22ZM1341.3 641.92C1368.5 641.92 1389.49 634.93 1403.87 622.49C1417.86 610.05 1425.64 592.95 1425.64 567.3C1425.64 535.82 1412.03 513.66 1392.6 491.12L1344.4 434.76C1329.64 417.27 1323.03 407.17 1323.03 395.51C1323.03 385.4 1330.41 378.4 1342.07 378.4C1353.73 378.4 1361.12 385.4 1361.12 399.39V439.81H1424.08V403.28C1424.08 377.63 1415.92 359.36 1401.93 347.31C1388.71 335.65 1368.89 330.99 1342.07 330.99C1315.64 330.99 1296.6 336.43 1283.77 346.14C1267.45 358.19 1259.29 377.24 1259.29 399.39C1259.29 430.87 1271.33 447.59 1290.77 470.13L1341.68 529.6C1353.73 543.59 1361.9 556.42 1361.9 572.35C1361.9 587.12 1354.51 594.51 1341.3 594.51C1328.08 594.51 1320.7 586.73 1320.7 571.19V523.77H1257.73V567.3C1257.73 593.34 1264.34 611.61 1276.39 622.88C1290.38 635.71 1310.98 641.92 1341.3 641.92Z"/><path fill="#C0780A" d="M596.6 405.97V439.46C595.54 436.22 594.18 433.21 593.42 431.62C593.06 430.86 592.44 430.27 591.67 429.94C571.52 421.36 557.92 423.13 554.26 423.85C553.63 423.98 553.06 424.28 552.6 424.71L545.64 431.22C531.34 432.8 520.45 437.99 510.73 446.75C509.56 447.8 509.72 449.68 511.04 450.54C516.89 454.34 530.99 463.27 534.59 463.37L536.99 462.61C536.99 462.61 538.18 467.61 538.72 469C539.27 470.37 534.06 475.8 534.35 478.54C534.64 481.28 538.05 482.17 538.05 482.17C538.05 482.17 537.42 486.95 538.08 487.68C538.73 488.41 541.49 489.36 541.48 490.15C541.47 490.94 539.83 492.39 542.01 493.94C544.19 495.5 543.9 499.86 544.73 500.43C545.57 501 551.49 502.34 558.15 499.75L561.09 510.57L556.92 513.18C555.92 513.8 555.63 515.12 556.27 516.1C557.96 518.64 560.8 523.19 560.72 524.64C560.6 526.7 554.42 550.23 557.58 569.33C557.58 569.33 558.3 572.01 550.8 568.78C543.3 565.56 544.8 565.49 538.27 565.22C531.74 564.94 518.14 553.72 511.6 552.78C505.04 551.83 489.69 542.27 489.69 542.27L487.86 546.15C487.86 546.15 482.92 546.13 479.22 541.87C476.22 538.45 471.62 536.01 467.64 535.28L437.13 470.94C443.96 458.05 464.86 424.12 496.32 422.47C535.22 420.43 565.97 413.5 590.4 383.27C591.54 381.85 592.68 380.6 593.82 379.49C595.65 387.01 596.61 395.71 596.61 405.95L596.6 405.97ZM571.75 626.99C559.55 635.99 542.52 641.21 518.2 641.88L485.52 572.98C494.34 578.49 506.84 585.53 514.91 588.75C525.79 593.1 529.15 596.09 537.27 598.46C545.4 600.84 558.24 608.04 562.2 606.98L566.16 605.9L571.75 626.99ZM508.67 641.92C478.72 641.34 459.63 634.02 446.97 621.32C435.3 609.63 428.7 593.28 428.7 566.41V473.32L457.98 535.04C455.99 535.73 453.41 536.32 452.94 537.79C452.46 539.26 452.8 543.58 454.95 545.2C454.95 545.2 453.97 550.36 458.04 552.15C458.04 552.15 457.25 556.75 460.25 557.8C460.25 557.8 458.58 564.17 464.43 565.64C468.21 566.59 470.05 565.66 472.52 565.67L508.68 641.9L508.67 641.92ZM587.08 362.4C580.21 366.21 573.02 371.72 563.91 378.62C539.66 396.98 530.98 394.74 481.83 404.64C459.01 409.24 439.02 433.76 428.7 448.76V417.28C430.99 414.82 433.54 412.23 436.38 409.54C458.47 388.55 479.54 384.41 505.78 380.9C529.95 377.67 556.46 359.61 576.17 349.01C576.92 349.67 577.64 350.36 578.33 351.06C581.68 354.41 584.61 358.15 587.08 362.4V362.4ZM559.39 338.32C533.47 353.61 525.36 354.83 479.78 367.1C458.98 372.69 441.82 383.82 429.14 394.48C430.09 382.92 432.54 373.63 436.32 365.94C468.98 347.14 482.01 354.25 523.08 333.14C524.54 332.39 525.97 331.67 527.39 330.99C540.17 332.04 550.68 334.53 559.39 338.32H559.39Z"/></g></svg></div>
+        <h1 class="pp-w-title" id="pp-title">You have just become a member of Congress.</h1>
+        <span class="pp-w-rule" aria-hidden="true"></span>
+        <p class="pp-w-intro">Your job is to cut projected federal deficits over the next 10 years. Choose from 39 policy options in four areas, from spending to taxes, and aim for one of three goals for 10-year deficit reduction:</p>
+        <ul class="pp-goals" id="pp-goals" aria-label="The three goals, as 10-year deficit reductions"></ul>
+        <div class="pp-w-actions">
+          <button type="button" class="pp-btn pp-btn-primary" id="pp-start" data-go="1">Start the exercise <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <a class="pp-w-link" id="pp-inperson-link" href="https://www.concordcoalition.org/resources/principles-priorities/" target="_blank" rel="noopener">About the in-person exercise</a>
+        </div>
+        <p class="pp-resume" id="pp-resume" hidden></p>
+      </div>
+    </section>
+  </div>
+
+  
+  <div id="pp-exercise" hidden>
+    <nav class="pp-progress pp-noprint" id="pp-progress" aria-label="Exercise progress">
+      <div class="pp-wrap pp-progress-row">
+        <p class="pp-progress-label" id="pp-progress-label" aria-live="polite"></p>
+        <ol id="pp-steps-list"></ol>
+      </div>
+      <div class="pp-pbar" aria-hidden="true"><span id="pp-pbar-fill"></span></div>
+    </nav>
+    <div class="pp-wrap pp-layout" id="pp-layout">
+      <div id="pp-panel" tabindex="-1"></div>
+      <aside class="pp-tracker" id="pp-tracker" aria-label="Your running total"></aside>
+    </div>
+  </div>
+
+  <div class="pp-tip" id="pp-tip" role="status" aria-live="polite"></div>
+
+  <div class="pp-modal" id="pp-modal" hidden role="dialog" aria-modal="true" aria-labelledby="pp-modal-title">
+    <div class="pp-modal-card">
+      <h2 id="pp-modal-title">Keep your results</h2>
+      <p>Enter your name and email to save, print or share your budget plan.</p>
+      <form id="pp-contact" novalidate>
+        <div class="pp-field">
+          <label for="pp-name">Name</label>
+          <input id="pp-name" name="name" type="text" autocomplete="name" required aria-describedby="pp-err-name">
+          <p class="pp-err" id="pp-err-name" aria-live="polite"></p>
+        </div>
+        <div class="pp-field">
+          <label for="pp-email">Email</label>
+          <input id="pp-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="pp-err-email">
+          <p class="pp-err" id="pp-err-email" aria-live="polite"></p>
+        </div>
+        <label class="pp-check"><input type="checkbox" name="optin" id="pp-optin"> <span>Email me about Concord budget exercises and events (optional).</span></label>
+        <p class="pp-fine">See our <a id="pp-privacy-link" href="#" target="_blank" rel="noopener">privacy policy</a><span data-ph> (placeholder)</span>. <span id="pp-proto-note">Prototype: what you type here is not sent or stored.</span></p>
+        <div class="pp-modal-actions">
+          <button type="button" class="pp-btn pp-btn-ghost" id="pp-modal-cancel">Cancel</button>
+          <button type="submit" class="pp-btn pp-btn-primary">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="pp-toast" id="pp-toast" role="status" aria-live="polite" hidden></div>
+  <div id="pp-print-logo" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.16 -6.16 1797.62 652.68" role="img" focusable="false" aria-label="Principles and Priorities, a program of The Concord Coalition"><g transform="translate(0 0)"><path fill="#0F3D5F" d="M0 307.83H62.97V204.44H103.39C128.65 204.44 142.64 199 152.75 188.9C162.47 179.18 167.91 165.58 167.91 140.7V63.74C167.91 38.87 162.47 25.26 152.75 15.55C142.64 5.44 128.65 0 103.39 0H0ZM62.97 153.14V51.31H80.07C90.17 51.31 96 53.64 99.5 57.14C102.61 60.24 104.94 65.69 104.94 76.18V125.15C104.94 137.2 102.61 143.81 99.5 147.31C96 151.19 90.17 153.14 80.07 153.14ZM177.88 307.83H240.85V172.57H257.95C268.05 172.57 273.88 174.9 277.38 178.4C280.49 181.51 282.82 186.95 282.82 197.45V307.83H345.79V203.28C345.79 184.62 343.46 174.9 338.79 167.13C332.96 157.41 323.63 150.03 311.97 146.14C319.75 143.81 325.58 139.92 330.63 134.87C340.35 125.15 345.79 111.55 345.79 86.67V63.74C345.79 38.87 340.35 25.26 330.63 15.55C320.52 5.44 306.53 0 281.27 0H177.88ZM240.85 121.27V51.31H257.95C268.05 51.31 273.88 53.64 277.38 57.14C280.49 60.24 282.82 65.69 282.82 76.18V93.28C282.82 105.33 280.49 111.94 277.38 115.44C273.88 119.32 268.05 121.27 257.95 121.27ZM355.76 307.83H418.73V0H355.76ZM428.7 307.83H483.89V129.04L533.64 307.83H603.6V0H548.41V150.42L506.44 0H428.7ZM697.53 309.38C729.79 309.38 750 302 763.22 288.78C774.88 277.12 781.49 260.8 781.49 233.98V191.23H718.52V241.76C718.52 252.25 716.19 257.69 713.08 260.8C709.58 264.3 704.14 266.63 697.53 266.63C690.92 266.63 685.48 264.3 681.99 260.8C678.88 257.69 676.54 252.25 676.54 241.76V66.07C676.54 55.58 678.88 50.14 681.99 47.03C685.48 43.53 690.92 41.2 697.53 41.2C704.14 41.2 709.58 43.53 713.08 47.03C716.19 50.14 718.52 55.58 718.52 66.07V107.27H781.49V73.85C781.49 47.03 774.88 30.71 763.22 19.05C750 5.83 729.79 -1.55 697.53 -1.55C665.27 -1.55 645.06 5.83 631.85 19.05C620.19 30.71 613.58 47.03 613.58 73.85V233.98C613.58 260.8 620.19 277.12 631.85 288.78C645.06 302 665.27 309.38 697.53 309.38ZM791.46 307.83H854.42V0H791.46ZM864.4 307.83H927.36V204.44H967.79C993.05 204.44 1007.04 199 1017.15 188.9C1026.86 179.18 1032.31 165.58 1032.31 140.7V63.74C1032.31 38.87 1026.86 25.26 1017.15 15.55C1007.04 5.44 993.05 0 967.79 0H864.4ZM927.36 153.14V51.31H944.47C954.57 51.31 960.4 53.64 963.9 57.14C967.01 60.24 969.34 65.69 969.34 76.18V125.15C969.34 137.2 967.01 143.81 963.9 147.31C960.4 151.19 954.57 153.14 944.47 153.14ZM1042.28 307.83H1184.53V256.52H1105.24V0H1042.28ZM1194.51 307.83H1336.76V256.52H1257.47V172.57H1336.76V121.27H1257.47V51.31H1336.76V0H1194.51ZM1427.58 309.38C1454.79 309.38 1475.78 302.39 1490.16 289.95C1504.15 277.51 1511.92 260.41 1511.92 234.76C1511.92 203.28 1498.32 181.12 1478.89 158.58L1430.69 102.22C1415.92 84.73 1409.31 74.63 1409.31 62.97C1409.31 52.86 1416.7 45.86 1428.36 45.86C1440.02 45.86 1447.4 52.86 1447.4 66.85V107.27H1510.37V70.74C1510.37 45.09 1502.21 26.82 1488.21 14.77C1475 3.11 1455.18 -1.55 1428.36 -1.55C1401.93 -1.55 1382.88 3.89 1370.06 13.6C1353.73 25.65 1345.57 44.7 1345.57 66.85C1345.57 98.33 1357.62 115.05 1377.05 137.59L1427.97 197.06C1440.02 211.05 1448.18 223.88 1448.18 239.81C1448.18 254.58 1440.8 261.97 1427.58 261.97C1414.37 261.97 1406.98 254.19 1406.98 238.65V191.23H1344.02V234.76C1344.02 260.8 1350.62 279.07 1362.67 290.34C1376.66 303.17 1397.26 309.38 1427.58 309.38Z"/><path fill="#C0780A" d="M1637.88 326.3Q1609.42 326.3 1587.96 314.17Q1566.5 302.04 1554.6 280.58Q1542.71 259.12 1542.71 230.66Q1542.71 203.13 1553.67 179.34Q1564.63 155.55 1583.53 138.29Q1602.42 121.02 1626.22 113.56Q1612.22 95.36 1612.22 67.84Q1612.22 43.58 1623.18 23.98Q1634.15 4.39 1653.04 -7.04Q1671.94 -18.47 1695.26 -18.47Q1710.19 -18.47 1723.96 -13.57Q1737.72 -8.67 1746.58 -0.27Q1753.11 5.79 1751.25 15.12L1738.18 83.23Q1736.79 90.23 1731.65 90.23Q1726.05 90.23 1725.59 82.3L1725.12 72.5Q1723.26 33.78 1714.39 17.69Q1705.53 1.59 1685.47 1.59Q1668.67 1.59 1655.37 10.46Q1642.08 19.32 1634.15 34.72Q1626.22 50.11 1626.22 69.71Q1626.22 97.23 1641.15 110.29Q1648.14 109.36 1655.14 109.36Q1679.87 109.36 1679.87 121.49Q1679.87 132.69 1662.14 132.69Q1647.68 132.69 1635.55 123.36Q1576.3 141.55 1576.3 220.4Q1576.3 263.32 1594.96 287.34Q1613.62 311.37 1646.28 311.37Q1669.6 311.37 1688.5 299.71Q1707.39 288.04 1718.59 268.68Q1729.79 249.32 1729.79 225.53Q1729.79 189.14 1695.26 189.14Q1681.73 189.14 1674.04 194.5Q1666.34 199.87 1666.34 207.8Q1666.34 214.8 1671 217.13Q1675.67 219.46 1681.73 220.86Q1687.8 222.26 1692.46 225.76Q1697.13 229.26 1697.13 238.59Q1697.13 246.99 1691.06 251.89Q1685 256.79 1675.2 256.79Q1662.61 256.79 1655.14 247.46Q1647.68 238.12 1647.68 222.73Q1647.68 205.47 1657.94 192.87Q1668.2 180.27 1685.7 174.68Q1703.19 169.08 1724.19 172.81L1738.65 175.14Q1768.98 179.81 1768.98 167.68Q1768.98 162.08 1763.84 159.75Q1758.71 157.41 1752.18 155.31Q1745.65 153.22 1740.52 149.25Q1735.39 145.28 1735.39 136.89Q1735.39 128.96 1740.98 123.82Q1746.58 118.69 1756.85 118.69Q1770.38 118.69 1777.84 128.26Q1785.3 137.82 1785.3 153.68Q1785.3 173.74 1772.71 185.87Q1760.11 198 1740.52 196.6Q1743.78 207.33 1743.78 222.26Q1743.78 252.12 1730.02 275.68Q1716.26 299.24 1692.46 312.77Q1668.67 326.3 1637.88 326.3Z"/></g><g transform="translate(179.83 0)"><path fill="#C0780A" d="M0 640.37H62.97V536.98H103.39C128.65 536.98 142.64 531.54 152.75 521.44C162.47 511.72 167.91 498.12 167.91 473.24V396.28C167.91 371.41 162.47 357.8 152.75 348.09C142.64 337.98 128.65 332.54 103.39 332.54H0ZM62.97 485.68V383.85H80.07C90.17 383.85 96 386.18 99.5 389.68C102.61 392.78 104.94 398.23 104.94 408.72V457.69C104.94 469.74 102.61 476.35 99.5 479.85C96 483.73 90.17 485.68 80.07 485.68ZM177.88 640.37H240.85V505.11H257.95C268.05 505.11 273.88 507.44 277.38 510.94C280.49 514.05 282.82 519.49 282.82 529.99V640.37H345.79V535.82C345.79 517.16 343.46 507.44 338.79 499.67C332.96 489.95 323.63 482.57 311.97 478.68C319.75 476.35 325.58 472.46 330.63 467.41C340.35 457.69 345.79 444.09 345.79 419.21V396.28C345.79 371.41 340.35 357.8 330.63 348.09C320.52 337.98 306.53 332.54 281.27 332.54H177.88ZM240.85 453.81V383.85H257.95C268.05 383.85 273.88 386.18 277.38 389.68C280.49 392.78 282.82 398.23 282.82 408.72V425.82C282.82 437.87 280.49 444.48 277.38 447.98C273.88 451.86 268.05 453.81 257.95 453.81ZM355.76 640.37H418.73V332.54H355.76ZM606.58 640.37H669.55V505.11H686.65C696.75 505.11 702.58 507.44 706.08 510.94C709.19 514.05 711.52 519.49 711.52 529.99V640.37H774.49V535.82C774.49 517.16 772.16 507.44 767.49 499.67C761.66 489.95 752.34 482.57 740.67 478.68C748.45 476.35 754.28 472.46 759.33 467.41C769.05 457.69 774.49 444.09 774.49 419.21V396.28C774.49 371.41 769.05 357.8 759.33 348.09C749.23 337.98 735.23 332.54 709.97 332.54H606.58ZM669.55 453.81V383.85H686.65C696.75 383.85 702.58 386.18 706.08 389.68C709.19 392.78 711.52 398.23 711.52 408.72V425.82C711.52 437.87 709.19 444.48 706.08 447.98C702.58 451.86 696.75 453.81 686.65 453.81ZM784.46 640.37H847.43V332.54H784.46ZM909.87 640.37H972.84V383.85H1025.31V332.54H857.4V383.85H909.87ZM1035.28 640.37H1098.25V332.54H1035.28ZM1108.22 640.37H1250.48V589.07H1171.19V505.11H1250.48V453.81H1171.19V383.85H1250.48V332.54H1108.22ZM1341.3 641.92C1368.5 641.92 1389.49 634.93 1403.87 622.49C1417.86 610.05 1425.64 592.95 1425.64 567.3C1425.64 535.82 1412.03 513.66 1392.6 491.12L1344.4 434.76C1329.64 417.27 1323.03 407.17 1323.03 395.51C1323.03 385.4 1330.41 378.4 1342.07 378.4C1353.73 378.4 1361.12 385.4 1361.12 399.39V439.81H1424.08V403.28C1424.08 377.63 1415.92 359.36 1401.93 347.31C1388.71 335.65 1368.89 330.99 1342.07 330.99C1315.64 330.99 1296.6 336.43 1283.77 346.14C1267.45 358.19 1259.29 377.24 1259.29 399.39C1259.29 430.87 1271.33 447.59 1290.77 470.13L1341.68 529.6C1353.73 543.59 1361.9 556.42 1361.9 572.35C1361.9 587.12 1354.51 594.51 1341.3 594.51C1328.08 594.51 1320.7 586.73 1320.7 571.19V523.77H1257.73V567.3C1257.73 593.34 1264.34 611.61 1276.39 622.88C1290.38 635.71 1310.98 641.92 1341.3 641.92Z"/><path fill="#C0780A" d="M596.6 405.97V439.46C595.54 436.22 594.18 433.21 593.42 431.62C593.06 430.86 592.44 430.27 591.67 429.94C571.52 421.36 557.92 423.13 554.26 423.85C553.63 423.98 553.06 424.28 552.6 424.71L545.64 431.22C531.34 432.8 520.45 437.99 510.73 446.75C509.56 447.8 509.72 449.68 511.04 450.54C516.89 454.34 530.99 463.27 534.59 463.37L536.99 462.61C536.99 462.61 538.18 467.61 538.72 469C539.27 470.37 534.06 475.8 534.35 478.54C534.64 481.28 538.05 482.17 538.05 482.17C538.05 482.17 537.42 486.95 538.08 487.68C538.73 488.41 541.49 489.36 541.48 490.15C541.47 490.94 539.83 492.39 542.01 493.94C544.19 495.5 543.9 499.86 544.73 500.43C545.57 501 551.49 502.34 558.15 499.75L561.09 510.57L556.92 513.18C555.92 513.8 555.63 515.12 556.27 516.1C557.96 518.64 560.8 523.19 560.72 524.64C560.6 526.7 554.42 550.23 557.58 569.33C557.58 569.33 558.3 572.01 550.8 568.78C543.3 565.56 544.8 565.49 538.27 565.22C531.74 564.94 518.14 553.72 511.6 552.78C505.04 551.83 489.69 542.27 489.69 542.27L487.86 546.15C487.86 546.15 482.92 546.13 479.22 541.87C476.22 538.45 471.62 536.01 467.64 535.28L437.13 470.94C443.96 458.05 464.86 424.12 496.32 422.47C535.22 420.43 565.97 413.5 590.4 383.27C591.54 381.85 592.68 380.6 593.82 379.49C595.65 387.01 596.61 395.71 596.61 405.95L596.6 405.97ZM571.75 626.99C559.55 635.99 542.52 641.21 518.2 641.88L485.52 572.98C494.34 578.49 506.84 585.53 514.91 588.75C525.79 593.1 529.15 596.09 537.27 598.46C545.4 600.84 558.24 608.04 562.2 606.98L566.16 605.9L571.75 626.99ZM508.67 641.92C478.72 641.34 459.63 634.02 446.97 621.32C435.3 609.63 428.7 593.28 428.7 566.41V473.32L457.98 535.04C455.99 535.73 453.41 536.32 452.94 537.79C452.46 539.26 452.8 543.58 454.95 545.2C454.95 545.2 453.97 550.36 458.04 552.15C458.04 552.15 457.25 556.75 460.25 557.8C460.25 557.8 458.58 564.17 464.43 565.64C468.21 566.59 470.05 565.66 472.52 565.67L508.68 641.9L508.67 641.92ZM587.08 362.4C580.21 366.21 573.02 371.72 563.91 378.62C539.66 396.98 530.98 394.74 481.83 404.64C459.01 409.24 439.02 433.76 428.7 448.76V417.28C430.99 414.82 433.54 412.23 436.38 409.54C458.47 388.55 479.54 384.41 505.78 380.9C529.95 377.67 556.46 359.61 576.17 349.01C576.92 349.67 577.64 350.36 578.33 351.06C581.68 354.41 584.61 358.15 587.08 362.4V362.4ZM559.39 338.32C533.47 353.61 525.36 354.83 479.78 367.1C458.98 372.69 441.82 383.82 429.14 394.48C430.09 382.92 432.54 373.63 436.32 365.94C468.98 347.14 482.01 354.25 523.08 333.14C524.54 332.39 525.97 331.67 527.39 330.99C540.17 332.04 550.68 334.53 559.39 338.32H559.39Z"/></g></svg></div>
+  <div id="pp-print-cc" hidden><svg role="img" aria-label="The Concord Coalition" focusable="false" class="pp-cc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366.33 640"><path fill="#0F3D5F" d="M80.2,288c-11.57-11.57-18.12-27.76-18.12-54.36V74.8c0-26.6,6.55-42.8,18.12-54.36C93.3,7.33,113.35,0,145.35,0s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v33.16h-62.46v-40.87c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78c3.08-3.08,5.4-8.48,5.4-18.89v-50.12h62.46v42.41c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43Z"/><path fill="#0F3D5F" d="M406.74,74.8v33.16c-1.05-3.21-2.4-6.19-3.15-7.76-.36-.75-.98-1.34-1.74-1.66-19.99-8.5-33.48-6.75-37.11-6.03-.62.12-1.19.42-1.65.85l-6.9,6.44c-14.18,1.57-24.99,6.7-34.63,15.38-1.16,1.04-1,2.9.31,3.75,5.8,3.76,19.79,12.6,23.36,12.7l2.38-.75s1.18,4.95,1.72,6.32c.54,1.36-4.63,6.74-4.34,9.45.29,2.71,3.67,3.59,3.67,3.59,0,0-.62,4.74.03,5.46.65.72,3.38,1.66,3.37,2.44-.01.79-1.63,2.22.53,3.76,2.16,1.54,1.87,5.86,2.7,6.42.83.56,6.7,1.89,13.31-.67l2.92,10.71-4.14,2.58c-.99.62-1.28,1.92-.64,2.89,1.67,2.52,4.49,7.02,4.41,8.46-.12,2.04-6.25,25.33-3.12,44.24,0,0,.72,2.65-6.72-.54-7.44-3.19-5.95-3.26-12.43-3.53-6.48-.27-19.97-11.38-26.46-12.31-6.5-.94-21.73-10.41-21.73-10.41l-1.82,3.84s-4.9-.02-8.57-4.23c-2.97-3.39-7.54-5.81-11.48-6.53l-30.27-63.69c6.78-12.77,27.51-46.36,58.72-47.99,38.58-2.02,69.09-8.88,93.32-38.81,1.13-1.4,2.26-2.64,3.39-3.74,1.82,7.44,2.77,16.06,2.77,26.2Z"/><path fill="#0F3D5F" d="M382.09,293.61c-12.1,8.91-28.99,14.08-53.12,14.75l-32.42-68.22c8.75,5.46,21.15,12.43,29.16,15.62,10.79,4.3,14.12,7.26,22.18,9.61,8.06,2.36,20.8,9.48,24.73,8.43l3.93-1.06,5.54,20.87Z"/><path fill="#0F3D5F" d="M319.52,308.4c-29.71-.58-48.65-7.83-61.21-20.4-11.57-11.57-18.12-27.76-18.12-54.36v-92.16l29.04,61.1c-1.97.69-4.53,1.27-5,2.73-.47,1.45-.13,5.73,2,7.33,0,0-.97,5.11,3.06,6.88,0,0-.78,4.56,2.2,5.6,0,0-1.66,6.3,4.14,7.76,3.75.94,5.58.02,8.03.03l35.87,75.47Z"/><path fill="#0F3D5F" d="M397.3,31.67c-6.82,3.77-13.95,9.23-22.99,16.06-24.05,18.17-32.66,15.96-81.42,25.76-22.63,4.55-42.46,28.83-52.7,43.68v-31.17c2.27-2.43,4.8-5,7.62-7.66,21.91-20.78,42.81-24.88,68.84-28.35,23.98-3.2,50.27-21.08,69.83-31.58.74.66,1.45,1.34,2.14,2.03,3.32,3.32,6.23,7.02,8.68,11.23Z"/><path fill="#0F3D5F" d="M369.83,7.83c-25.71,15.14-33.76,16.35-78.97,28.49-20.63,5.54-37.66,16.56-50.23,27.11.94-11.44,3.37-20.64,7.12-28.25,32.4-18.62,45.32-11.58,86.06-32.48,1.45-.74,2.87-1.45,4.28-2.13,12.67,1.04,23.1,3.51,31.74,7.26Z"/><path fill="#0F3D5F" d="M418.3,1.54h77.11l41.64,149.2V1.54h54.75v305.35h-69.4l-49.35-177.35v177.35h-54.75V1.54Z"/><path fill="#0F3D5F" d="M621.48,288c-11.57-11.57-18.12-27.76-18.12-54.36V74.8c0-26.6,6.55-42.8,18.12-54.36,13.11-13.11,33.16-20.43,65.16-20.43s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v33.16h-62.46v-40.87c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78c3.08-3.08,5.4-8.48,5.4-18.89v-50.12h62.46v42.41c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43Z"/><path fill="#0F3D5F" d="M799.6,288c-11.57-11.57-18.12-27.76-18.12-54.36V74.8c0-26.6,6.55-42.8,18.12-54.36,13.11-13.11,33.16-20.43,65.16-20.43s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v158.84c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43ZM880.18,260.24c3.08-3.08,5.4-8.48,5.4-18.89V67.08c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78Z"/><path fill="#0F3D5F" d="M959.59,1.54h102.55c25.06,0,38.94,5.4,48.96,15.42,9.64,9.64,15.04,23.13,15.04,47.81v22.75c0,24.67-5.4,38.17-15.04,47.81-5.01,5.01-10.8,8.87-18.51,11.18,11.57,3.86,20.82,11.18,26.6,20.82,4.63,7.71,6.94,17.35,6.94,35.86v103.71h-62.46v-109.49c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-9.25-5.78-19.28-5.78h-16.96v134.17h-62.46V1.54ZM1039.01,121.83c10.02,0,15.81-1.93,19.28-5.78,3.08-3.47,5.4-10.02,5.4-21.98v-16.96c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-9.25-5.78-19.28-5.78h-16.96v69.4h16.96Z"/><path fill="#0F3D5F" d="M1137.71,1.54h95.23c26.99,0,42.8,6.17,53.98,17.35,11.18,11.18,17.35,27.37,17.35,53.98v162.7c0,26.6-6.17,42.8-17.35,53.98-11.18,11.18-26.99,17.35-53.98,17.35h-95.23V1.54ZM1217.51,256c10.02,0,15.81-1.93,19.28-5.78,3.08-3.47,5.4-10.02,5.4-21.98V77.11c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-9.25-5.78-19.28-5.78h-16.96v203.57h16.96Z"/><path fill="#C0780A" d="M18.12,619.57c-11.57-11.57-18.12-27.76-18.12-54.36v-158.84c0-26.6,6.55-42.8,18.12-54.36,13.11-13.11,33.16-20.43,65.16-20.43s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v33.16h-62.46v-40.87c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78c3.08-3.08,5.4-8.48,5.4-18.89v-50.12h62.46v42.41c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43Z"/><path fill="#C0780A" d="M196.24,619.57c-11.57-11.57-18.12-27.76-18.12-54.36v-158.84c0-26.6,6.55-42.8,18.12-54.36,13.11-13.11,33.16-20.43,65.16-20.43s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v158.84c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43ZM276.81,591.81c3.08-3.08,5.4-8.48,5.4-18.89v-174.27c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78Z"/><path fill="#C0780A" d="M388.62,333.11h96l41.64,305.35h-62.84l-7.33-55.13h-43.18l-7.33,55.13h-58.99l42.02-305.35ZM451.46,534.36l-16.96-149.2-16.96,149.2h33.93Z"/><path fill="#C0780A" d="M535.89,333.11h62.46v254.46h78.65v50.89h-141.11v-305.35Z"/><path fill="#C0780A" d="M688.56,333.11h62.46v305.35h-62.46v-305.35Z"/><path fill="#C0780A" d="M814.63,384h-52.05v-50.89h166.55v50.89h-52.05v254.46h-62.46v-254.46Z"/><path fill="#C0780A" d="M940.7,333.11h62.46v305.35h-62.46v-305.35Z"/><path fill="#C0780A" d="M1032.85,619.57c-11.57-11.57-18.12-27.76-18.12-54.36v-158.84c0-26.6,6.55-42.8,18.12-54.36,13.11-13.11,33.16-20.43,65.16-20.43s52.05,7.33,65.16,20.43c11.57,11.57,18.12,27.76,18.12,54.36v158.84c0,26.6-6.55,42.8-18.12,54.36-13.11,13.11-33.16,20.43-65.16,20.43s-52.05-7.33-65.16-20.43ZM1113.42,591.81c3.08-3.08,5.4-8.48,5.4-18.89v-174.27c0-10.41-2.31-15.81-5.4-18.89-3.47-3.47-8.87-5.78-15.42-5.78s-11.95,2.31-15.42,5.78c-3.08,3.08-5.4,8.48-5.4,18.89v174.27c0,10.41,2.31,15.81,5.4,18.89,3.47,3.47,8.87,5.78,15.42,5.78s11.95-2.31,15.42-5.78Z"/><path fill="#C0780A" d="M1192.84,333.11h77.11l41.64,149.2v-149.2h54.75v305.35h-69.4l-49.35-177.35v177.35h-54.75v-305.35Z"/></svg></div>
+</div>
+
+<script id="pp-ui">
+(function () {
+  "use strict";
+  var M = window.PP_MODEL, Core = window.PPCore;
+  var app = document.getElementById("pp-app");
+  if (!M || !Core || !app) { return; }
+  var CONFIG = {
+    prototypeMode: true,
+    inPersonUrl: "https://www.concordcoalition.org/resources/principles-priorities/",
+    hostSessionUrl: "https://www.concordcoalition.org/contact-us/",
+    privacyUrl: "#privacy-policy-placeholder",
+    storageKey: "pp-saved-plan-v1"
+  };
+  function submitContact(contact, context) {
+    void contact; void context;
+    return Promise.resolve({ ok: true, stored: false });
+  }
+  var TEACH = {
+    stepName: { 1: "Government spending", 2: "Defense", 3: "Health care & Social Security", 4: "Taxes" },
+    intro: {
+      1: "This is the everyday work of government that Congress funds each year: schools and colleges, trains, science, farm programs and the pay of federal workers. Most of it is [[discretionary]] spending. Some options here start new programs and add to the deficit; others trim existing ones.",
+      2: "Defense is the largest single piece of the money Congress sets each year. This category also covers border security, foreign aid and benefits for veterans and military retirees.",
+      3: "Social Security, Medicare and Medicaid are the biggest and fastest-growing parts of the budget. They are [[mandatory]] spending: they keep running under current law unless Congress changes the rules. Because they are so large, small changes add up to big numbers.",
+      4: "The other side of the ledger. Raising [[revenue]] shrinks the deficit just as cutting spending does, and cutting taxes adds to it. Two choices here are either/or: you can pick one side or neither, but not both."
+    },
+    plain: {
+      "1": "The federal government would help states pay for free preschool for every child whose family wants it, in the setting the parents choose.",
+      "2": "Workers could take paid time off to care for a family member or recover from their own illness, through a new national program run by the Social Security Administration.",
+      "3": "Doubles the largest [[pell|Pell grant]], federal college aid for students with financial need, by 2029, and lets more students qualify.",
+      "4": "The federal government would stop paying to help run Amtrak and other intercity passenger trains, including high-speed rail projects.",
+      "5": "Farmers and crop insurance companies would get less federal help paying for crop insurance, which protects farms against bad harvests.",
+      "6": "Ends NASA's program for human space flight beyond Earth's orbit, including the work toward crewed missions to Mars.",
+      "7": "Yearly raises for federal civilian employees would be half a percentage point smaller than current law calls for.",
+      "8": "Shrinks the number of active-duty troops across every branch of the military by 17 percent by 2034.",
+      "9": "Delays or cancels some new weapons and advanced equipment, and the research to develop them.",
+      "10": "Takes back the extra money the July 2025 tax and spending law ([[obbba|One Big Beautiful Bill Act]]) gave immigration enforcement and border security.",
+      "11": "Military retirees on [[tricare|TRICARE for Life]] would pay an enrollment fee and some costs out of pocket, as most Medicare enrollees do.",
+      "12": "Cuts the international affairs budget, which includes foreign aid, by 30 percent.",
+      "13": "Disability payments from the VA would be reduced for veterans whose household income is above a set level. This is a [[means-test|means test]].",
+      "14": "Medicare would pay the same rate for a service whether it is done in a hospital outpatient department, a doctor's office or a surgery center, instead of paying hospitals more.",
+      "15": "Instead of paying doctors and hospitals for each service, Medicare would give each senior a set amount to buy a private health plan of their choice. This is called [[premium-support|premium support]].",
+      "16": "Changes how Medicare adjusts its payments to private [[medicare-advantage|Medicare Advantage]] plans for how sick their enrollees are, which lowers what those plans are paid.",
+      "17": "Medicare would start covering dental care, eyeglasses and hearing aids.",
+      "18": "Seniors would pay higher monthly premiums for [[part-b|Medicare Part B]], phased in over five years until premiums cover 35 percent of the program's costs.",
+      "19": "Removes the rule, added by the [[obbba|One Big Beautiful Bill Act]], that some adults must work, study or volunteer to keep their Medicaid coverage.",
+      "20": "Permanently keeps the larger Affordable Care Act tax credits that help people buy their own health insurance, including help for people earning more than four times the poverty level.",
+      "21": "Gradually raises the age when people can collect full Social Security retirement benefits ([[fra|full retirement age]]) to 67 and then 70 for younger age groups.",
+      "22": "Raises the yearly cap on wages subject to the Social Security [[payroll-tax|payroll tax]], so higher earners pay the tax on more of their pay.",
+      "23": "Uses [[chained-cpi|chained CPI]], a slower-growing measure of inflation, to set yearly cost-of-living increases for Social Security and other benefit programs.",
+      "24": "Raises the tax rate on long-term [[capital-gains|capital gains]] and dividends by 2 percentage points in every bracket.",
+      "25": "Ends the federal [[estate-tax|estate tax]] on large estates passed on at death.",
+      "26A": "Raises the tax rate on corporate profits from 21 to 22 percent.",
+      "26B": "Raises the tax rate on corporate profits from 21 to 28 percent, halfway back to the 35 percent rate before the 2017 [[tcja|tax law]].",
+      "27": "Health insurance paid for by employers is not counted as taxable income today. This would limit that break, so part of it would be taxed.",
+      "28": "Ends two [[tax-credit|tax credits]] that help families pay for college: the American Opportunity and Lifetime Learning credits.",
+      "29": "When someone sells an inherited asset, such as stock or a house, the tax would be based on what the original owner paid, not its value at inheritance. This ends [[stepped-up|stepped-up basis]].",
+      "30": "Adds a tax of 0.01 percent (one cent on every $100) each time stocks, bonds or derivatives are bought.",
+      "31": "Raises the federal [[excise|excise tax]] on gasoline and other motor fuels by 15 cents a gallon, then lets it rise with inflation.",
+      "32A": "Charges a tax of $25 for each metric ton of greenhouse gases released by most sources in the United States.",
+      "32B": "Creates a 5 percent national consumption tax, a [[vat|value added tax]], on a narrow range of goods and services.",
+      "33": "Brings back tax credits for electric vehicles, charging stations and renewable energy that the 2025 law ended or cut short.",
+      "34": "Removes some of the Trump administration's [[tariff|tariffs]] (taxes on imported goods) that face legal challenges. Collecting less in tariffs adds to the deficit.",
+      "35": "Adds a new 1 percent [[payroll-tax|payroll tax]] on all earnings, with the money going to the government's general budget.",
+      "36": "Lowers the Child Tax Credit back to $1,000 per child, its value before 2017.",
+      "37": "Raises most individual income tax rates back to where they were before the 2017 Tax Cuts and Jobs Act ([[tcja|TCJA]]).",
+      "38": "Ends early the temporary tax breaks from the 2025 law, including those for tips and overtime pay, that are set to expire in 2028.",
+      "39": "People who itemize could no longer subtract the state and local taxes they paid from their federally taxable income ([[deduction|deduction]])."
+    },
+    pairs: {
+      "26": { title: "Raise the corporate income tax rate", note: "Either/or: choose one rate increase, or neither." },
+      "32": { title: "A greenhouse gas tax or a value added tax", note: "Either/or: choose one new tax, or neither." }
+    },
+    questions: [
+      ["Economics", "How will your decisions affect the economy (jobs and wages) in both the short term and the long term?"],
+      ["Public policy", "Which areas of the federal government should receive more or less funding? Which parts of society would be most affected?"],
+      ["Politics", "Will voters support your decisions? Can you defend your decisions and be re-elected?"]
+    ]
+  };
+  var GLOSSARY = {
+    "deficit": ["Deficit", "The gap in a single year when the federal government spends more than it collects. The government borrows to cover it."],
+    "debt": ["Debt", "The total the federal government owes from all its past borrowing. Each year's deficit adds to it."],
+    "debt-public": ["Debt held by the public", "The part of the national debt owed to outside lenders, such as people, businesses, banks and other countries, rather than to other federal accounts. Economists usually use this measure."],
+    "baseline": ["Baseline", "The starting point: the Congressional Budget Office's projection of spending, revenue and deficits if current laws stay as they are. Every option is measured against it."],
+    "cbo": ["CBO", "The Congressional Budget Office, Congress's nonpartisan scorekeeper. It projects the budget and estimates what proposals would cost or save."],
+    "revenue": ["Revenue", "Money the federal government collects, mostly from individual income taxes and payroll taxes."],
+    "outlays": ["Outlays", "Money the federal government actually spends in a year."],
+    "mandatory": ["Mandatory spending", "Spending that runs automatically under existing law, such as Social Security and Medicare. It continues every year unless Congress changes the law."],
+    "discretionary": ["Discretionary spending", "Spending Congress decides each year through annual funding bills, such as defense, NASA and foreign aid."],
+    "gdp": ["GDP", "Gross domestic product: the value of everything the U.S. economy produces in a year. Debt and deficits are often measured as a share of it."],
+    "interest": ["Interest savings", "When the government borrows less, it pays less interest on its debt. The workbook counts this by adding 15 percent of the sum of your choices. If your plan adds to deficits, the same 15 percent counts as added interest costs."],
+    "benchmark": ["Benchmarks", "Reference points for judging a plan, estimated by the Committee for a Responsible Federal Budget in August 2025. They are guides, not exact goals."],
+    "chained-cpi": ["Chained CPI", "A version of the Consumer Price Index, the main measure of inflation, that assumes people switch to cheaper goods when prices rise. It usually grows a little more slowly, so benefits tied to it grow more slowly."],
+    "means-test": ["Means test", "Tying a benefit to income, so people with higher incomes get less or none."],
+    "payroll-tax": ["Payroll tax", "A tax on wages, paid partly by workers and partly by employers. Today it mainly funds Social Security and Medicare."],
+    "premium-support": ["Premium support", "A design in which Medicare gives each person a set amount of money toward a health plan of their choice, instead of paying doctors and hospitals for each service."],
+    "medicare-advantage": ["Medicare Advantage", "Private health plans that provide Medicare benefits. The government pays each plan a set amount per enrollee, adjusted for how sick enrollees are."],
+    "part-b": ["Medicare Part B", "The part of Medicare that covers doctor visits and outpatient care. Enrollees pay a monthly premium for it."],
+    "tricare": ["TRICARE for Life", "Military health coverage for retirees that works alongside Medicare."],
+    "pell": ["Pell grant", "Federal grants for college students with financial need. Unlike loans, they do not have to be repaid."],
+    "fra": ["Full retirement age", "The age at which a person can claim full Social Security retirement benefits. Claiming earlier means a smaller monthly check."],
+    "capital-gains": ["Capital gains", "The profit from selling an asset, such as stock or property, for more than you paid for it. Dividends are payments companies make to their shareholders."],
+    "estate-tax": ["Estate tax", "A federal tax on the property a person leaves behind at death. It applies only to very large estates."],
+    "stepped-up": ["Stepped-up basis", "When someone inherits an asset, its value for tax purposes resets to its value when the owner died, so the gain during the owner's lifetime is never taxed."],
+    "tax-credit": ["Tax credit", "An amount subtracted directly from the tax a person owes."],
+    "deduction": ["Deduction", "An amount subtracted from income before tax is figured, which lowers taxable income. The state and local tax deduction is often called SALT."],
+    "excise": ["Excise tax", "A tax on a specific product, such as gasoline, usually charged per unit sold."],
+    "vat": ["Value added tax (VAT)", "A tax on purchases collected in small pieces at each step as a product is made and sold. Most other wealthy countries have one."],
+    "tariff": ["Tariff", "A tax on goods imported from other countries, paid to the U.S. government when the goods come in."],
+    "obbba": ["One Big Beautiful Bill Act", "The large tax and spending law Congress passed in July 2025 through the budget reconciliation process."],
+    "tcja": ["Tax Cuts and Jobs Act", "The 2017 law that cut individual and corporate income tax rates. The corporate rate went from 35 to 21 percent."]
+  };
+  var cats = M.categories;
+  var byId = {};
+  M.options.forEach(function (o) { byId[o.id] = o; });
+  var groupsById = {};
+  (M.groups || []).forEach(function (g) { groupsById[g.id] = g; });
+  var FINISH = cats.length + 1;
+  var state = { step: 0, selected: [], contact: null, readOnly: false, trackerOpen: false, visited: {} };
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function $(sel, root) { return (root || app).querySelector(sel); }
+  function $$(sel, root) { return Array.prototype.slice.call((root || app).querySelectorAll(sel)); }
+  function richEscaped(html) {
+    return html.replace(/\[\[([a-z-]+)(?:\|([^\]]+))?\]\]/g, function (m, key, shown) {
+      if (!GLOSSARY[key]) { return shown || key; }
+      return '<button type="button" class="pp-term" data-term="' + key + '" aria-expanded="false">' + (shown || key) + '</button>';
+    });
+  }
+  function rich(s) { return richEscaped(esc(s)); }
+  function num(x, dp) { return Number(x).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: dp }); }
+  function money(b) { var a = Math.abs(b); return a >= 1000 ? "$" + num(a / 1000, 3) + " trillion" : "$" + num(a, 2) + " billion"; }
+  function tril(b) { return "$" + (Math.abs(b) / 1000).toFixed(2) + " trillion"; }
+  function trilShort(b) { return "$" + String(Math.round(Math.abs(b) / 10) / 100) + "T"; }
+  var GERUND = { debt100: "stabilizing the debt", half: "halving the deficit", balance: "balancing the budget" };
+  function benchGoal(b) { return GERUND[b.id] || b.short.toLowerCase(); }
+  function benchWords(b) { return "$" + String(Math.round(b / 10) / 100) + " trillion"; }
+  function fmtB(v, signed) {
+    var a = Math.abs(v), s = a.toLocaleString("en-US", { maximumFractionDigits: 2 });
+    var sign = v < 0 ? "-" : (v > 0 && signed ? "+" : "");
+    return sign + "$" + s + "B";
+  }
+  function effectWords(o) { return (o.effect < 0 ? "Saves " : "Adds ") + money(o.effect) + " over 10 years"; }
+  var ICON = {
+    down: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v10M3.5 8.5 8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    up: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.5v-10M3.5 7.5 8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    check: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    arrowR: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    arrowL: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    info: '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+  };
+  function catOptions(catId) { return M.options.filter(function (o) { return o.cat === catId; }); }
+  function isOn(id) { return state.selected.indexOf(id) !== -1; }
+  function setSelected(ids) { state.selected = Core.score(M, ids).ids; }
+  function sortedBench(sc) { return sc.benchmarks.slice().sort(function (a, b) { return a.amount - b.amount; }); }
+  function renderWelcome() {
+    $("#pp-goals").innerHTML = M.benchmarks.slice().sort(function (x, y) { return x.amount - y.amount; }).map(function (bm) {
+      return '<li><span>' + esc(bm.short) + '</span><b>' + benchWords(bm.amount) + '</b></li>';
+    }).join("");
+    $$("[data-rich]").forEach(function (n) { n.innerHTML = richEscaped(n.innerHTML); n.removeAttribute("data-rich"); });
+  }
+  function renderProgress() {
+    var cur = state.step;
+    var items = cats.map(function (c) {
+      var n = catOptions(c.id).filter(function (o) { return isOn(o.id); }).length;
+      var done = state.visited[c.id] && cur !== c.id;
+      return '<li><button type="button" class="pp-pstep' + (done ? ' is-done' : '') + '" data-go="' + c.id + '"' + (cur === c.id ? ' aria-current="step"' : '') + '>' +
+        '<span class="pp-pstep-n" aria-hidden="true">' + c.id + '</span><span class="pp-pstep-text"><span class="pp-pstep-name">' + esc(TEACH.stepName[c.id] || c.short) + '</span>' +
+        (n ? '<span class="pp-pstep-sub">' + n + ' enacted</span>' : '') + '</span><span class="pp-sr">, step ' + c.id + ' of ' + cats.length + '</span></button></li>';
+    }).join("");
+    items += '<li><button type="button" class="pp-pstep" data-go="' + FINISH + '"' + (cur === FINISH ? ' aria-current="step"' : '') + '><span class="pp-pstep-n" aria-hidden="true">' + ICON.check + '</span>' +
+      '<span class="pp-pstep-text"><span class="pp-pstep-name">Finish</span></span></button></li>';
+    $("#pp-steps-list").innerHTML = items;
+    $("#pp-progress-label").textContent = "Your progress";
+    $("#pp-pbar-fill").style.width = (cur === FINISH ? 100 : (cur - 1) / cats.length * 100 + 100 / cats.length / 2) + "%";
+  }
+  function effectHtml(o) {
+    return '<p class="pp-effect ' + (o.effect < 0 ? 'is-save' : 'is-add') + '"><span class="pp-effect-words">' + (o.effect < 0 ? ICON.down : ICON.up) + esc(effectWords(o)) + '</span></p>';
+  }
+  function meansHtml(o) {
+    var t = TEACH.plain[o.id];
+    return t ? '<p class="pp-means">' + rich(t) + '</p>' : '';
+  }
+  function argsHtml(list, isPair) {
+    var shared = list.length > 1 && JSON.stringify(list[0].pros) === JSON.stringify(list[1].pros) && JSON.stringify(list[0].cons) === JSON.stringify(list[1].cons);
+    var parts = [];
+    list.forEach(function (o) { parts.push('<p class="pp-asw">' + (isPair ? '<b>' + esc(o.id) + ':</b> ' : '') + esc(o.summary) + '</p>'); });
+    var blocks = shared ? [list[0]] : list;
+    blocks.forEach(function (o) {
+      parts.push('<div class="pp-args-cols">' + (isPair && !shared ? '<p class="pp-args-alt">' + esc(o.id) + ': ' + esc(o.title) + '</p>' : '') +
+        '<div class="pp-args-col is-pro"><h4>Proponents say</h4><ul>' + o.pros.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join("") + '</ul></div>' +
+        '<div class="pp-args-col is-con"><h4>Opponents say</h4><ul>' + o.cons.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join("") + '</ul></div></div>');
+    });
+    list.forEach(function (o) {
+      parts.push('<p class="pp-args-src">' + (list.length > 1 ? esc(o.id) + ' source: ' : 'Source: ') + esc(o.source) + ' (Options Book p. ' + o.bookPage + ')</p>');
+    });
+    return '<details class="pp-args" data-args="' + esc(list[0].group || list[0].id) + '"><summary><span class="pp-plus" aria-hidden="true"></span>Arguments for and against</summary><div class="pp-args-body">' + parts.join("") + '</div></details>';
+  }
+  function singleCard(o) {
+    var on = isOn(o.id);
+    return '<article class="pp-card' + (on ? ' is-on' : '') + '" data-card="' + esc(o.id) + '" aria-labelledby="pp-o-' + esc(o.id) + '">' +
+      '<p class="pp-card-num" aria-hidden="true">' + esc(o.id) + '</p>' +
+      '<div class="pp-card-body"><h3 id="pp-o-' + esc(o.id) + '"><span class="pp-sr">Option ' + esc(o.id) + ': </span>' + esc(o.title) + '</h3>' + effectHtml(o) + meansHtml(o) + '</div>' +
+      '<div class="pp-card-act"><button type="button" class="pp-enact" data-toggle="' + esc(o.id) + '" aria-pressed="' + on + '" aria-describedby="pp-o-' + esc(o.id) + '"' + (state.readOnly ? ' disabled' : '') + '>' +
+        '<span class="pp-switch" aria-hidden="true"></span><span class="pp-off-text">Enact this option</span><span class="pp-on-text">Enacted</span></button></div>' +
+      argsHtml([o], false) + '</article>';
+  }
+  function pairCard(g) {
+    var alts = g.options.map(function (id) { return byId[id]; }).filter(Boolean);
+    var current = alts.filter(function (o) { return isOn(o.id); })[0];
+    var t = TEACH.pairs[g.id] || { title: g.label, note: "Either/or: you may enact one of these, or neither, but not both." };
+    var name = "pp-group-" + g.id;
+    var choice = function (val, inner) {
+      var checked = current ? current.id === val : val === "";
+      return '<label class="pp-choice' + (checked && val ? ' is-picked' : '') + '"><input type="radio" name="' + name + '" value="' + esc(val) + '" data-group="' + esc(g.id) + '"' + (checked ? ' checked' : '') + (state.readOnly ? ' disabled' : '') + '><span class="pp-radio" aria-hidden="true"></span><span>' + inner + '</span></label>';
+    };
+    return '<article class="pp-card pp-pair' + (current ? ' is-on' : '') + '" data-pair="' + esc(g.id) + '" aria-labelledby="pp-g-' + esc(g.id) + '">' +
+      '<p class="pp-card-num" aria-hidden="true">' + esc(g.id) + '</p>' +
+      '<div class="pp-card-body"><h3 id="pp-g-' + esc(g.id) + '"><span class="pp-sr">Option ' + esc(g.id) + ': </span>' + esc(t.title) + '</h3><p class="pp-pair-note">' + esc(t.note) + '</p>' +
+      '<fieldset><legend class="pp-sr">' + esc(g.label) + '. Choose one or neither.</legend><div class="pp-choices">' +
+        choice("", '<span class="pp-choice-title">Neither</span><span class="pp-means" style="display:block">Keep current law.</span>') +
+        alts.map(function (o) { return choice(o.id, '<span class="pp-choice-title"><small>' + esc(o.id) + '</small>' + esc(o.title) + '</span>' + effectHtml(o) + (TEACH.plain[o.id] ? '<span class="pp-means" style="display:block">' + rich(TEACH.plain[o.id]) + '</span>' : '')); }).join("") +
+      '</div></fieldset></div>' +
+      argsHtml(alts, true) + '</article>';
+  }
+  function renderStep(c, sc) {
+    var done = {};
+    var cards = catOptions(c.id).map(function (o) {
+      if (o.group) {
+        if (done[o.group]) { return ""; }
+        done[o.group] = 1;
+        return groupsById[o.group] ? pairCard(groupsById[o.group]) : singleCard(o);
+      }
+      return singleCard(o);
+    }).join("");
+    var nextLabel = c.id < cats.length ? 'Next: ' + esc(TEACH.stepName[c.id + 1] || cats[c.id].short) : 'See your results';
+    return '<section aria-labelledby="pp-step-title">' +
+      '<header class="pp-step-head">' +
+        '<h2 class="pp-h2" id="pp-step-title" tabindex="-1">' + esc(c.name) + '</h2>' +
+        '<p class="pp-step-intro">' + rich(TEACH.intro[c.id] || "") + '</p>' +
+        (c.id === 1 ? '<p class="pp-howto">Enact the options you would vote for. Dotted words have a definition: tap them.</p>' : '') + '</header>' +
+      '<div class="pp-cards">' + cards + '</div>' +
+      '<div class="pp-stepnav">' +
+        (c.id > 1 ? '<button type="button" class="pp-btn pp-btn-ghost" data-go="' + (c.id - 1) + '">' + ICON.arrowL + 'Back</button>' : '<button type="button" class="pp-btn pp-btn-ghost" data-go="0">' + ICON.arrowL + 'Welcome</button>') +
+        '<button type="button" class="pp-btn pp-btn-primary" data-go="' + (c.id + 1) + '">' + nextLabel + ICON.arrowR + '</button></div>' +
+      '</section>';
+  }
+  function catSubHtml(c, sc) {
+    var v = sc.subtotals[c.id];
+    return 'This category so far<b>' + (v === 0 ? '$0' : (v < 0 ? 'Saves ' : 'Adds ') + money(v)) + '</b>';
+  }
+  function syncCards(sc) {
+    $$("[data-card]").forEach(function (card) {
+      var on = isOn(card.getAttribute("data-card"));
+      card.classList.toggle("is-on", on);
+      var b = card.querySelector("[data-toggle]"); if (b) { b.setAttribute("aria-pressed", String(on)); }
+    });
+    $$("[data-pair]").forEach(function (card) {
+      var g = groupsById[card.getAttribute("data-pair")], cur = g.options.filter(isOn)[0] || "";
+      card.classList.toggle("is-on", !!cur);
+      $$("input[type=radio]", card).forEach(function (r) { r.checked = r.value === cur; r.closest(".pp-choice").classList.toggle("is-picked", !!cur && r.value === cur); });
+    });
+    var sub = $("#pp-cat-sub"); if (sub && state.step >= 1 && state.step <= cats.length) { sub.innerHTML = catSubHtml(cats[state.step - 1], sc); }
+  }
+  function renderTracker(sc) {
+    var max = M.baseline.tenYearDeficitsFloor;
+    var pct = Math.max(0, Math.min(100, sc.reduction / max * 100));
+    var up = sc.total > 0;
+    var bm = sortedBench(sc);
+    var ticks = bm.map(function (b, i) {
+      var cls = bm.length === 3 && i === 0 ? ' is-left' : (bm.length === 3 && i === 1 ? ' is-right' : (b.amount / max > 0.85 ? ' is-end' : ''));
+      return '<span class="pp-tick' + cls + '" style="left:' + (b.amount / max * 100) + '%"><span>' + trilShort(b.amount) + '</span></span>';
+    }).join("");
+    var bench = bm.map(function (b) {
+      return '<li class="' + (b.met ? 'is-met' : 'is-togo') + '"><span class="pp-dot" aria-hidden="true">' + (b.met ? ICON.check : '') + '</span><span><b>' + esc(b.short) + ': ' + benchWords(b.amount) + '</b>' +
+        '<span class="pp-status">' + (b.met ? 'Reached' : tril(b.toGo) + ' to go') + '</span></span></li>';
+    }).join("");
+    var big = sc.total === 0 ? '$0' : (up ? '+' : '') + tril(sc.total);
+    var sub = sc.total === 0 ? 'Nothing enacted yet<span class="pp-long">. Deficits stay on the current-law path</span>.' : (up ? 'added to deficits<span class="pp-long"> over 10 years</span>, including interest' : 'less in deficits<span class="pp-long"> over 10 years</span>, including interest savings');
+    var html =
+      '<div class="pp-trk-head"><div>' +
+        '<p class="pp-trk-big">' + big + '</p><p class="pp-trk-sub">' + sub + '</p></div>' +
+        '<button type="button" class="pp-btn pp-btn-ghost-light pp-trk-toggle" id="pp-more" aria-expanded="' + state.trackerOpen + '" aria-controls="pp-trk-more">' + (state.trackerOpen ? 'Hide' : 'Details') + '</button></div>' +
+      '<div class="pp-meter" role="img" aria-label="Deficit reduction of ' + trilShort(Math.max(0, sc.reduction)) + ' on a scale from zero to ' + trilShort(max) + ', with benchmarks at ' + bm.map(function (b) { return trilShort(b.amount); }).join(", ") + '">' +
+        '<div class="pp-meter-fill" style="width:' + pct + '%"></div>' + ticks + '</div>' +
+      '<div class="pp-meter-scale" aria-hidden="true"><span>$0</span><span>' + trilShort(max) + '+ baseline</span></div>' +
+      '<div class="pp-trk-more" id="pp-trk-more">' +
+        '<ul class="pp-trk-bench">' + bench + '</ul>' +
+        '<dl class="pp-tally">' +
+          '<dt>Your choices</dt><dd>' + fmtB(sc.sum, true) + '</dd>' +
+          '<dt>' + (sc.interest > 0 ? 'Added interest (15%)' : 'Interest savings (15%)') + '</dt><dd>' + fmtB(sc.interest, true) + '</dd>' +
+          '<dt class="pp-tot">Total, 10 years</dt><dd class="pp-tot">' + fmtB(sc.total, true) + '</dd>' +
+        '</dl>' +
+        (state.step !== FINISH && !state.readOnly ? '<button type="button" class="pp-btn pp-btn-light pp-trk-finish" data-go="' + FINISH + '">See your results</button>' : '') +
+      '</div>' +
+      '<p class="pp-sr" aria-live="polite">' + (sc.total === 0 ? 'Running total zero.' : (up ? 'Running total: adds ' : 'Running total: saves ') + tril(sc.total) + ' including interest.') + '</p>';
+    var t = $("#pp-tracker");
+    t.innerHTML = html;
+    t.classList.toggle("is-open", state.trackerOpen);
+  }
+  function verdictLine(sc) {
+    var bm = sortedBench(sc), met = bm.filter(function (b) { return b.met; }), who = state.readOnly ? "This plan" : "Your plan";
+    if (sc.total > 0) { return who + " adds to deficits, so it moves away from every benchmark."; }
+    if (sc.total === 0) { return "Enact some options to see how close you can get to a benchmark."; }
+    if (!met.length) { return "You are " + tril(bm[0].toGo) + " short of the first benchmark, " + benchGoal(bm[0]) + "."; }
+    if (met.length === bm.length) { return who + " reaches all three benchmarks, including a balanced budget."; }
+    var next = bm[met.length];
+    return who + " reaches " + met.length + " of " + bm.length + " benchmarks: " + met.map(function (b) { return benchGoal(b); }).join(" and ") + ". It is " + tril(next.toGo) + " short of " + benchGoal(next) + ".";
+  }
+  function renderFinish(sc) {
+    var bm = sortedBench(sc);
+    var date = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    var shareUrl = shareLink();
+    var up = sc.total > 0;
+    var bigNum = sc.total === 0 ? '$0' : (up ? '+' : '') + tril(sc.total);
+    var bigSub = sc.total === 0 ? 'You have not enacted any options yet, so deficits stay on the current-law path.' :
+      (up ? 'added to deficits over 10 years, including ' + tril(sc.interest) + ' in added interest costs.' : 'less in deficits over 10 years, including ' + tril(sc.interest) + ' in interest savings.');
+    var ladder = bm.map(function (b) {
+      var pct = Math.max(0, Math.min(100, sc.reduction / b.amount * 100));
+      return '<li class="' + (b.met ? 'is-met' : '') + '"><span class="pp-dot" aria-hidden="true">' + (b.met ? ICON.check : '') + '</span><div>' +
+        '<p class="pp-ladder-name">' + esc(b.short) + '<span>' + benchWords(b.amount) + '</span></p><p class="pp-ladder-label">' + esc(b.label) + '.</p>' +
+        '<p class="pp-ladder-status">' + (b.met ? 'Reached' : 'Not reached: ' + tril(b.toGo) + ' to go') + '</p>' +
+        '<div class="pp-ladder-bar" aria-hidden="true"><span style="width:' + pct + '%"></span></div></div></li>';
+    }).join("");
+    var interestText = sc.sum === 0 ? 'Every dollar of deficit you cut also cuts borrowing, so the government pays less interest. The workbook counts that by adding 15 percent of the sum of your choices.' :
+      (up ? 'Adding to deficits means more borrowing, and more borrowing means more interest. The workbook counts that by adding 15 percent of the sum of your choices: ' + fmtB(sc.sum, true) + ' x 0.15 = ' + fmtB(sc.interest, true) + '.' :
+        'Cutting deficits means the government borrows less, so it also pays less interest on the debt. The workbook counts that by adding 15 percent of the sum of your choices: ' + fmtB(sc.sum, true) + ' x 0.15 = ' + fmtB(sc.interest, true) + '.');
+    var chosen = cats.map(function (c) {
+      var list = catOptions(c.id).filter(function (o) { return isOn(o.id); });
+      var v = sc.subtotals[c.id];
+      return '<section><h4>' + esc(c.name) + '<span>' + (v === 0 ? '$0' : fmtB(v, true)) + '</span></h4><ul>' + (list.length ? list.map(function (o) {
+        return '<li><span>' + esc(o.id) + '</span><span>' + esc(o.title) + '</span><span>' + fmtB(o.effect, true) + '</span></li>';
+      }).join("") : '<li class="pp-none">No options enacted in this category.</li>') + '</ul></section>';
+    }).join("");
+    var rows = cats.map(function (c) { return '<tr><td>' + esc(c.name) + '</td><td class="pp-num-col">' + fmtB(sc.subtotals[c.id], true) + '</td></tr>'; }).join("");
+    var ro = state.readOnly ?
+      '<div class="pp-readonly pp-noprint"><span><strong>Shared plan, read-only.</strong> Someone shared these results with you.</span>' +
+      '<span style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="pp-btn pp-btn-primary" id="pp-own">Build your own plan</button><button type="button" class="pp-btn pp-btn-ghost" id="pp-print-ro">Print</button></span></div>' : '';
+    return '<section class="pp-finish" id="pp-print-area" aria-labelledby="pp-step-title">' +
+      '<div class="pp-print-head">' + $("#pp-print-logo").innerHTML + '<div class="pp-print-meta">Principles &amp; Priorities results<br>' + esc(date) + (state.contact ? '<br>Prepared by ' + esc(state.contact.name) : '') + '<br>A program of The Concord Coalition</div></div>' +
+      ro +
+      '<h2 class="pp-h2" id="pp-step-title" tabindex="-1">' + (state.readOnly ? 'A budget plan' : 'Your budget plan') + '</h2>' +
+      '<div class="pp-fin-top">' +
+        '<div class="pp-verdict"><p class="pp-verdict-num">' + bigNum + '</p><p class="pp-verdict-sub">' + esc(bigSub) + '</p>' +
+          '<p class="pp-verdict-line">' + esc(verdictLine(sc)) + '</p></div>' +
+        '<div class="pp-ladder"><h3 class="pp-sr">The three benchmarks</h3><ul>' + ladder + '</ul></div>' +
+      '</div>' +
+      '<p class="pp-interest">' + esc(interestText) + '</p>' +
+      (state.readOnly ? '' :
+      '<div class="pp-actions pp-noprint">' +
+        '<button type="button" class="pp-btn pp-btn-primary" data-action="save">Save my plan</button>' +
+        '<button type="button" class="pp-btn pp-btn-ghost" data-action="print">Print or save as PDF</button>' +
+        '<button type="button" class="pp-btn pp-btn-ghost" data-action="share">Get a share link</button>' +
+        '<button type="button" class="pp-btn pp-btn-ghost" data-go="1">Change my choices</button>' +
+      '</div>' +
+      '<div class="pp-share-box pp-noprint" id="pp-share-box"><label for="pp-share-url">Share link (your choices only, not your name or email)</label>' +
+        '<input id="pp-share-url" type="text" readonly value="' + esc(shareUrl) + '">' +
+        '<span style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="pp-btn pp-btn-ghost" id="pp-copy">Copy link</button><a class="pp-btn pp-btn-ghost" id="pp-open-share" href="' + esc(shareUrl) + '" target="_blank" rel="noopener">Open read-only view</a></span></div>') +
+      '<div class="pp-fin-sec"><h3>What you chose</h3><div class="pp-chosen">' + chosen + '</div></div>' +
+      '<div class="pp-fin-sec pp-printonly"><h3>Summary of results</h3><table class="pp-table"><caption class="pp-sr">Summary of results, billions of dollars over 10 years</caption>' +
+        '<thead><tr><th scope="col">Category subtotal</th><th scope="col" class="pp-num-col">Effect on deficit</th></tr></thead><tbody>' + rows +
+        '<tr class="pp-row-sum"><td>Sum of subtotals</td><td class="pp-num-col">' + fmtB(sc.sum, true) + '</td></tr>' +
+        '<tr><td>Interest ' + (sc.interest > 0 ? 'costs' : 'savings') + ' (sum of subtotals x 0.15)</td><td class="pp-num-col">' + fmtB(sc.interest, true) + '</td></tr>' +
+        '<tr class="pp-row-total"><td>Total effect on 10-year deficit</td><td class="pp-num-col">' + fmtB(sc.total, true) + '</td></tr>' +
+      '</tbody></table></div>' +
+      '<div class="pp-fin-sec"><h3>Questions to discuss</h3><ul class="pp-questions">' + TEACH.questions.map(function (q) { return '<li><b>' + esc(q[0]) + ':</b> ' + esc(q[1]) + '</li>'; }).join("") + '</ul></div>' +
+      '<div class="pp-host pp-noprint"><div><h3>Now try it around a table</h3><p>In the in-person exercise, five to ten people make these choices together and the majority rules, so you have to persuade the people next to you. Concord leads sessions on campuses, in communities and with Members of Congress.</p>' +
+        '<p><a href="' + esc(CONFIG.inPersonUrl) + '" target="_blank" rel="noopener">About Principles &amp; Priorities and its materials</a></p></div>' +
+        '<div class="pp-host-actions"><a class="pp-btn pp-btn-light" id="pp-host-link" href="' + esc(CONFIG.hostSessionUrl) + '" target="_blank" rel="noopener">Host an in-person session</a>' + '' + '</div></div>' +
+      '<p class="pp-print-foot">Scoring follows the printed Principles &amp; Priorities Workbook (April 2026): category subtotals are summed and 15 percent is added as interest savings. Option values are 10-year deficit effects in billions from the P&amp;P Options Book. Benchmarks: Committee for a Responsible Federal Budget estimates, August 2025. Baseline: ' + esc(M.baseline.source) + '. Share link: ' + esc(shareUrl) + '</p>' +
+    '</section>';
+  }
+  function render(focus) {
+    closeTip();
+    var sc = Core.score(M, state.selected);
+    var welcome = state.step === 0;
+    $("#pp-welcome").hidden = !welcome;
+    $("#pp-exercise").hidden = welcome;
+    app.setAttribute("data-view", welcome ? "welcome" : (state.step === FINISH ? "finish" : "step"));
+    if (welcome) { return; }
+    $("#pp-progress").hidden = state.readOnly;
+    var isFin = state.step === FINISH;
+    $("#pp-panel").innerHTML = isFin ? renderFinish(sc) : renderStep(cats[state.step - 1], sc);
+    $("#pp-layout").classList.toggle("is-wide", isFin);
+    $("#pp-tracker").hidden = isFin;
+    if (!state.readOnly) { renderProgress(); }
+    if (!isFin) { renderTracker(sc); syncCards(sc); }
+    if (focus) { var h = $("#pp-step-title"); if (h) { h.focus({ preventScroll: true }); } }
+  }
+  function onChoice() {
+    var sc = Core.score(M, state.selected);
+    syncCards(sc);
+    renderTracker(sc);
+    renderProgress();
+  }
+  function scrollToTop() {
+    var target = state.step === 0 ? app : ($("#pp-progress").hidden ? $("#pp-layout") : $("#pp-progress"));
+    var y = target.getBoundingClientRect().top + window.pageYOffset;
+    if (state.step !== 0) { y -= 0; }
+    if (Math.abs(window.pageYOffset - y) > 4) { window.scrollTo({ top: Math.max(0, y), behavior: reduceMotion ? "auto" : "smooth" }); }
+  }
+  function goStep(n) {
+    if (state.step >= 1 && state.step <= cats.length) { state.visited[state.step] = true; }
+    state.step = Math.max(0, Math.min(FINISH, n));
+    state.trackerOpen = false;
+    render(true);
+    scrollToTop();
+    if (state.step === 0) { var s = $("#pp-start"); if (s) { s.focus({ preventScroll: true }); } }
+  }
+  function toggle(id) {
+    if (state.readOnly) { return; }
+    setSelected(isOn(id) ? state.selected.filter(function (x) { return x !== id; }) : state.selected.concat([id]));
+    onChoice();
+  }
+  function pickInGroup(groupId, id) {
+    if (state.readOnly) { return; }
+    var g = groupsById[groupId];
+    var rest = state.selected.filter(function (x) { return g.options.indexOf(x) === -1; });
+    setSelected(id ? rest.concat([id]) : rest);
+    onChoice();
+  }
+  var tipFor = null;
+  function closeTip() {
+    var tip = $("#pp-tip");
+    if (tipFor) { tipFor.setAttribute("aria-expanded", "false"); }
+    tipFor = null; tip.innerHTML = "";
+  }
+  function placeTip() {
+    if (!tipFor || !document.body.contains(tipFor)) { closeTip(); return; }
+    var tip = $("#pp-tip"), r = tipFor.getBoundingClientRect(), a = app.getBoundingClientRect();
+    var tw = tip.offsetWidth, th = tip.offsetHeight, vw = document.documentElement.clientWidth;
+    var left = Math.max(12, Math.min(r.left, vw - tw - 12)) - a.left;
+    var below = r.bottom + 10 + th < window.innerHeight || r.top - th - 10 < 0;
+    var top = below ? r.bottom - a.top + 10 : r.top - a.top - th - 10;
+    tip.style.left = left + "px"; tip.style.top = top + "px";
+  }
+  function openTip(btn) {
+    var key = btn.getAttribute("data-term"), g = GLOSSARY[key];
+    if (!g) { return; }
+    if (tipFor === btn) { closeTip(); return; }
+    closeTip();
+    tipFor = btn; btn.setAttribute("aria-expanded", "true");
+    var tip = $("#pp-tip");
+    tip.innerHTML = '<strong>' + esc(g[0]) + '</strong>' + esc(g[1]) + '<button type="button" class="pp-tip-x" aria-label="Close definition">&times;</button>';
+    placeTip();
+  }
+  function baseUrl() { return location.href.split("#")[0]; }
+  function shareLink() { return baseUrl() + "#" + Core.encodeShare(M, state.selected); }
+  function toast(msg) {
+    var t = $("#pp-toast");
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._t); toast._t = setTimeout(function () { t.hidden = true; }, 4200);
+  }
+  function doAction(action) {
+    var sc = Core.score(M, state.selected);
+    if (action === "save") {
+      try {
+        localStorage.setItem(CONFIG.storageKey, JSON.stringify({ modelId: M.id, ids: sc.ids, savedAt: new Date().toISOString() }));
+        toast("Saved in this browser. Come back to this page to pick up where you left off.");
+      } catch (e) { toast("This browser blocked saving. Use the share link instead."); }
+    } else if (action === "print") {
+      state.step = FINISH; render();
+      setTimeout(function () { window.print(); }, 60);
+    } else if (action === "share") {
+      var box = $("#pp-share-box"), input = $("#pp-share-url");
+      input.value = shareLink(); box.classList.add("is-open");
+      copyText(input);
+    }
+  }
+  function copyText(input) {
+    var done = function () { toast("Share link copied."); };
+    var fallback = function () { input.focus(); input.select(); try { if (document.execCommand("copy")) { done(); return; } } catch (e) {  } toast("Select the link and copy it."); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(input.value).then(done, fallback); } else { fallback(); }
+  }
+  var pending = null, lastFocus = null;
+  function requireContact(action) {
+    if (state.contact) { doAction(action); return; }
+    pending = action; lastFocus = document.activeElement;
+    $("#pp-modal").hidden = false;
+    setTimeout(function () { $("#pp-name").focus(); }, 30);
+  }
+  function closeModal() { $("#pp-modal").hidden = true; pending = null; if (lastFocus && lastFocus.focus) { lastFocus.focus(); } }
+  function validate() {
+    var name = $("#pp-name").value.trim(), email = $("#pp-email").value.trim(), ok = true;
+    var nameErr = !name ? "Please enter your name." : (name.length < 2 || !/[A-Za-zÀ-ɏ]/.test(name) ? "Please enter your full name." : "");
+    var emailErr = !email ? "Please enter your email address." : (!/^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/.test(email) ? "Please enter a valid email address, like name@example.com." : "");
+    [["#pp-name", "#pp-err-name", nameErr], ["#pp-email", "#pp-err-email", emailErr]].forEach(function (f) {
+      $(f[0]).setAttribute("aria-invalid", f[2] ? "true" : "false"); $(f[1]).textContent = f[2];
+    });
+    if (nameErr) { $("#pp-name").focus(); ok = false; } else if (emailErr) { $("#pp-email").focus(); ok = false; }
+    return ok ? { name: name, email: email, optIn: $("#pp-optin").checked } : null;
+  }
+  app.addEventListener("click", function (e) {
+    var t = e.target.closest ? e.target.closest("[data-toggle],[data-go],[data-action],[data-term],.pp-tip-x,#pp-more,#pp-own,#pp-print-ro,#pp-copy,#pp-modal-cancel,#pp-resume-btn,#pp-home") : null;
+    if (!t) {
+      if (e.target === $("#pp-modal")) { closeModal(); }
+      if (tipFor && !$("#pp-tip").contains(e.target)) { closeTip(); }
+      return;
+    }
+    if (t.hasAttribute("data-term")) { e.preventDefault(); openTip(t); return; }
+    if (t.classList.contains("pp-tip-x")) { var f = tipFor; closeTip(); if (f) { f.focus(); } return; }
+    closeTip();
+    if (t.hasAttribute("data-toggle")) { toggle(t.getAttribute("data-toggle")); return; }
+    if (t.hasAttribute("data-go")) { goStep(parseInt(t.getAttribute("data-go"), 10)); return; }
+    if (t.hasAttribute("data-action")) { requireContact(t.getAttribute("data-action")); return; }
+    switch (t.id) {
+      case "pp-more": state.trackerOpen = !state.trackerOpen; renderTracker(Core.score(M, state.selected)); $("#pp-more").focus(); break;
+      case "pp-own": state.readOnly = false; state.selected = []; state.visited = {}; history.replaceState(null, "", baseUrl()); goStep(0); break;
+      case "pp-print-ro": window.print(); break;
+      case "pp-copy": copyText($("#pp-share-url")); break;
+      case "pp-modal-cancel": closeModal(); break;
+      case "pp-resume-btn": resumeSaved(); break;
+      case "pp-home": e.preventDefault(); if (!state.readOnly) { goStep(0); } else { scrollToTop(); } break;
+    }
+  });
+  app.addEventListener("change", function (e) {
+    var r = e.target;
+    if (r && r.type === "radio" && r.hasAttribute("data-group")) { pickInGroup(r.getAttribute("data-group"), r.value); }
+  });
+  $("#pp-contact").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var c = validate();
+    if (!c) { return; }
+    var sc = Core.score(M, state.selected), action = pending;
+    submitContact(c, { action: action, modelId: M.id, choices: sc.ids, totalBillions: sc.total }).then(function (res) {
+      if (!res || !res.ok) { toast("Something went wrong. Please try again."); return; }
+      state.contact = c;
+      $("#pp-modal").hidden = true; pending = null;
+      doAction(action);
+    });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && tipFor) { var f = tipFor; closeTip(); f.focus(); return; }
+    var m = $("#pp-modal");
+    if (m.hidden) { return; }
+    if (e.key === "Escape") { closeModal(); return; }
+    if (e.key === "Tab") {
+      var f2 = m.querySelectorAll("input,button,a[href]"), first = f2[0], last = f2[f2.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  window.addEventListener("resize", function () { if (tipFor) { placeTip(); } });
+  window.addEventListener("scroll", function () { if (tipFor) { placeTip(); } }, { passive: true });
+  function savedPlan() {
+    try { var s = JSON.parse(localStorage.getItem(CONFIG.storageKey) || "null"); return s && s.modelId === M.id ? s : null; } catch (e) { return null; }
+  }
+  function resumeSaved() {
+    var s = savedPlan(); if (!s) { return; }
+    setSelected(s.ids); $("#pp-resume").hidden = true; goStep(FINISH);
+  }
+  function boot() {
+    $("#pp-inperson-link").href = CONFIG.inPersonUrl;
+    $("#pp-privacy-link").href = CONFIG.privacyUrl;
+    if (CONFIG.prototypeMode) { $("#pp-proto").hidden = false; }
+    else { $$("[data-ph],#pp-proto-note").forEach(function (n) { n.remove(); }); }
+    renderWelcome();
+    var shared = Core.decodeShare(location.hash);
+    if (shared) {
+      var res = Core.score(M, shared.ids);
+      state.selected = res.ids;
+      if (shared.edit) {
+        state.step = shared.step == null ? 1 : Math.max(0, Math.min(FINISH, shared.step));
+        for (var i = 1; i < Math.min(state.step, FINISH); i++) { state.visited[i] = true; }
+      } else { state.readOnly = true; state.step = FINISH; }
+      render();
+      if (shared.modelId && shared.modelId !== M.id) { toast("This link was made with a different option set (" + shared.modelId + "). Some choices may not match."); }
+      else if (res.errors.length) { toast(res.errors.join(" ")); }
+    } else {
+      var s = savedPlan();
+      if (s) {
+        var when = new Date(s.savedAt);
+        $("#pp-resume").innerHTML = 'You saved a plan in this browser on ' + esc(when.toLocaleDateString("en-US", { month: "long", day: "numeric" })) + '. <button type="button" class="pp-linkbtn" id="pp-resume-btn">Resume it</button>';
+        $("#pp-resume").hidden = false;
+      }
+      render();
+    }
+  }
+  boot();
+})();
+</script>
+
+
+<!-- END WORDPRESS BLOCK -->
+
+
+
+<footer class="cc-preview-footer">
+  <div class="cc-wrap">
+    <p>The Concord Coalition, 1530 Wilson Blvd, Suite 650, Arlington, VA 22209. 703.894.6222.</p>
+  </div>
+</footer>
+</body>
+</html>
