@@ -255,7 +255,7 @@ window.PPCore = (function () {
 #pp-app .pp-w-deco { position: absolute; right: -3%; bottom: -14%; height: 112%; color: var(--pp-gold); opacity: .09; pointer-events: none; line-height: 0; }
 #pp-app .pp-w-deco svg { height: 100%; width: auto; display: block; }
 #pp-app .pp-welcome-col { position: relative; max-width: var(--pp-maxw, 1200px); margin: 0 auto; padding-left: var(--pp-gutter); padding-right: var(--pp-gutter); box-sizing: border-box; }
-#pp-app .pp-welcome-col > * { max-width: 720px; }
+#pp-app .pp-welcome-col > * { max-width: 760px; }
 #pp-app .pp-w-logo { margin-bottom: clamp(28px, 4vh, 44px); line-height: 0; }
 #pp-app .pp-w-logo svg { height: clamp(76px, 6vw + 40px, 116px); width: auto; max-width: 100%; display: block; }
 #pp-app .pp-w-title { font-weight: 400; margin: 0; }
@@ -263,14 +263,40 @@ window.PPCore = (function () {
 #pp-app .pp-w-head { display: block; margin-top: 6px; font-family: var(--pp-f-display); text-transform: uppercase; font-size: clamp(2.7rem, 1.6rem + 4vw, 4.9rem); line-height: .94; letter-spacing: .005em; text-wrap: balance; }
 #pp-app .pp-w-head em { font-style: normal; color: var(--pp-gold); }
 #pp-app .pp-w-intro { margin-top: 24px; font-size: 1.16rem; line-height: 1.6; max-width: 54ch; }
-#pp-app .pp-goals { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); position: relative; }
-#pp-app .pp-goals::before { content: ""; position: absolute; left: 7px; right: 7px; top: 7px; height: 1px; background: var(--pp-gold); }
-#pp-app .pp-goals li { position: relative; display: flex; flex-direction: column; gap: 2px; padding: 26px 20px 0 0; }
-#pp-app .pp-g-node { position: absolute; left: 0; top: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--pp-gold); }
-#pp-app .pp-goals li:last-child .pp-g-node { background: var(--pp-ivory); box-shadow: inset 0 0 0 2px var(--pp-gold); }
-#pp-app .pp-g-n { font-family: var(--pp-f-serif); font-size: 1.6rem; line-height: 1; color: var(--pp-gold); }
-#pp-app .pp-g-amt { margin-top: 8px; font-family: var(--pp-f-serif); font-weight: 400; font-size: clamp(1.9rem, 1.4rem + 1.2vw, 2.5rem); line-height: 1; letter-spacing: -.01em; white-space: nowrap; }
-#pp-app .pp-g-name { font-size: 1rem; font-weight: 600; margin-top: 6px; }
+#pp-app .pp-hc { margin: 36px 0 0; }
+#pp-app .pp-hc-years { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: rgba(15, 61, 95, .08); margin-bottom: 14px; }
+#pp-app .pp-hc-year { font: 600 .92rem/1 var(--pp-f-body); color: var(--pp-admiral); background: none; border: 0; border-radius: 999px; padding: 10px 16px; cursor: pointer; }
+#pp-app .pp-hc-year[aria-pressed="true"] { background: var(--pp-admiral); color: var(--pp-ivory); }
+#pp-app .pp-hc-panel { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 24px; align-items: stretch; background-color: var(--pp-admiral); color: var(--pp-ivory); border-radius: 12px; padding: 22px 24px 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='40'%3E%3Cpath d='M0 39.5H7' stroke='%23C0780A' stroke-opacity='.45'/%3E%3C/svg%3E"); }
+#pp-app .pp-hc-plot { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; height: 340px; }
+#pp-app .pp-hc-col { display: flex; flex-direction: column; min-width: 0; }
+#pp-app .pp-hc-tot { flex: none; font-family: var(--pp-f-serif); font-size: 1.7rem; line-height: 1; margin: 0 0 8px; }
+#pp-app .pp-hc-bar { flex: 1; display: flex; flex-direction: column-reverse; justify-content: flex-start; min-height: 0; }
+#pp-app .pp-hc-name { margin: 8px 0 0; font-weight: 700; font-size: .95rem; }
+#pp-app .pp-hc-seg, #pp-app .pp-hc-def { display: block; width: 100%; flex: none; min-height: 0; border: 0; border-top: 1px solid var(--pp-admiral); padding: 0 8px; margin: 0; overflow: hidden; text-align: left; cursor: pointer;
+  font: 600 .74rem/1.15 var(--pp-f-body); color: var(--pp-admiral); transition: height .7s cubic-bezier(.16, 1, .3, 1), filter .15s; }
+#pp-app .pp-hc-seg span, #pp-app .pp-hc-def span, #pp-app .pp-hc-cut span { display: flex; justify-content: space-between; gap: 6px; padding-top: 5px; }
+#pp-app .pp-hc-seg span i, #pp-app .pp-hc-def span i, #pp-app .pp-hc-cut span i { font-style: normal; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#pp-app .pp-hc-seg span b, #pp-app .pp-hc-def span b, #pp-app .pp-hc-cut span b { font-weight: 700; white-space: nowrap; }
+#pp-app .pp-hc-seg:hover, #pp-app .pp-hc-seg:focus-visible { filter: brightness(1.08); }
+#pp-app .is-spend .pp-hc-seg:nth-child(1) { background: #D9A35A; } #pp-app .is-spend .pp-hc-seg:nth-child(2) { background: #E1B474; }
+#pp-app .is-spend .pp-hc-seg:nth-child(3) { background: #E8C48F; } #pp-app .is-spend .pp-hc-seg:nth-child(4) { background: #EDD0A6; }
+#pp-app .is-spend .pp-hc-seg:nth-child(5) { background: #F2DDBE; } #pp-app .is-spend .pp-hc-seg:nth-child(6) { background: #F6E8D5; }
+#pp-app .is-take .pp-hc-seg:nth-child(1) { background: #F8F1E9; } #pp-app .is-take .pp-hc-seg:nth-child(2) { background: #E6DFD7; }
+#pp-app .is-take .pp-hc-seg:nth-child(n+3) { background: #CFC8C0; border-top-color: rgba(15, 61, 95, .35); }
+#pp-app .pp-hc-def { background: repeating-linear-gradient(135deg, rgba(234, 158, 131, .32) 0 6px, rgba(234, 158, 131, .12) 6px 12px); border: 2px dashed #EA9E83; color: var(--pp-ivory); }
+#pp-app .pp-hc-cut { flex: none; border: 2px dashed rgba(165, 233, 217, .9); color: #A5E9D9; font: 600 .74rem/1.15 var(--pp-f-body); padding: 0 8px; transition: height .7s cubic-bezier(.16, 1, .3, 1); overflow: hidden; }
+#pp-app .pp-hc-read { margin: 0; align-self: center; font-size: 1.02rem; line-height: 1.5; }
+#pp-app .pp-hc-read b { font-weight: 700; }
+#pp-app .pp-hc-goals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+#pp-app .pp-hc-goal { display: flex; flex-direction: column; gap: 4px; text-align: left; border: 2px solid var(--pp-admiral); background: #fff; color: var(--pp-admiral); border-radius: 12px; padding: 12px 14px; cursor: pointer; font-family: var(--pp-f-body); }
+#pp-app .pp-hc-goal .pp-g-amt { font-family: var(--pp-f-display); font-weight: 400; text-transform: uppercase; font-size: 1.55rem; line-height: 1; }
+#pp-app .pp-hc-goal .pp-g-name { font-size: .95rem; font-weight: 600; }
+#pp-app .pp-hc-goal:hover { background: var(--pp-ivory); }
+#pp-app .pp-hc-goal[aria-pressed="true"] { background: var(--pp-admiral); color: var(--pp-ivory); }
+#pp-app .pp-hc-src { margin-top: 8px; font-size: .78rem; color: var(--pp-gray); }
+#pp-app .pp-hc.is-pre .pp-hc-seg, #pp-app .pp-hc.is-pre .pp-hc-def, #pp-app .pp-hc.is-pre .pp-hc-cut { height: 0 !important; }
 #pp-app .pp-w-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 44px; }
 #pp-app .pp-w-link { font-size: .95rem; color: var(--pp-gray); }
 #pp-app .pp-resume { margin-top: 20px; font-size: .95rem; color: var(--pp-gray); }
@@ -501,13 +527,11 @@ window.PPCore = (function () {
   #pp-app .pp-proto { font-size: .7rem; }
   #pp-app .pp-w-intro { font-size: 1.05rem; }
   #pp-app .pp-w-deco { right: -30%; top: -2%; bottom: auto; height: 52%; opacity: .07; }
-  #pp-app .pp-goals { grid-template-columns: minmax(0, 1fr); gap: 18px; margin-top: 30px; }
-  #pp-app .pp-goals::before { left: 7px; right: auto; top: 7px; bottom: 7px; width: 1px; height: auto; }
-  #pp-app .pp-goals li { display: grid; grid-template-columns: 34px 1fr; align-items: baseline; column-gap: 8px; padding: 0 0 0 30px; }
-  #pp-app .pp-g-name { grid-column: 2; }
-  #pp-app .pp-g-n { font-size: 1.5rem; }
-  #pp-app .pp-g-amt { margin-top: 0; font-size: 1.9rem; }
-  #pp-app .pp-g-name { margin-top: 0; }
+  #pp-app .pp-hc-panel { grid-template-columns: minmax(0, 1fr); padding: 18px 16px 14px; gap: 14px; }
+  #pp-app .pp-hc-plot { height: 300px; gap: 12px; }
+  #pp-app .pp-hc-tot { font-size: 1.4rem; }
+  #pp-app .pp-hc-goals { grid-template-columns: minmax(0, 1fr); }
+  #pp-app .pp-hc-goal { flex-direction: row; align-items: baseline; gap: 10px; }
   #pp-app .pp-w-actions .pp-btn { width: 100%; }
   #pp-app .pp-progress-row { padding-top: 8px; padding-bottom: 8px; }
   #pp-app .pp-progress ol { gap: 2px; }
@@ -593,7 +617,18 @@ window.PPCore = (function () {
         <div class="pp-w-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-9.23 -27.7 1803.77 678.86" role="img" focusable="false" aria-label="Principles and Priorities, a program of The Concord Coalition"><g transform="translate(0 0)"><path fill="#0F3D5F" d="M0 307.83H62.97V204.44H103.39C128.65 204.44 142.64 199 152.75 188.9C162.47 179.18 167.91 165.58 167.91 140.7V63.74C167.91 38.87 162.47 25.26 152.75 15.55C142.64 5.44 128.65 0 103.39 0H0ZM62.97 153.14V51.31H80.07C90.17 51.31 96 53.64 99.5 57.14C102.61 60.24 104.94 65.69 104.94 76.18V125.15C104.94 137.2 102.61 143.81 99.5 147.31C96 151.19 90.17 153.14 80.07 153.14ZM177.88 307.83H240.85V172.57H257.95C268.05 172.57 273.88 174.9 277.38 178.4C280.49 181.51 282.82 186.95 282.82 197.45V307.83H345.79V203.28C345.79 184.62 343.46 174.9 338.79 167.13C332.96 157.41 323.63 150.03 311.97 146.14C319.75 143.81 325.58 139.92 330.63 134.87C340.35 125.15 345.79 111.55 345.79 86.67V63.74C345.79 38.87 340.35 25.26 330.63 15.55C320.52 5.44 306.53 0 281.27 0H177.88ZM240.85 121.27V51.31H257.95C268.05 51.31 273.88 53.64 277.38 57.14C280.49 60.24 282.82 65.69 282.82 76.18V93.28C282.82 105.33 280.49 111.94 277.38 115.44C273.88 119.32 268.05 121.27 257.95 121.27ZM355.76 307.83H418.73V0H355.76ZM428.7 307.83H483.89V129.04L533.64 307.83H603.6V0H548.41V150.42L506.44 0H428.7ZM697.53 309.38C729.79 309.38 750 302 763.22 288.78C774.88 277.12 781.49 260.8 781.49 233.98V191.23H718.52V241.76C718.52 252.25 716.19 257.69 713.08 260.8C709.58 264.3 704.14 266.63 697.53 266.63C690.92 266.63 685.48 264.3 681.99 260.8C678.88 257.69 676.54 252.25 676.54 241.76V66.07C676.54 55.58 678.88 50.14 681.99 47.03C685.48 43.53 690.92 41.2 697.53 41.2C704.14 41.2 709.58 43.53 713.08 47.03C716.19 50.14 718.52 55.58 718.52 66.07V107.27H781.49V73.85C781.49 47.03 774.88 30.71 763.22 19.05C750 5.83 729.79 -1.55 697.53 -1.55C665.27 -1.55 645.06 5.83 631.85 19.05C620.19 30.71 613.58 47.03 613.58 73.85V233.98C613.58 260.8 620.19 277.12 631.85 288.78C645.06 302 665.27 309.38 697.53 309.38ZM791.46 307.83H854.42V0H791.46ZM864.4 307.83H927.36V204.44H967.79C993.05 204.44 1007.04 199 1017.15 188.9C1026.86 179.18 1032.31 165.58 1032.31 140.7V63.74C1032.31 38.87 1026.86 25.26 1017.15 15.55C1007.04 5.44 993.05 0 967.79 0H864.4ZM927.36 153.14V51.31H944.47C954.57 51.31 960.4 53.64 963.9 57.14C967.01 60.24 969.34 65.69 969.34 76.18V125.15C969.34 137.2 967.01 143.81 963.9 147.31C960.4 151.19 954.57 153.14 944.47 153.14ZM1042.28 307.83H1184.53V256.52H1105.24V0H1042.28ZM1194.51 307.83H1336.76V256.52H1257.47V172.57H1336.76V121.27H1257.47V51.31H1336.76V0H1194.51ZM1427.58 309.38C1454.79 309.38 1475.78 302.39 1490.16 289.95C1504.15 277.51 1511.92 260.41 1511.92 234.76C1511.92 203.28 1498.32 181.12 1478.89 158.58L1430.69 102.22C1415.92 84.73 1409.31 74.63 1409.31 62.97C1409.31 52.86 1416.7 45.86 1428.36 45.86C1440.02 45.86 1447.4 52.86 1447.4 66.85V107.27H1510.37V70.74C1510.37 45.09 1502.21 26.82 1488.21 14.77C1475 3.11 1455.18 -1.55 1428.36 -1.55C1401.93 -1.55 1382.88 3.89 1370.06 13.6C1353.73 25.65 1345.57 44.7 1345.57 66.85C1345.57 98.33 1357.62 115.05 1377.05 137.59L1427.97 197.06C1440.02 211.05 1448.18 223.88 1448.18 239.81C1448.18 254.58 1440.8 261.97 1427.58 261.97C1414.37 261.97 1406.98 254.19 1406.98 238.65V191.23H1344.02V234.76C1344.02 260.8 1350.62 279.07 1362.67 290.34C1376.66 303.17 1397.26 309.38 1427.58 309.38Z"/><path fill="#C0780A" d="M1637.88 326.3Q1609.42 326.3 1587.96 314.17Q1566.5 302.04 1554.6 280.58Q1542.71 259.12 1542.71 230.66Q1542.71 203.13 1553.67 179.34Q1564.63 155.55 1583.53 138.29Q1602.42 121.02 1626.22 113.56Q1612.22 95.36 1612.22 67.84Q1612.22 43.58 1623.18 23.98Q1634.15 4.39 1653.04 -7.04Q1671.94 -18.47 1695.26 -18.47Q1710.19 -18.47 1723.96 -13.57Q1737.72 -8.67 1746.58 -0.27Q1753.11 5.79 1751.25 15.12L1738.18 83.23Q1736.79 90.23 1731.65 90.23Q1726.05 90.23 1725.59 82.3L1725.12 72.5Q1723.26 33.78 1714.39 17.69Q1705.53 1.59 1685.47 1.59Q1668.67 1.59 1655.37 10.46Q1642.08 19.32 1634.15 34.72Q1626.22 50.11 1626.22 69.71Q1626.22 97.23 1641.15 110.29Q1648.14 109.36 1655.14 109.36Q1679.87 109.36 1679.87 121.49Q1679.87 132.69 1662.14 132.69Q1647.68 132.69 1635.55 123.36Q1576.3 141.55 1576.3 220.4Q1576.3 263.32 1594.96 287.34Q1613.62 311.37 1646.28 311.37Q1669.6 311.37 1688.5 299.71Q1707.39 288.04 1718.59 268.68Q1729.79 249.32 1729.79 225.53Q1729.79 189.14 1695.26 189.14Q1681.73 189.14 1674.04 194.5Q1666.34 199.87 1666.34 207.8Q1666.34 214.8 1671 217.13Q1675.67 219.46 1681.73 220.86Q1687.8 222.26 1692.46 225.76Q1697.13 229.26 1697.13 238.59Q1697.13 246.99 1691.06 251.89Q1685 256.79 1675.2 256.79Q1662.61 256.79 1655.14 247.46Q1647.68 238.12 1647.68 222.73Q1647.68 205.47 1657.94 192.87Q1668.2 180.27 1685.7 174.68Q1703.19 169.08 1724.19 172.81L1738.65 175.14Q1768.98 179.81 1768.98 167.68Q1768.98 162.08 1763.84 159.75Q1758.71 157.41 1752.18 155.31Q1745.65 153.22 1740.52 149.25Q1735.39 145.28 1735.39 136.89Q1735.39 128.96 1740.98 123.82Q1746.58 118.69 1756.85 118.69Q1770.38 118.69 1777.84 128.26Q1785.3 137.82 1785.3 153.68Q1785.3 173.74 1772.71 185.87Q1760.11 198 1740.52 196.6Q1743.78 207.33 1743.78 222.26Q1743.78 252.12 1730.02 275.68Q1716.26 299.24 1692.46 312.77Q1668.67 326.3 1637.88 326.3Z"/></g><g transform="translate(179.83 0)"><path fill="#C0780A" d="M0 640.37H62.97V536.98H103.39C128.65 536.98 142.64 531.54 152.75 521.44C162.47 511.72 167.91 498.12 167.91 473.24V396.28C167.91 371.41 162.47 357.8 152.75 348.09C142.64 337.98 128.65 332.54 103.39 332.54H0ZM62.97 485.68V383.85H80.07C90.17 383.85 96 386.18 99.5 389.68C102.61 392.78 104.94 398.23 104.94 408.72V457.69C104.94 469.74 102.61 476.35 99.5 479.85C96 483.73 90.17 485.68 80.07 485.68ZM177.88 640.37H240.85V505.11H257.95C268.05 505.11 273.88 507.44 277.38 510.94C280.49 514.05 282.82 519.49 282.82 529.99V640.37H345.79V535.82C345.79 517.16 343.46 507.44 338.79 499.67C332.96 489.95 323.63 482.57 311.97 478.68C319.75 476.35 325.58 472.46 330.63 467.41C340.35 457.69 345.79 444.09 345.79 419.21V396.28C345.79 371.41 340.35 357.8 330.63 348.09C320.52 337.98 306.53 332.54 281.27 332.54H177.88ZM240.85 453.81V383.85H257.95C268.05 383.85 273.88 386.18 277.38 389.68C280.49 392.78 282.82 398.23 282.82 408.72V425.82C282.82 437.87 280.49 444.48 277.38 447.98C273.88 451.86 268.05 453.81 257.95 453.81ZM355.76 640.37H418.73V332.54H355.76ZM606.58 640.37H669.55V505.11H686.65C696.75 505.11 702.58 507.44 706.08 510.94C709.19 514.05 711.52 519.49 711.52 529.99V640.37H774.49V535.82C774.49 517.16 772.16 507.44 767.49 499.67C761.66 489.95 752.34 482.57 740.67 478.68C748.45 476.35 754.28 472.46 759.33 467.41C769.05 457.69 774.49 444.09 774.49 419.21V396.28C774.49 371.41 769.05 357.8 759.33 348.09C749.23 337.98 735.23 332.54 709.97 332.54H606.58ZM669.55 453.81V383.85H686.65C696.75 383.85 702.58 386.18 706.08 389.68C709.19 392.78 711.52 398.23 711.52 408.72V425.82C711.52 437.87 709.19 444.48 706.08 447.98C702.58 451.86 696.75 453.81 686.65 453.81ZM784.46 640.37H847.43V332.54H784.46ZM909.87 640.37H972.84V383.85H1025.31V332.54H857.4V383.85H909.87ZM1035.28 640.37H1098.25V332.54H1035.28ZM1108.22 640.37H1250.48V589.07H1171.19V505.11H1250.48V453.81H1171.19V383.85H1250.48V332.54H1108.22ZM1341.3 641.92C1368.5 641.92 1389.49 634.93 1403.87 622.49C1417.86 610.05 1425.64 592.95 1425.64 567.3C1425.64 535.82 1412.03 513.66 1392.6 491.12L1344.4 434.76C1329.64 417.27 1323.03 407.17 1323.03 395.51C1323.03 385.4 1330.41 378.4 1342.07 378.4C1353.73 378.4 1361.12 385.4 1361.12 399.39V439.81H1424.08V403.28C1424.08 377.63 1415.92 359.36 1401.93 347.31C1388.71 335.65 1368.89 330.99 1342.07 330.99C1315.64 330.99 1296.6 336.43 1283.77 346.14C1267.45 358.19 1259.29 377.24 1259.29 399.39C1259.29 430.87 1271.33 447.59 1290.77 470.13L1341.68 529.6C1353.73 543.59 1361.9 556.42 1361.9 572.35C1361.9 587.12 1354.51 594.51 1341.3 594.51C1328.08 594.51 1320.7 586.73 1320.7 571.19V523.77H1257.73V567.3C1257.73 593.34 1264.34 611.61 1276.39 622.88C1290.38 635.71 1310.98 641.92 1341.3 641.92Z"/><path fill="#C0780A" d="M596.6 405.97V439.46C595.54 436.22 594.18 433.21 593.42 431.62C593.06 430.86 592.44 430.27 591.67 429.94C571.52 421.36 557.92 423.13 554.26 423.85C553.63 423.98 553.06 424.28 552.6 424.71L545.64 431.22C531.34 432.8 520.45 437.99 510.73 446.75C509.56 447.8 509.72 449.68 511.04 450.54C516.89 454.34 530.99 463.27 534.59 463.37L536.99 462.61C536.99 462.61 538.18 467.61 538.72 469C539.27 470.37 534.06 475.8 534.35 478.54C534.64 481.28 538.05 482.17 538.05 482.17C538.05 482.17 537.42 486.95 538.08 487.68C538.73 488.41 541.49 489.36 541.48 490.15C541.47 490.94 539.83 492.39 542.01 493.94C544.19 495.5 543.9 499.86 544.73 500.43C545.57 501 551.49 502.34 558.15 499.75L561.09 510.57L556.92 513.18C555.92 513.8 555.63 515.12 556.27 516.1C557.96 518.64 560.8 523.19 560.72 524.64C560.6 526.7 554.42 550.23 557.58 569.33C557.58 569.33 558.3 572.01 550.8 568.78C543.3 565.56 544.8 565.49 538.27 565.22C531.74 564.94 518.14 553.72 511.6 552.78C505.04 551.83 489.69 542.27 489.69 542.27L487.86 546.15C487.86 546.15 482.92 546.13 479.22 541.87C476.22 538.45 471.62 536.01 467.64 535.28L437.13 470.94C443.96 458.05 464.86 424.12 496.32 422.47C535.22 420.43 565.97 413.5 590.4 383.27C591.54 381.85 592.68 380.6 593.82 379.49C595.65 387.01 596.61 395.71 596.61 405.95L596.6 405.97ZM571.75 626.99C559.55 635.99 542.52 641.21 518.2 641.88L485.52 572.98C494.34 578.49 506.84 585.53 514.91 588.75C525.79 593.1 529.15 596.09 537.27 598.46C545.4 600.84 558.24 608.04 562.2 606.98L566.16 605.9L571.75 626.99ZM508.67 641.92C478.72 641.34 459.63 634.02 446.97 621.32C435.3 609.63 428.7 593.28 428.7 566.41V473.32L457.98 535.04C455.99 535.73 453.41 536.32 452.94 537.79C452.46 539.26 452.8 543.58 454.95 545.2C454.95 545.2 453.97 550.36 458.04 552.15C458.04 552.15 457.25 556.75 460.25 557.8C460.25 557.8 458.58 564.17 464.43 565.64C468.21 566.59 470.05 565.66 472.52 565.67L508.68 641.9L508.67 641.92ZM587.08 362.4C580.21 366.21 573.02 371.72 563.91 378.62C539.66 396.98 530.98 394.74 481.83 404.64C459.01 409.24 439.02 433.76 428.7 448.76V417.28C430.99 414.82 433.54 412.23 436.38 409.54C458.47 388.55 479.54 384.41 505.78 380.9C529.95 377.67 556.46 359.61 576.17 349.01C576.92 349.67 577.64 350.36 578.33 351.06C581.68 354.41 584.61 358.15 587.08 362.4V362.4ZM559.39 338.32C533.47 353.61 525.36 354.83 479.78 367.1C458.98 372.69 441.82 383.82 429.14 394.48C430.09 382.92 432.54 373.63 436.32 365.94C468.98 347.14 482.01 354.25 523.08 333.14C524.54 332.39 525.97 331.67 527.39 330.99C540.17 332.04 550.68 334.53 559.39 338.32H559.39Z"/></g></svg></div>
         <h1 class="pp-w-title" id="pp-title"><span class="pp-w-lead">You&rsquo;ve just been elected to Congress.</span> <span class="pp-w-head">Now set the nation&rsquo;s <em>priorities</em>.</span></h1>
         <p class="pp-w-intro">Federal deficits are projected to total more than $20 trillion over the next 10 years. Choose from 39 policy options on spending and taxes, see what each one does to the deficit, and aim for one of three goals.</p>
-        <ol class="pp-goals" id="pp-goals" aria-label="The three goals, as 10-year deficit reductions"></ol>
+        <figure class="pp-hc" id="pp-hc">
+          <div class="pp-hc-years" role="group" aria-label="Year">
+            <button type="button" class="pp-hc-year" data-year="2026" aria-pressed="true">2026 actual</button>
+            <button type="button" class="pp-hc-year" data-year="2036" aria-pressed="false">2036 projected</button>
+          </div>
+          <div class="pp-hc-panel">
+            <div class="pp-hc-plot" id="pp-hc-plot"></div>
+            <p class="pp-hc-read" id="pp-hc-read" aria-live="polite"></p>
+          </div>
+          <div class="pp-hc-goals" id="pp-goals" role="group" aria-label="The three goals: show what each one means for 2036"></div>
+          <figcaption class="pp-hc-src">2026: U.S. Treasury, Monthly Treasury Statement, September 2026. 2036: CBO, February 2026, from the P&amp;P Workbook.</figcaption>
+        </figure>
         <div class="pp-w-actions">
           <button type="button" class="pp-btn pp-btn-primary" id="pp-start" data-go="1">Start the exercise <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <a class="pp-w-link" id="pp-inperson-link" href="https://www.concordcoalition.org/resources/principles-priorities/" target="_blank" rel="noopener">About the in-person exercise</a>
@@ -827,10 +862,83 @@ window.PPCore = (function () {
   function isOn(id) { return state.selected.indexOf(id) !== -1; }
   function setSelected(ids) { state.selected = Core.score(M, ids).ids; }
   function sortedBench(sc) { return sc.benchmarks.slice().sort(function (a, b) { return a.amount - b.amount; }); }
-  function renderWelcome() {
-    $("#pp-goals").innerHTML = M.benchmarks.slice().sort(function (x, y) { return x.amount - y.amount; }).map(function (bm, i) {
-      return '<li><span class="pp-g-node" aria-hidden="true"></span><span class="pp-g-n" aria-hidden="true">0' + (i + 1) + '</span><b class="pp-g-amt">' + benchWords(bm.amount) + '</b><span class="pp-g-name">' + esc(bm.short) + '</span></li>';
+  var HC = {
+    max: 12000,
+    years: {
+      "2026": { label: "2026", out: 7395.8, rev: 5403.3,
+        spend: [["Social Security", 1667.1], ["Medicare", 1072.6], ["Medicaid & health", 1025.6], ["Defense", 965.2], ["Interest on the debt", 1051.8], ["Everything else", 1613.5]],
+        take: [["Income taxes", 2845.5], ["Payroll taxes", 1811.8], ["Corporate taxes", 381.4], ["Tariffs", 173.2], ["Other", 191.4]] },
+      "2036": { label: "2036", out: 11416, rev: 8301,
+        spend: [["Social Security", 2740], ["Medicare", 1941], ["Medicaid & health", 1142], ["Defense", 1142], ["Interest on the debt", 2169], ["Everything else", 2282]],
+        take: [["Income taxes", 4234], ["Payroll taxes", 2656], ["Corporate taxes", 581], ["Tariffs", 415], ["Other", 415]] }
+    },
+    goalDeficit2036: { debt100: 3115 - 1557.5 * 0.95, half: 3115 / 2, balance: 0 }
+  };
+  var hc = { year: "2026", goal: null, ready: false };
+  function tr(b) { return "$" + String(+(b / 1000).toFixed(b >= 2500 ? 1 : 2)) + " trillion"; }
+  function trs(b) { return "$" + (Math.round(b / 100) / 10) + "T"; }
+  function hcRead(html) { $("#pp-hc-read").innerHTML = html; }
+  function hcDefault() {
+    var y = HC.years[hc.year], d = y.out - y.rev;
+    if (hc.goal) { return hcGoalText(); }
+    return hc.year === "2026"
+      ? "In 2026 the government spent <b>" + tr(y.out) + "</b> and collected <b>" + tr(y.rev) + "</b>, so it borrowed <b>" + tr(d) + "</b>."
+      : "By 2036, spending is projected at <b>" + tr(y.out) + "</b> and revenue at <b>" + tr(y.rev) + "</b>: a <b>" + tr(d) + "</b> deficit in that year alone.";
+  }
+  function hcGoalText() {
+    var bm = M.benchmarks.filter(function (b) { return b.id === hc.goal; })[0], left = HC.goalDeficit2036[hc.goal];
+    return "<b>" + esc(bm.short) + ":</b> cut " + benchWords(bm.amount) + " over 10 years. " +
+      (hc.goal === "balance" ? "The 2036 deficit falls to zero." : hc.goal === "half" ? "The 2036 deficit falls by half, to about " + tr(left) + " (3% of GDP)." :
+        "Debt stops growing faster than the economy; the 2036 deficit falls to about " + tr(left) + ".");
+  }
+  function hcSegs(list, total, kind) {
+    return list.map(function (p) {
+      var h = p[1] / HC.max * 100, share = Math.round(p[1] / total * 100);
+      return '<button type="button" class="pp-hc-seg" style="height:' + h.toFixed(3) + '%" data-tip="' + esc(p[0]) + '|' + p[1] + '|' + share + '|' + kind + '">' +
+        (p[1] / HC.max >= 0.06 ? '<span><i>' + esc(p[0]) + '</i><b>' + trs(p[1]) + '</b></span>' : '<span class="pp-sr">' + esc(p[0]) + ' ' + trs(p[1]) + '</span>') + '</button>';
     }).join("");
+  }
+  function renderHomeChart() {
+    var y = HC.years[hc.year], d = y.out - y.rev;
+    var left = hc.goal ? HC.goalDeficit2036[hc.goal] : d, cut = d - left;
+    $("#pp-hc-plot").innerHTML =
+      '<div class="pp-hc-col"><div class="pp-hc-bar is-spend">' + hcSegs(y.spend, y.out, "spending") + '<p class="pp-hc-tot">' + trs(y.out) + '</p></div><p class="pp-hc-name">Spending</p></div>' +
+      '<div class="pp-hc-col"><div class="pp-hc-bar is-take">' + hcSegs(y.take, y.rev, "revenue") +
+        (left > 0 ? '<button type="button" class="pp-hc-def" style="height:' + (left / HC.max * 100).toFixed(3) + '%" data-tip="Deficit|' + Math.round(left) + '|0|deficit"><span><i>Deficit</i><b>' + trs(left) + '</b></span></button>' : '') +
+        (cut > 0 ? '<div class="pp-hc-cut" style="height:' + (cut / HC.max * 100).toFixed(3) + '%"><span><i>Closed by the goal</i><b>' + trs(cut) + '</b></span></div>' : '') +
+        '<p class="pp-hc-tot">' + trs(y.rev) + '</p></div><p class="pp-hc-name">Revenue</p></div>';
+    hcRead(hcDefault());
+    $$(".pp-hc-year").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-year") === hc.year)); });
+    $$(".pp-hc-goal").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-goal") === hc.goal)); });
+  }
+  function hcTip(btn) {
+    var t = btn.getAttribute("data-tip").split("|"), v = +t[1];
+    hcRead(t[3] === "deficit" ? "<b>Deficit:</b> " + tr(v) + " borrowed in " + HC.years[hc.year].label + "." :
+      "<b>" + esc(t[0]) + ":</b> " + tr(v) + ", " + t[2] + "% of " + t[3] + " in " + HC.years[hc.year].label + ".");
+  }
+  function renderWelcome() {
+    $("#pp-goals").innerHTML = M.benchmarks.slice().sort(function (x, y) { return x.amount - y.amount; }).map(function (bm) {
+      return '<button type="button" class="pp-hc-goal" data-goal="' + esc(bm.id) + '" aria-pressed="false"><b class="pp-g-amt">' + benchWords(bm.amount) + '</b><span class="pp-g-name">' + esc(bm.short) + '</span></button>';
+    }).join("");
+    renderHomeChart();
+    if (!hc.ready) {
+      hc.ready = true;
+      var root = $("#pp-hc");
+      root.addEventListener("click", function (e) {
+        var yb = e.target.closest(".pp-hc-year"), gb = e.target.closest(".pp-hc-goal"), sg = e.target.closest(".pp-hc-seg,.pp-hc-def");
+        if (yb) { hc.year = yb.getAttribute("data-year"); if (hc.year === "2026") { hc.goal = null; } renderHomeChart(); }
+        else if (gb) { var g = gb.getAttribute("data-goal"); hc.goal = hc.goal === g ? null : g; if (hc.goal) { hc.year = "2036"; } renderHomeChart(); }
+        else if (sg) { hcTip(sg); }
+      });
+      root.addEventListener("mouseover", function (e) { var sg = e.target.closest(".pp-hc-seg,.pp-hc-def"); if (sg) { hcTip(sg); } });
+      root.addEventListener("focusin", function (e) { var sg = e.target.closest(".pp-hc-seg,.pp-hc-def"); if (sg) { hcTip(sg); } });
+      root.addEventListener("mouseleave", function () { hcRead(hcDefault()); });
+      if (!reduceMotion && "IntersectionObserver" in window) {
+        root.classList.add("is-pre");
+        var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { root.classList.remove("is-pre"); io.disconnect(); } }, { threshold: 0.3 });
+        io.observe(root);
+      }
+    }
     $$("[data-rich]").forEach(function (n) { n.innerHTML = richEscaped(n.innerHTML); n.removeAttribute("data-rich"); });
   }
   function renderProgress() {
