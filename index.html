@@ -370,7 +370,7 @@ window.PPCore = (function () {
 #pp-app .pp-progress { background: var(--pp-paper); border-bottom: 1px solid var(--pp-line); }
 #pp-app .pp-progress-row { display: flex; align-items: center; gap: 24px; padding-top: 12px; padding-bottom: 12px; }
 #pp-app .pp-progress-label { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-#pp-app .pp-progress ol { flex: 1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+#pp-app .pp-progress ol { flex: 1; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; } 
 #pp-app .pp-pstep { width: 100%; display: flex; align-items: center; gap: 10px; padding: 6px 8px; border: 0; background: none; border-radius: 10px; cursor: pointer; text-align: left; min-height: 48px; }
 #pp-app .pp-pstep:hover { background: rgba(15, 61, 95, .06); }
 #pp-app .pp-pstep-n { flex: none; width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--pp-line-2); display: grid; place-items: center; font-weight: 700; font-size: .88rem; background: var(--pp-ivory); }
@@ -379,6 +379,7 @@ window.PPCore = (function () {
 #pp-app .pp-pstep[aria-current="step"] .pp-pstep-n { background: var(--pp-admiral); border-color: var(--pp-admiral); color: var(--pp-ivory); }
 #pp-app .pp-pstep-text { display: flex; flex-direction: column; min-width: 0; }
 #pp-app .pp-pstep-name { font-weight: 700; font-size: .9rem; line-height: 1.15; }
+#pp-app .pp-pn-short { display: none; } 
 #pp-app .pp-pstep-sub { font-size: .76rem; line-height: 1.2; opacity: .72; margin-top: 2px; }
 #pp-app .pp-pbar { height: 4px; background: var(--pp-line); }
 #pp-app .pp-pbar span { display: block; height: 100%; background: var(--pp-gold); transition: width .5s cubic-bezier(.16, 1, .3, 1); }
@@ -823,7 +824,33 @@ window.PPCore = (function () {
 #pp-app .pp-check input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--pp-admiral); flex: none; }
 #pp-app .pp-fine { font-size: .82rem; opacity: .85; }
 #pp-app .pp-modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+#pp-app .pp-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+#pp-app .pp-field select { width: 100%; min-height: 48px; padding: 10px 14px; border: 2px solid var(--pp-line-2); border-radius: 12px; background: #fff; font-size: 1rem; color: inherit; font-family: inherit; }
+#pp-app .pp-field select:focus-visible { border-color: var(--pp-admiral); outline-offset: 1px; }
+#pp-app .pp-field select[aria-invalid="true"] { border-color: var(--pp-cardinal); }
+#pp-app .pp-opt { font-weight: 400; }
+#pp-app .pp-privacy-slot { margin-top: 14px; }
+#pp-app .pp-privacy-note { font-size: .86rem; line-height: 1.45; margin-bottom: 8px; }
+#pp-app .pp-privacy-note.is-ph { padding: 10px 12px; border: 2px dashed var(--pp-gold); border-radius: 10px; background: rgba(192, 120, 10, .08); }
+#pp-app .pp-backbar { margin: 0 0 22px; }
+#pp-app .pp-btn-back { background: #fff; border-color: var(--pp-admiral); color: var(--pp-admiral); min-height: 44px; padding: .6em 1.25em .6em 1em; }
+#pp-app .pp-btn-back:hover { background: #EEF2F5; }
+#pp-app .pp-extra { border: 0; border-top: 1px solid var(--pp-line-2); margin: 4px 0 6px; padding: 14px 0 0; min-width: 0; }
+#pp-app .pp-extra legend { font-weight: 700; padding: 0 8px 0 0; }
+#pp-app .pp-extra-lead { font-size: .86rem; opacity: .85; margin: 0 0 12px; }
+#pp-app .pp-survey { margin-top: 30px; padding: 20px 22px; background: #fff; border: 2px solid var(--pp-line-2); border-radius: 16px; max-width: 640px; }
+#pp-app .pp-survey h3 { font-size: 1.05rem; font-weight: 700; margin: 0 0 12px; }
+#pp-app .pp-scale { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+#pp-app .pp-scale button { min-height: 48px; border: 2px solid var(--pp-admiral); border-radius: 12px; background: #fff; color: var(--pp-admiral); font: inherit; font-weight: 700; font-size: 1.1rem; cursor: pointer; }
+#pp-app .pp-scale button:hover { background: #EEF2F5; }
+#pp-app .pp-scale button[aria-pressed="true"] { background: var(--pp-admiral); color: var(--pp-ivory); }
+#pp-app .pp-scale-ends { display: flex; justify-content: space-between; font-size: .86rem; margin-top: 6px; opacity: .85; }
+#pp-app .pp-survey-thanks { font-size: .9rem; font-weight: 600; margin: 10px 0 0; color: var(--pp-money); }
+#pp-app .pp-survey-thanks:empty { display: none; }
+@media (max-width: 420px) { #pp-app .pp-field-row { grid-template-columns: 1fr; } #pp-app .pp-modal-card { padding: 22px 18px 18px; } }
+#pp-app .pp-host p a { display: inline-block; padding: 12px 0; margin: -12px 0; }
 #pp-app .pp-toast { position: fixed; z-index: 95; left: 50%; bottom: 96px; transform: translateX(-50%); max-width: calc(100vw - 32px); padding: 12px 18px; border-radius: 12px; background: var(--pp-money); color: var(--pp-ivory); font-weight: 600; box-shadow: 0 16px 30px -16px rgba(0, 0, 0, .5); }
+#pp-app[data-view="finish"] .pp-toast { bottom: 16px; }
 @media (max-width: 1023px) {
   #pp-app .pp-layout { grid-template-columns: minmax(0, 1fr); padding-bottom: 150px; }
   #pp-app .pp-layout.is-wide { padding-bottom: 72px; }
@@ -842,6 +869,7 @@ window.PPCore = (function () {
   #pp-app .pp-fin-top, #pp-app .pp-tradeoff, #pp-app .pp-host { grid-template-columns: minmax(0, 1fr); }
   #pp-app .pp-progress-label { display: none; }
   #pp-app .pp-toast { bottom: 150px; }
+  #pp-app[data-view="finish"] .pp-toast, #pp-app[data-view="welcome"] .pp-toast { bottom: 16px; }
 }
 @media (max-width: 760px) {
   #pp-app { font-size: 1rem; }
@@ -879,6 +907,11 @@ window.PPCore = (function () {
   #pp-app .pp-pstep { flex-direction: column; gap: 4px; padding: 6px 2px; text-align: center; }
   #pp-app .pp-pstep-sub { display: none; }
   #pp-app .pp-pstep-name { font-size: .7rem; font-weight: 600; }
+  #pp-app .pp-progress ol { grid-template-columns: repeat(5, minmax(0, 1fr)) 40px; gap: 0; }
+  #pp-app .pp-pstep { padding: 6px 0; }
+  #pp-app .pp-pstep-name { font-size: .64rem; }
+  #pp-app .pp-pn-full { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  #pp-app .pp-pn-short { display: inline; }
   #pp-app .pp-layout { padding-top: 28px; }
   #pp-app .pp-card { grid-template-columns: 34px minmax(0, 1fr); gap: 4px 12px; padding: 18px 16px 12px 12px; }
   #pp-app .pp-card-num { font-size: 1.75rem; }
@@ -916,7 +949,7 @@ window.PPCore = (function () {
   #pp-app .pp-verdict-line { border-top-color: #ccc; }
   #pp-app .pp-fin-top { grid-template-columns: 1fr 1fr; gap: 12px; }
   #pp-app .pp-ladder, #pp-app .pp-chosen section, #pp-app .pp-table { background: #fff; }
-  #pp-app .pp-interest { background: #fff; border: 1pt solid #0A6A54; }
+  #pp-app .pp-interest { background: #fff; border: 1pt solid #0A6A54; max-width: none; }
   #pp-app .pp-tradeoff { background: #fff; color: #0F3D5F; border: 1pt solid #0A6A54; padding: 14px 16px; }
   #pp-app .pp-questions li { padding: 10px 12px; }
   #pp-app .pp-table th { background: #fff; color: #0F3D5F; border-bottom: 1.5pt solid #0F3D5F; }
@@ -986,7 +1019,7 @@ window.PPCore = (function () {
           </div>
         </figure>
         <div class="pp-w-actions">
-          <button type="button" class="pp-btn pp-btn-primary" id="pp-start" data-go="1">Start the exercise <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="pp-btn pp-btn-primary" id="pp-start">Start the exercise <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <a class="pp-w-link" id="pp-inperson-link" href="https://www.concordcoalition.org/resources/principles-priorities/" target="_blank" rel="noopener">About the in-person exercise</a>
         </div>
         <p class="pp-resume" id="pp-resume" hidden></p>
@@ -1036,25 +1069,84 @@ window.PPCore = (function () {
   <div class="pp-tip" id="pp-tip" role="status" aria-live="polite"></div>
 
   <div class="pp-modal" id="pp-modal" hidden role="dialog" aria-modal="true" aria-labelledby="pp-modal-title">
-    <div class="pp-modal-card">
-      <h2 id="pp-modal-title">Keep your results</h2>
-      <p>Enter your name and email to save, print or share your budget plan.</p>
+    <div class="pp-modal-card" id="pp-reg">
+      <h2 id="pp-modal-title">Before you start</h2>
+      <p id="pp-modal-lead">Enter your name and email to begin. You can print, save or share your plan at the end.</p>
       <form id="pp-contact" novalidate>
-        <div class="pp-field">
-          <label for="pp-name">Name</label>
-          <input id="pp-name" name="name" type="text" autocomplete="name" required aria-describedby="pp-err-name">
-          <p class="pp-err" id="pp-err-name" aria-live="polite"></p>
+        <div class="pp-field-row">
+          <div class="pp-field">
+            <label for="pp-first">First name</label>
+            <input id="pp-first" name="firstName" type="text" autocomplete="given-name" required aria-describedby="pp-err-first">
+            <p class="pp-err" id="pp-err-first" aria-live="polite"></p>
+          </div>
+          <div class="pp-field">
+            <label for="pp-last">Last name</label>
+            <input id="pp-last" name="lastName" type="text" autocomplete="family-name" required aria-describedby="pp-err-last">
+            <p class="pp-err" id="pp-err-last" aria-live="polite"></p>
+          </div>
         </div>
         <div class="pp-field">
           <label for="pp-email">Email</label>
           <input id="pp-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="pp-err-email">
           <p class="pp-err" id="pp-err-email" aria-live="polite"></p>
         </div>
+        <div class="pp-field">
+          <label for="pp-phone">Phone <span class="pp-opt">(optional)</span></label>
+          <input id="pp-phone" name="phone" type="tel" autocomplete="tel-national" inputmode="tel" aria-describedby="pp-err-phone">
+          <p class="pp-err" id="pp-err-phone" aria-live="polite"></p>
+        </div>
+        <div class="pp-field-row">
+        <div class="pp-field">
+          <label for="pp-state">State <span class="pp-opt" id="pp-state-opt" hidden>(optional)</span></label>
+          <select id="pp-state" name="state" autocomplete="address-level1" aria-describedby="pp-err-state"><option value="">Choose your state</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option><option value="AS">American Samoa</option><option value="GU">Guam</option><option value="MP">Northern Mariana Islands</option><option value="PR">Puerto Rico</option><option value="VI">U.S. Virgin Islands</option><option value="AA">Armed Forces Americas</option><option value="AE">Armed Forces Europe</option><option value="AP">Armed Forces Pacific</option><option value="OUT">Outside the United States</option></select>
+          <p class="pp-err" id="pp-err-state" aria-live="polite"></p>
+        </div>
+        <div class="pp-field" data-ask="zip">
+          <label for="pp-zip">ZIP code <span class="pp-opt">(optional)</span></label>
+          <input id="pp-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="10" aria-describedby="pp-err-zip">
+          <p class="pp-err" id="pp-err-zip" aria-live="polite"></p>
+        </div>
+        </div>
+        <fieldset class="pp-extra" id="pp-extra">
+          <legend>A few optional questions</legend>
+          <p class="pp-extra-lead">These help Concord learn who takes the exercise. They are counted without your name, email or phone.</p>
+          <div class="pp-field-row">
+          <div class="pp-field" data-ask="ageRange">
+            <label for="pp-age">Age range</label>
+            <select id="pp-age" name="ageRange"><option value="">Choose</option><option value="under-18">Under 18</option><option value="18-24">18 to 24</option><option value="25-34">25 to 34</option><option value="35-44">35 to 44</option><option value="45-54">45 to 54</option><option value="55-64">55 to 64</option><option value="65-plus">65 or older</option><option value="no-answer">Prefer not to say</option></select>
+          </div>
+          <div class="pp-field" data-ask="role">
+            <label for="pp-role">I am a</label>
+            <select id="pp-role" name="role"><option value="">Choose</option><option value="student">Student</option><option value="educator">Educator</option><option value="other">Other</option></select>
+          </div>
+          </div>
+          <div class="pp-field" data-ask="role" id="pp-school-f" hidden>
+            <label for="pp-school">School name</label>
+            <input id="pp-school" name="school" type="text" autocomplete="organization" maxlength="120">
+          </div>
+          <div class="pp-field-row">
+          <div class="pp-field" data-ask="gender">
+            <label for="pp-gender">Gender</label>
+            <select id="pp-gender" name="gender"><option value="">Choose</option><option value="woman">Woman</option><option value="man">Man</option><option value="nonbinary">Nonbinary</option><option value="self-describe">Another gender</option><option value="no-answer">Prefer not to say</option></select>
+          </div>
+          <div class="pp-field" data-ask="heard">
+            <label for="pp-heard">How did you hear about this?</label>
+            <select id="pp-heard" name="heard"><option value="">Choose</option><option value="event">At an event</option><option value="school">My school or a teacher</option><option value="concord-email">A Concord email</option><option value="social">Social media</option><option value="friend">A friend or family member</option><option value="search">A web search</option><option value="other">Other</option></select>
+          </div>
+          </div>
+          <div class="pp-field" data-ask="party">
+            <label for="pp-party">Which party do you most identify with?</label>
+            <select id="pp-party" name="party"><option value="">Choose</option><option value="democrat">Democrat</option><option value="republican">Republican</option><option value="independent">Independent</option><option value="other">Other</option><option value="no-answer">Prefer not to say</option></select>
+          </div>
+        </fieldset>
         <label class="pp-check"><input type="checkbox" name="optin" id="pp-optin"> <span>Email me about Concord budget exercises and events (optional).</span></label>
-        <p class="pp-fine">See our <a id="pp-privacy-link" href="#" target="_blank" rel="noopener">privacy policy</a><span data-ph> (placeholder)</span>. <span id="pp-proto-note">Prototype: what you type here is not sent or stored.</span></p>
         <div class="pp-modal-actions">
           <button type="button" class="pp-btn pp-btn-ghost" id="pp-modal-cancel">Cancel</button>
-          <button type="submit" class="pp-btn pp-btn-primary">Continue</button>
+          <button type="submit" class="pp-btn pp-btn-primary" id="pp-reg-go"><span id="pp-reg-go-t">Start the exercise</span> <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="pp-privacy-slot" id="pp-privacy-slot">
+          <p class="pp-privacy-note is-ph" id="pp-privacy-note" data-ph><b>Placeholder:</b> the privacy language for this page goes here, right under the Start button.</p>
+          <p class="pp-fine">See our <a id="pp-privacy-link" href="#" target="_blank" rel="noopener">privacy policy</a>. <span id="pp-proto-note">Prototype: nothing you type here is sent or stored.</span></p>
         </div>
       </form>
     </div>
@@ -1075,11 +1167,124 @@ window.PPCore = (function () {
     inPersonUrl: "https://www.concordcoalition.org/resources/principles-priorities/",
     hostSessionUrl: "https://www.concordcoalition.org/contact-us/",
     privacyUrl: "https://www.concordcoalition.org/privacy-policy/",
-    storageKey: "pp-saved-plan-v1"
+    storageKey: "pp-saved-plan-v1",
+    stateRequired: true,
+    privacyNote: "",
+    shareUrl: "https://www.concordaction.org/test-unlisted-pp-prototype/",
+    analyticsUrl: "",
+    ask: {
+      zip: true,
+      ageRange: true,
+      role: true,
+      gender: true,
+      heard: true,
+      party: false
+    },
+    survey: true,
+    emailResults: true
   };
-  function submitContact(contact, context) {
-    void contact; void context;
+  function submitCompletion(record) {
+    if (CONFIG.prototypeMode) { (window.PP_PROTOTYPE_RECORDS = window.PP_PROTOTYPE_RECORDS || []).push(record); }
     return Promise.resolve({ ok: true, stored: false });
+  }
+  function track(name, params) {
+    try {
+      if (typeof window.gtag === "function") { window.gtag("event", name, params); }
+      else if (window.dataLayer && window.dataLayer.push) { window.dataLayer.push(Object.assign({ event: name }, params)); }
+    } catch (e) {  }
+  }
+  function newSid() {
+    var a = new Uint8Array(8), s = "", i;
+    try { (window.crypto || window.msCrypto).getRandomValues(a); } catch (e) { for (i = 0; i < 8; i++) { a[i] = Math.floor(Math.random() * 256); } }
+    for (i = 0; i < 8; i++) { s += ("0" + a[i].toString(16)).slice(-2); }
+    return s;
+  }
+  function deviceKind() {
+    var coarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+    var short = Math.min(screen.width || 9999, screen.height || 9999);
+    return coarse ? (short < 600 ? "phone" : "tablet") : "computer";
+  }
+  function tele() {
+    if (!state.t) { state.t = { sid: newSid(), started: false, finished: false, at: 0, cur: 0, t0: 0, ms: {}, changes: 0, cbs: {}, difficulty: 0 }; }
+    return state.t;
+  }
+  function stopClock() {
+    var t = tele();
+    if (t.cur >= 1 && t.cur <= cats.length && t.at) { t.ms[t.cur] = (t.ms[t.cur] || 0) + (Date.now() - t.at); }
+    t.at = 0;
+  }
+  function startClock(n) { var t = tele(); t.cur = n; t.at = (n >= 1 && n <= cats.length) ? Date.now() : 0; }
+  function countChange() { var t = tele(), s = state.step; t.changes++; t.cbs[s] = (t.cbs[s] || 0) + 1; }
+  function msCopy(o) { var r = {}, k; for (k in o) { if (Object.prototype.hasOwnProperty.call(o, k)) { r[String(k)] = Math.round(o[k]); } } return r; }
+  function visitedList() { var r = [], i; for (i = 1; i <= cats.length; i++) { if (state.visited[i]) { r.push(i); } } return r; }
+  function baseEvent(type) {
+    var s = state.source || {};
+    return { v: 1, type: type, sid: tele().sid, ts: new Date().toISOString(), modelId: M.id, device: deviceKind(),
+      source: s.source || "website", medium: s.medium || "", campaign: s.campaign || "", page: isLocalPage() ? "local-test" : (location.pathname || "") };
+  }
+  function addProfile(ev) {
+    var c = state.contact || {};
+    ["state", "zip", "ageRange", "role", "school", "gender", "heard", "party"].forEach(function (k) { ev[k] = c[k] || ""; });
+    return ev;
+  }
+  function sendEvent(ev, closing) {
+    if (CONFIG.prototypeMode) { (window.PP_ANALYTICS_EVENTS = window.PP_ANALYTICS_EVENTS || []).push(ev); }
+    if (!CONFIG.analyticsUrl) { return; }
+    var body = JSON.stringify(ev);
+    try {
+      if (closing && navigator.sendBeacon) { navigator.sendBeacon(CONFIG.analyticsUrl, new Blob([body], { type: "text/plain;charset=utf-8" })); return; }
+      fetch(CONFIG.analyticsUrl, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain;charset=utf-8" }, body: body }).catch(function () {});
+    } catch (e) {  }
+  }
+  function sendStart() {
+    var t = tele();
+    if (t.started) { return; }
+    t.started = true; t.t0 = Date.now();
+    sendEvent(addProfile(baseEvent("start")));
+  }
+  function sendProgress() {
+    var t = tele();
+    if (!t.started || t.finished || state.readOnly) { return; }
+    stopClock(); startClock(state.step);
+    var ev = baseEvent("progress");
+    ev.lastStep = Math.max(1, Math.min(cats.length, state.step || 1));
+    ev.stepsVisited = visitedList(); ev.picks = state.selected.slice();
+    ev.msByStep = msCopy(t.ms); ev.changes = t.changes; ev.changesByStep = msCopy(t.cbs);
+    sendEvent(ev, true);
+  }
+  function skippedIds() {
+    var r = [];
+    visitedList().forEach(function (i) {
+      catOptions(cats[i - 1].id).forEach(function (o) {
+        if (isOn(o.id)) { return; }
+        if (o.group) {
+          var g = groupsById[o.group];
+          if (g && g.options.some(function (x) { return isOn(x); })) { return; }
+        }
+        r.push(o.id);
+      });
+    });
+    return r;
+  }
+  function sendFinish(sc) {
+    var t = tele();
+    t.finished = true;
+    var ev = addProfile(baseEvent("finish"));
+    ev.picks = sc.ids.slice(); ev.skipped = skippedIds(); ev.choiceCode = sc.ids.join("~");
+    ev.sumBillions = sc.sum; ev.totalBillions = sc.total;
+    ev.goalsMet = sc.benchmarks.filter(function (b) { return b.met; }).map(function (b) { return b.id; });
+    ev.balanced = ev.goalsMet.indexOf("balance") !== -1;
+    ev.stepsVisited = visitedList(); ev.msByStep = msCopy(t.ms); ev.msTotal = t.t0 ? Date.now() - t.t0 : 0;
+    ev.changes = t.changes; ev.changesByStep = msCopy(t.cbs);
+    sendEvent(ev);
+  }
+  function sendSurvey(n) {
+    var sc = Core.score(M, state.selected), t = tele();
+    t.difficulty = n;
+    var ev = baseEvent("survey");
+    ev.difficulty = n; ev.choiceCode = sc.ids.join("~");
+    ev.balanced = sc.benchmarks.some(function (b) { return b.id === "balance" && b.met; });
+    sendEvent(ev);
   }
   var TEACH = {
     stepName: { 1: "Government spending", 2: "Defense", 3: "Health care", 4: "Social Security", 5: "Taxes" },
@@ -1190,7 +1395,7 @@ window.PPCore = (function () {
   var groupsById = {};
   (M.groups || []).forEach(function (g) { groupsById[g.id] = g; });
   var FINISH = cats.length + 1;
-  var state = { step: 0, selected: [], contact: null, readOnly: false, trackerOpen: false, visited: {} };
+  var state = { step: 0, selected: [], contact: null, readOnly: false, trackerOpen: false, visited: {}, source: {}, recorded: null, t: null };
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function $(sel, root) { return (root || app).querySelector(sel); }
@@ -1514,7 +1719,7 @@ window.PPCore = (function () {
       var n = catOptions(c.id).filter(function (o) { return isOn(o.id); }).length;
       var done = state.visited[c.id] && cur !== c.id;
       return '<li><button type="button" class="pp-pstep' + (done ? ' is-done' : '') + '" data-go="' + c.id + '"' + (cur === c.id ? ' aria-current="step"' : '') + '>' +
-        '<span class="pp-pstep-n" aria-hidden="true">' + c.id + '</span><span class="pp-pstep-text"><span class="pp-pstep-name">' + esc(TEACH.stepName[c.id] || c.short) + '</span>' +
+        '<span class="pp-pstep-n" aria-hidden="true">' + c.id + '</span><span class="pp-pstep-text"><span class="pp-pstep-name"><span class="pp-pn-full">' + esc(TEACH.stepName[c.id] || c.short) + '</span><span class="pp-pn-short" aria-hidden="true">' + esc(c.short) + '</span></span>' +
         (n ? '<span class="pp-pstep-sub">' + n + ' enacted</span>' : '') + '</span><span class="pp-sr">, step ' + c.id + ' of ' + cats.length + '</span></button></li>';
     }).join("");
     items += '<li><button type="button" class="pp-pstep" data-go="' + FINISH + '"' + (cur === FINISH ? ' aria-current="step"' : '') + '><span class="pp-pstep-n" aria-hidden="true">' + ICON.check + '</span>' +
@@ -1584,6 +1789,8 @@ window.PPCore = (function () {
     }).join("");
     var nextLabel = c.id < cats.length ? 'Next: ' + esc(TEACH.stepName[c.id + 1] || cats[c.id].short) : 'See your results';
     return '<section aria-labelledby="pp-step-title">' +
+      '<div class="pp-backbar pp-noprint"><button type="button" class="pp-btn pp-btn-back" data-go="' + (c.id - 1) + '">' + ICON.arrowL +
+        (c.id > 1 ? 'Back to ' + esc(TEACH.stepName[c.id - 1] || cats[c.id - 2].short) : 'Back to the welcome page') + '</button></div>' +
       '<header class="pp-step-head">' +
         '<h2 class="pp-h2" id="pp-step-title" tabindex="-1">' + esc(c.name) + '</h2>' +
         '<p class="pp-step-intro">' + rich(TEACH.intro[c.id] || "") + '</p>' +
@@ -1757,6 +1964,13 @@ window.PPCore = (function () {
     var next = bm[met.length];
     return who + " reaches " + met.length + " of " + bm.length + " benchmarks: " + met.map(function (b) { return benchGoal(b); }).join(" and ") + ". It is " + tril(next.toGo) + " short of " + benchGoal(next) + ".";
   }
+  function surveyBlock() {
+    var d = state.t ? state.t.difficulty : 0, b = "", i;
+    for (i = 1; i <= 5; i++) { b += '<button type="button" data-survey="' + i + '" aria-pressed="' + (d === i) + '" aria-label="' + i + ' of 5' + (i === 1 ? ', very easy' : i === 5 ? ', very hard' : '') + '">' + i + '</button>'; }
+    return '<div class="pp-survey pp-noprint" role="group" aria-labelledby="pp-survey-q"><h3 id="pp-survey-q">One quick question: how hard was it to balance the budget?</h3>' +
+      '<div class="pp-scale">' + b + '</div><div class="pp-scale-ends" aria-hidden="true"><span>1: Very easy</span><span>5: Very hard</span></div>' +
+      '<p class="pp-survey-thanks" id="pp-survey-thanks" aria-live="polite">' + (d ? 'Thanks! Your answer is counted without your name.' : '') + '</p></div>';
+  }
   function renderFinish(sc) {
     var bm = sortedBench(sc);
     var date = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
@@ -1789,6 +2003,7 @@ window.PPCore = (function () {
     return '<section class="pp-finish" id="pp-print-area" aria-labelledby="pp-step-title">' +
       '<div class="pp-print-head">' + $("#pp-print-logo").innerHTML + '<div class="pp-print-meta">Principles &amp; Priorities results<br>' + esc(date) + (state.contact ? '<br>Prepared by ' + esc(state.contact.name) : '') + '<br>A program of The Concord Coalition</div></div>' +
       ro +
+      (state.readOnly ? '' : '<div class="pp-backbar pp-noprint"><button type="button" class="pp-btn pp-btn-back" data-go="' + cats.length + '">' + ICON.arrowL + 'Back to my choices</button></div>') +
       '<h2 class="pp-h2" id="pp-step-title" tabindex="-1">' + (state.readOnly ? 'A budget plan' : 'Your budget plan') + '</h2>' +
       '<div class="pp-fin-top">' +
         '<div class="pp-verdict"><p class="pp-verdict-num">' + bigNum + '</p><p class="pp-verdict-sub">' + esc(bigSub) + '</p>' +
@@ -1799,13 +2014,15 @@ window.PPCore = (function () {
       (state.readOnly ? '' :
       '<div class="pp-actions pp-noprint">' +
         '<button type="button" class="pp-btn pp-btn-primary" data-action="save">Save my plan</button>' +
+        (CONFIG.emailResults ? '<button type="button" class="pp-btn pp-btn-ghost" data-action="email" id="pp-email-btn">Email me my results</button>' : '') +
         '<button type="button" class="pp-btn pp-btn-ghost" data-action="print">Print or save as PDF</button>' +
         '<button type="button" class="pp-btn pp-btn-ghost" data-action="share">Get a share link</button>' +
         '<button type="button" class="pp-btn pp-btn-ghost" data-go="1">Change my choices</button>' +
       '</div>' +
       '<div class="pp-share-box pp-noprint" id="pp-share-box"><label for="pp-share-url">Share link (your choices only, not your name or email)</label>' +
         '<input id="pp-share-url" type="text" readonly value="' + esc(shareUrl) + '">' +
-        '<span style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="pp-btn pp-btn-ghost" id="pp-copy">Copy link</button><a class="pp-btn pp-btn-ghost" id="pp-open-share" href="' + esc(shareUrl) + '" target="_blank" rel="noopener">Open read-only view</a></span></div>') +
+        '<span style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="pp-btn pp-btn-ghost" id="pp-copy">Copy link</button><a class="pp-btn pp-btn-ghost" id="pp-open-share" href="' + esc(shareUrl) + '" target="_blank" rel="noopener">Open read-only view</a></span></div>' +
+      (CONFIG.survey ? surveyBlock() : '')) +
       '<div class="pp-fin-sec"><h3>What you chose</h3><div class="pp-chosen">' + chosen + '</div></div>' +
       '<div class="pp-fin-sec pp-printonly"><h3>Summary of results</h3><table class="pp-table"><caption class="pp-sr">Summary of results, billions of dollars over 10 years</caption>' +
         '<thead><tr><th scope="col">Category subtotal</th><th scope="col" class="pp-num-col">Effect on deficit</th></tr></thead><tbody>' + rows +
@@ -1849,16 +2066,23 @@ window.PPCore = (function () {
     if (state.step !== 0) { y -= 0; }
     if (Math.abs(window.pageYOffset - y) > 4) { window.scrollTo({ top: Math.max(0, y), behavior: reduceMotion ? "auto" : "smooth" }); }
   }
-  function goStep(n) {
+  function goStep(n, fromHistory) {
+    n = Math.max(0, Math.min(FINISH, n));
+    if (n >= 1 && !state.contact && !state.readOnly && !(n === FINISH && state.resumed)) { openReg(n === 1 ? "start" : "continue", n); return; }
     if (state.step >= 1 && state.step <= cats.length) { state.visited[state.step] = true; }
-    state.step = Math.max(0, Math.min(FINISH, n));
+    stopClock();
+    state.step = n;
+    startClock(n);
     state.trackerOpen = false;
     render(true);
     scrollToTop();
+    if (!fromHistory) { try { history.pushState({ ppStep: n }, ""); } catch (e) {  } }
     if (state.step === 0) { var s = $("#pp-start"); if (s) { s.focus({ preventScroll: true }); } }
+    if (state.step === FINISH) { recordCompletion(); }
   }
   function toggle(id) {
     if (state.readOnly) { return; }
+    if (isOn(id)) { countChange(); }
     setSelected(isOn(id) ? state.selected.filter(function (x) { return x !== id; }) : state.selected.concat([id]));
     onChoice();
     playVig(id, $('[data-card="' + id + '"] .pp-card-act'), isOn(id));
@@ -1867,6 +2091,7 @@ window.PPCore = (function () {
     if (state.readOnly) { return; }
     var g = groupsById[groupId];
     var rest = state.selected.filter(function (x) { return g.options.indexOf(x) === -1; });
+    if (rest.length !== state.selected.length && state.selected.indexOf(id) === -1) { countChange(); }
     setSelected(id ? rest.concat([id]) : rest);
     onChoice();
     $$('[data-pair="' + groupId + '"] .pp-vig').forEach(function (v) { v.parentNode.removeChild(v); });
@@ -1897,7 +2122,19 @@ window.PPCore = (function () {
     tip.innerHTML = '<strong>' + esc(g[0]) + '</strong>' + esc(g[1]) + '<button type="button" class="pp-tip-x" aria-label="Close definition">&times;</button>';
     placeTip();
   }
-  function baseUrl() { return location.href.split("#")[0]; }
+  function isLocalPage() {
+    return !/^https?:$/.test(location.protocol) || /^(localhost|127\.0\.0\.1|\[::1\]|)$/.test(location.hostname) || /\.(localhost|test)$/.test(location.hostname);
+  }
+  function baseUrl() { return isLocalPage() ? CONFIG.shareUrl : hereUrl(); }
+  function hereUrl() {
+    var u = location.href.split("#")[0];
+    try {
+      var x = new URL(u);
+      ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "src"].forEach(function (k) { x.searchParams.delete(k); });
+      u = x.toString();
+    } catch (e) {  }
+    return u;
+  }
   function shareLink() { return baseUrl() + "#" + Core.encodeShare(M, state.selected); }
   function toast(msg) {
     var t = $("#pp-toast");
@@ -1914,11 +2151,34 @@ window.PPCore = (function () {
     } else if (action === "print") {
       state.step = FINISH; render();
       setTimeout(function () { window.print(); }, 60);
+    } else if (action === "email") {
+      emailResults(sc);
     } else if (action === "share") {
       var box = $("#pp-share-box"), input = $("#pp-share-url");
       input.value = shareLink(); box.classList.add("is-open");
       copyText(input);
     }
+  }
+  function emailResults(sc) {
+    var btn = $("#pp-email-btn"), c = state.contact;
+    if (!c || !c.email) { return; }
+    if (!CONFIG.analyticsUrl) {
+      toast(CONFIG.prototypeMode ? "Prototype: this would email your plan to " + c.email + ". Nothing was sent." : "Email is not set up yet. Use Print or save as PDF instead.");
+      return;
+    }
+    if (btn) { btn.disabled = true; btn.textContent = "Sending..."; }
+    var done = function (ok, err) {
+      if (btn) { btn.disabled = ok; btn.textContent = ok ? "Emailed" : "Email me my results"; }
+      toast(ok ? "Sent to " + c.email + ". It can take a few minutes; check spam if you don't see it." :
+        err === "recent" ? "We just sent your results. Please wait a few minutes before sending again." :
+        "We couldn't send it right now. Use Print or save as PDF instead.");
+    };
+    var body = JSON.stringify({ v: 1, type: "email", email: c.email, firstName: c.firstName, picks: sc.ids.slice(), modelId: M.id, share: shareLink() });
+    try {
+      fetch(CONFIG.analyticsUrl, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: body, redirect: "follow" })
+        .then(function (r) { return r.json(); })
+        .then(function (j) { done(!!(j && j.ok), j && j.error); }, function () { done(false); });
+    } catch (e) { done(false); }
   }
   function copyText(input) {
     var done = function () { toast("Share link copied."); };
@@ -1926,25 +2186,71 @@ window.PPCore = (function () {
     if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(input.value).then(done, fallback); } else { fallback(); }
   }
   var pending = null, lastFocus = null;
+  var REG_TEXT = {
+    start: ["Before you start", "Enter your name and email to begin. You can print, save or share your plan at the end.", "Start the exercise"],
+    "continue": ["Before you continue", "Enter your name and email to pick up your plan. You can print, save or share it at the end.", "Continue"],
+    action: ["Keep your results", "Enter your name and email to save, print or share your budget plan.", "Continue"]
+  };
+  function openReg(kind, next) {
+    var t = REG_TEXT[kind] || REG_TEXT.start;
+    pending = { kind: kind, next: next }; lastFocus = document.activeElement;
+    $("#pp-modal-title").textContent = t[0]; $("#pp-modal-lead").textContent = t[1]; $("#pp-reg-go-t").textContent = t[2];
+    $("#pp-modal").hidden = false;
+    setTimeout(function () { $("#pp-first").focus(); }, 30);
+  }
   function requireContact(action) {
     if (state.contact) { doAction(action); return; }
-    pending = action; lastFocus = document.activeElement;
-    $("#pp-modal").hidden = false;
-    setTimeout(function () { $("#pp-name").focus(); }, 30);
+    openReg("action", action);
   }
   function closeModal() { $("#pp-modal").hidden = true; pending = null; if (lastFocus && lastFocus.focus) { lastFocus.focus(); } }
   function validate() {
-    var name = $("#pp-name").value.trim(), email = $("#pp-email").value.trim(), ok = true;
-    var nameErr = !name ? "Please enter your name." : (name.length < 2 || !/[A-Za-zÀ-ɏ]/.test(name) ? "Please enter your full name." : "");
-    var emailErr = !email ? "Please enter your email address." : (!/^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/.test(email) ? "Please enter a valid email address, like name@example.com." : "");
-    [["#pp-name", "#pp-err-name", nameErr], ["#pp-email", "#pp-err-email", emailErr]].forEach(function (f) {
+    var val = function (id) { return $(id).value.trim(); };
+    var first = val("#pp-first"), last = val("#pp-last"), email = val("#pp-email"), phone = val("#pp-phone"), st = $("#pp-state").value;
+    var opt = function (id) { var n = $(id); return n ? n.value.trim() : ""; }, zip = opt("#pp-zip");
+    var letter = /[A-Za-zÀ-ɏ]/, digits = phone.replace(/\D/g, "");
+    if (digits.length === 11 && digits.charAt(0) === "1") { digits = digits.slice(1); }
+    var checks = [
+      ["#pp-first", "#pp-err-first", !first || !letter.test(first) ? "Please enter your first name." : ""],
+      ["#pp-last", "#pp-err-last", !last || !letter.test(last) ? "Please enter your last name." : ""],
+      ["#pp-email", "#pp-err-email", !email ? "Please enter your email address." : (!/^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/.test(email) ? "Please enter a valid email address, like name@example.com." : "")],
+      ["#pp-phone", "#pp-err-phone", phone && digits.length !== 10 ? "Please enter a 10-digit phone number, or leave it blank." : ""],
+      ["#pp-state", "#pp-err-state", CONFIG.stateRequired && !st ? "Please choose your state, or Outside the United States." : ""],
+      ["#pp-zip", "#pp-err-zip", zip && !/^\d{5}(-\d{4})?$/.test(zip) ? "Please enter a 5-digit ZIP code, or leave it blank." : ""]
+    ];
+    var bad = null;
+    checks.forEach(function (f) {
+      if (!$(f[0])) { return; }
       $(f[0]).setAttribute("aria-invalid", f[2] ? "true" : "false"); $(f[1]).textContent = f[2];
+      if (f[2] && !bad) { bad = f[0]; }
     });
-    if (nameErr) { $("#pp-name").focus(); ok = false; } else if (emailErr) { $("#pp-email").focus(); ok = false; }
-    return ok ? { name: name, email: email, optIn: $("#pp-optin").checked } : null;
+    if (bad) { $(bad).focus(); return null; }
+    return { firstName: first, lastName: last, name: first + " " + last, email: email,
+      phone: digits ? digits.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3") : "", state: st, optIn: $("#pp-optin").checked,
+      zip: zip.slice(0, 5), ageRange: opt("#pp-age"), role: opt("#pp-role"),
+      school: opt("#pp-role") === "student" ? opt("#pp-school") : "", gender: opt("#pp-gender"), heard: opt("#pp-heard"), party: opt("#pp-party") };
+  }
+  function srcParams() { var s = state.source; return { pp_source: s.source || "(direct)", pp_medium: s.medium || "", pp_campaign: s.campaign || "" }; }
+  function recordCompletion() {
+    if (state.readOnly || !state.contact) { return; }
+    var sc = Core.score(M, state.selected), code = sc.ids.join("~");
+    if (state.recorded === code) { return; }
+    state.recorded = code;
+    var c = state.contact, steps = 0, i;
+    for (i = 1; i <= cats.length; i++) { if (state.visited[i]) { steps++; } }
+    var rec = { firstName: c.firstName, lastName: c.lastName, email: c.email, phone: c.phone, state: c.state, optIn: c.optIn, zip: c.zip || "",
+      source: { source: state.source.source || "", medium: state.source.medium || "", campaign: state.source.campaign || "" },
+      modelId: M.id, choices: sc.ids.slice(), choiceCode: code, sumBillions: sc.sum, totalBillions: sc.total,
+      goalsMet: sc.benchmarks.filter(function (b) { return b.met; }).map(function (b) { return b.id; }),
+      stepsVisited: steps, completedAt: new Date().toISOString(), page: baseUrl() };
+    sendFinish(sc);
+    submitCompletion(rec).then(function (res) {
+      if (!res || !res.ok) { state.recorded = null; return; }
+      track("pp_complete", srcParams());
+      if (CONFIG.prototypeMode) { toast(CONFIG.analyticsUrl ? "Prototype: your choices were counted without your name. Nothing went to EveryAction." : "Prototype: your finished plan would be recorded now. Nothing was sent."); }
+    }, function () { state.recorded = null; });
   }
   app.addEventListener("click", function (e) {
-    var t = e.target.closest ? e.target.closest("[data-toggle],[data-go],[data-action],[data-term],.pp-tip-x,#pp-more,#pp-own,#pp-print-ro,#pp-copy,#pp-modal-cancel,#pp-resume-btn,#pp-home") : null;
+    var t = e.target.closest ? e.target.closest("[data-toggle],[data-survey],[data-go],[data-action],[data-term],.pp-tip-x,#pp-start,#pp-more,#pp-own,#pp-print-ro,#pp-copy,#pp-modal-cancel,#pp-resume-btn,#pp-home") : null;
     if (!t) {
       if (e.target === $("#pp-modal")) { closeModal(); }
       if (tipFor && !$("#pp-tip").contains(e.target)) { closeTip(); }
@@ -1954,11 +2260,18 @@ window.PPCore = (function () {
     if (t.classList.contains("pp-tip-x")) { var f = tipFor; closeTip(); if (f) { f.focus(); } return; }
     closeTip();
     if (t.hasAttribute("data-toggle")) { toggle(t.getAttribute("data-toggle")); return; }
+    if (t.hasAttribute("data-survey")) {
+      var n = parseInt(t.getAttribute("data-survey"), 10);
+      $$("[data-survey]").forEach(function (x) { x.setAttribute("aria-pressed", String(x === t)); });
+      $("#pp-survey-thanks").textContent = "Thanks! Your answer is counted without your name.";
+      sendSurvey(n); return;
+    }
     if (t.hasAttribute("data-go")) { goStep(parseInt(t.getAttribute("data-go"), 10)); return; }
     if (t.hasAttribute("data-action")) { requireContact(t.getAttribute("data-action")); return; }
     switch (t.id) {
+      case "pp-start": goStep(1); break;
       case "pp-more": state.trackerOpen = !state.trackerOpen; renderTracker(Core.score(M, state.selected)); $("#pp-more").focus(); break;
-      case "pp-own": state.readOnly = false; state.selected = []; state.visited = {}; history.replaceState(null, "", baseUrl()); goStep(0); break;
+      case "pp-own": state.readOnly = false; state.selected = []; state.visited = {}; history.replaceState(null, "", hereUrl()); goStep(0); break;
       case "pp-print-ro": window.print(); break;
       case "pp-copy": copyText($("#pp-share-url")); break;
       case "pp-modal-cancel": closeModal(); break;
@@ -1969,18 +2282,24 @@ window.PPCore = (function () {
   app.addEventListener("change", function (e) {
     var r = e.target;
     if (r && r.type === "radio" && r.hasAttribute("data-group")) { pickInGroup(r.getAttribute("data-group"), r.value); }
+    if (r && r.id === "pp-role") { var sf = $("#pp-school-f"); if (sf) { sf.hidden = r.value !== "student"; } }
   });
   $("#pp-contact").addEventListener("submit", function (e) {
     e.preventDefault();
     var c = validate();
     if (!c) { return; }
-    var sc = Core.score(M, state.selected), action = pending;
-    submitContact(c, { action: action, modelId: M.id, choices: sc.ids, totalBillions: sc.total }).then(function (res) {
-      if (!res || !res.ok) { toast("Something went wrong. Please try again."); return; }
-      state.contact = c;
-      $("#pp-modal").hidden = true; pending = null;
-      doAction(action);
-    });
+    var p = pending || { kind: "start", next: 1 };
+    state.contact = c;
+    $("#pp-modal").hidden = true; pending = null;
+    track("pp_register", srcParams());
+    sendStart();
+    if (p.kind === "action") { doAction(p.next); } else { goStep(p.next); }
+  });
+  window.addEventListener("popstate", function (e) {
+    var s = e.state && typeof e.state.ppStep === "number" ? e.state.ppStep : null;
+    if (s === null) { if (location.hash && Core.decodeShare(location.hash)) { return; } s = 0; }
+    if (!$("#pp-modal").hidden) { closeModal(); }
+    goStep(s, true);
   });
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && tipFor) { var f = tipFor; closeTip(); f.focus(); return; }
@@ -1988,11 +2307,13 @@ window.PPCore = (function () {
     if (m.hidden) { return; }
     if (e.key === "Escape") { closeModal(); return; }
     if (e.key === "Tab") {
-      var f2 = m.querySelectorAll("input,button,a[href]"), first = f2[0], last = f2[f2.length - 1];
+      var f2 = m.querySelectorAll("input,select,button,a[href]"), first = f2[0], last = f2[f2.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
+  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") { sendProgress(); } });
+  window.addEventListener("pagehide", sendProgress);
   window.addEventListener("resize", function () { if (tipFor) { placeTip(); } });
   window.addEventListener("scroll", function () { if (tipFor) { placeTip(); } }, { passive: true });
   function savedPlan() {
@@ -2000,11 +2321,21 @@ window.PPCore = (function () {
   }
   function resumeSaved() {
     var s = savedPlan(); if (!s) { return; }
-    setSelected(s.ids); $("#pp-resume").hidden = true; goStep(FINISH);
+    setSelected(s.ids); $("#pp-resume").hidden = true; state.resumed = true; goStep(FINISH);
   }
   function boot() {
     $("#pp-inperson-link").href = CONFIG.inPersonUrl;
     $("#pp-privacy-link").href = CONFIG.privacyUrl;
+    if (CONFIG.privacyNote) { var pn = $("#pp-privacy-note"); pn.innerHTML = CONFIG.privacyNote; pn.classList.remove("is-ph"); pn.removeAttribute("data-ph"); }
+    if (!CONFIG.stateRequired) { $("#pp-state-opt").hidden = false; }
+    var ask = CONFIG.ask || {};
+    $$("[data-ask]").forEach(function (n) { if (!ask[n.getAttribute("data-ask")]) { n.parentNode.removeChild(n); } });
+    $$("#pp-contact .pp-field-row").forEach(function (r) { if (!r.children.length) { r.parentNode.removeChild(r); } else if (r.children.length === 1) { r.classList.remove("pp-field-row"); } });
+    if (!$("#pp-extra [data-ask]")) { $("#pp-extra").parentNode.removeChild($("#pp-extra")); }
+    if (CONFIG.analyticsUrl) { $("#pp-proto-note").textContent = "Prototype: your name, email and phone are not sent or stored. Your choices and optional answers are counted without them."; }
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {  }
+    state.source = { source: q.utm_source || "", medium: q.utm_medium || "", campaign: q.utm_campaign || q.src || "" };
     $("#pp-about-top").href = CONFIG.inPersonUrl; $("#pp-host-top").href = CONFIG.hostSessionUrl;
     if (CONFIG.prototypeMode) { $("#pp-proto").hidden = false; }
     else { $$("[data-ph],#pp-proto-note").forEach(function (n) { n.remove(); }); }
@@ -2018,6 +2349,7 @@ window.PPCore = (function () {
         for (var i = 1; i < Math.min(state.step, FINISH); i++) { state.visited[i] = true; }
       } else { state.readOnly = true; state.step = FINISH; }
       render();
+      if (shared.edit && !state.contact) { var want = state.step; state.step = 0; render(); openReg(want === 1 ? "start" : "continue", want); }
       if (shared.modelId && shared.modelId !== M.id) { toast("This link was made with a different option set (" + shared.modelId + "). Some choices may not match."); }
       else if (res.errors.length) { toast(res.errors.join(" ")); }
     } else {
@@ -2029,6 +2361,7 @@ window.PPCore = (function () {
       }
       render();
     }
+    try { history.replaceState({ ppStep: state.step }, ""); } catch (e) {  }
   }
   boot();
 })();
