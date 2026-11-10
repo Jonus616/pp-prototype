@@ -1171,7 +1171,8 @@ window.PPCore = (function () {
     stateRequired: true,
     privacyNote: "",
     shareUrl: "https://www.concordaction.org/test-unlisted-pp-prototype/",
-    analyticsUrl: "",
+    analyticsUrl: "https://script.google.com/macros/s/AKfycbzo2q9_WAC7_gDfFrlz4r7acP-fC0mTPsr-vPWtUGRJPulFuwOMHpleWeIMCYeUyjXm4w/exec",
+    analyticsFromLocal: false,
     ask: {
       zip: true,
       ageRange: true,
@@ -1227,9 +1228,13 @@ window.PPCore = (function () {
     ["state", "zip", "ageRange", "role", "school", "gender", "heard", "party"].forEach(function (k) { ev[k] = c[k] || ""; });
     return ev;
   }
+  function analyticsOn() {
+    if (!CONFIG.analyticsUrl) { return false; }
+    return !isLocalPage() || CONFIG.analyticsFromLocal || /^https?:\/\/(127\.0\.0\.1|localhost)(:|\/)/.test(CONFIG.analyticsUrl);
+  }
   function sendEvent(ev, closing) {
     if (CONFIG.prototypeMode) { (window.PP_ANALYTICS_EVENTS = window.PP_ANALYTICS_EVENTS || []).push(ev); }
-    if (!CONFIG.analyticsUrl) { return; }
+    if (!analyticsOn()) { return; }
     var body = JSON.stringify(ev);
     try {
       if (closing && navigator.sendBeacon) { navigator.sendBeacon(CONFIG.analyticsUrl, new Blob([body], { type: "text/plain;charset=utf-8" })); return; }
@@ -1245,10 +1250,14 @@ window.PPCore = (function () {
   function sendProgress() {
     var t = tele();
     if (!t.started || t.finished || state.readOnly) { return; }
+    var pk = state.step + ":" + state.selected.join("~");
+    if (t.pk === pk && Date.now() - t.pkAt < 2000) { return; }
+    t.pk = pk; t.pkAt = Date.now();
     stopClock(); startClock(state.step);
     var ev = baseEvent("progress");
     ev.lastStep = Math.max(1, Math.min(cats.length, state.step || 1));
     ev.stepsVisited = visitedList(); ev.picks = state.selected.slice();
+    if (state.step >= 1 && state.step <= cats.length && ev.stepsVisited.indexOf(state.step) < 0) { ev.stepsVisited.push(state.step); ev.stepsVisited.sort(function (a, b) { return a - b; }); }
     ev.msByStep = msCopy(t.ms); ev.changes = t.changes; ev.changesByStep = msCopy(t.cbs);
     sendEvent(ev, true);
   }
@@ -2162,7 +2171,7 @@ window.PPCore = (function () {
   function emailResults(sc) {
     var btn = $("#pp-email-btn"), c = state.contact;
     if (!c || !c.email) { return; }
-    if (!CONFIG.analyticsUrl) {
+    if (!analyticsOn()) {
       toast(CONFIG.prototypeMode ? "Prototype: this would email your plan to " + c.email + ". Nothing was sent." : "Email is not set up yet. Use Print or save as PDF instead.");
       return;
     }
@@ -2246,7 +2255,7 @@ window.PPCore = (function () {
     submitCompletion(rec).then(function (res) {
       if (!res || !res.ok) { state.recorded = null; return; }
       track("pp_complete", srcParams());
-      if (CONFIG.prototypeMode) { toast(CONFIG.analyticsUrl ? "Prototype: your choices were counted without your name. Nothing went to EveryAction." : "Prototype: your finished plan would be recorded now. Nothing was sent."); }
+      if (CONFIG.prototypeMode) { toast(analyticsOn() ? "Prototype: your choices were counted without your name. Nothing went to EveryAction." : "Prototype: your finished plan would be recorded now. Nothing was sent."); }
     }, function () { state.recorded = null; });
   }
   app.addEventListener("click", function (e) {
@@ -2332,7 +2341,7 @@ window.PPCore = (function () {
     $$("[data-ask]").forEach(function (n) { if (!ask[n.getAttribute("data-ask")]) { n.parentNode.removeChild(n); } });
     $$("#pp-contact .pp-field-row").forEach(function (r) { if (!r.children.length) { r.parentNode.removeChild(r); } else if (r.children.length === 1) { r.classList.remove("pp-field-row"); } });
     if (!$("#pp-extra [data-ask]")) { $("#pp-extra").parentNode.removeChild($("#pp-extra")); }
-    if (CONFIG.analyticsUrl) { $("#pp-proto-note").textContent = "Prototype: your name, email and phone are not sent or stored. Your choices and optional answers are counted without them."; }
+    if (analyticsOn()) { $("#pp-proto-note").textContent = "Prototype: your name, email and phone are not sent or stored. Your choices and optional answers are counted without them."; }
     var q = {};
     try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {  }
     state.source = { source: q.utm_source || "", medium: q.utm_medium || "", campaign: q.utm_campaign || q.src || "" };
