@@ -1145,15 +1145,9 @@ window.PPCore = (function () {
             <label for="pp-school">School name</label>
             <input id="pp-school" name="school" type="text" autocomplete="organization" maxlength="120">
           </div>
-          <div class="pp-field-row">
-          <div class="pp-field" data-ask="gender">
-            <label for="pp-gender">Gender</label>
-            <select id="pp-gender" name="gender"><option value="">Choose</option><option value="woman">Woman</option><option value="man">Man</option><option value="nonbinary">Nonbinary</option><option value="self-describe">Another gender</option><option value="no-answer">Prefer not to say</option></select>
-          </div>
           <div class="pp-field" data-ask="heard">
             <label for="pp-heard">How did you hear about this?</label>
             <select id="pp-heard" name="heard"><option value="">Choose</option><option value="event">At an event</option><option value="school">My school or a teacher</option><option value="concord-email">A Concord email</option><option value="social">Social media</option><option value="friend">A friend or family member</option><option value="search">A web search</option><option value="other">Other</option></select>
-          </div>
           </div>
           <div class="pp-field" data-ask="party">
             <label for="pp-party">Which party do you most identify with?</label>
@@ -1198,7 +1192,6 @@ window.PPCore = (function () {
       zip: true,
       ageRange: true,
       role: true,
-      gender: true,
       heard: true,
       party: false
     },
@@ -1248,7 +1241,7 @@ window.PPCore = (function () {
   }
   function addProfile(ev) {
     var c = state.contact || {};
-    ["state", "zip", "ageRange", "role", "school", "gender", "heard", "party"].forEach(function (k) { ev[k] = c[k] || ""; });
+    ["state", "zip", "ageRange", "role", "school", "heard", "party"].forEach(function (k) { ev[k] = c[k] || ""; });
     return ev;
   }
   function analyticsOn() {
@@ -1425,6 +1418,17 @@ window.PPCore = (function () {
   M.options.forEach(function (o) { byId[o.id] = o; });
   var groupsById = {};
   (M.groups || []).forEach(function (g) { groupsById[g.id] = g; });
+  var NUM = (function () {
+    var bases = [], seen = {}, map = {};
+    M.options.forEach(function (o) { var m = String(o.id).match(/^(\d+)/); if (m && !seen[m[1]]) { seen[m[1]] = 1; bases.push(m[1]); } });
+    bases.sort(function (a, b) { return Number(a) - Number(b); }).forEach(function (b, i) { map[b] = String(i + 1); });
+    return map;
+  })();
+  function shown(id) { var s = String(id), m = s.match(/^(\d+)(.*)$/); return m && NUM[m[1]] ? NUM[m[1]] + m[2] : s; }
+  function shownErr(e) {
+    if (/^Unknown option /.test(e)) { return "An option in this link is no longer in the exercise, so it was left out."; }
+    return e.replace(/\b(\d+[A-Z]?)\b(?= ignored| is already)/g, function (x) { return shown(x); });
+  }
   var FINISH = cats.length + 1;
   var state = { step: 0, selected: [], contact: null, readOnly: false, trackerOpen: false, visited: {}, source: {}, recorded: null, t: null };
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1769,23 +1773,23 @@ window.PPCore = (function () {
   function argsHtml(list, isPair) {
     var shared = list.length > 1 && list.every(function (o) { return JSON.stringify(o.pros) === JSON.stringify(list[0].pros) && JSON.stringify(o.cons) === JSON.stringify(list[0].cons); });
     var parts = [];
-    list.forEach(function (o) { parts.push('<p class="pp-asw">' + (isPair ? '<b>' + esc(o.id) + ':</b> ' : '') + esc(o.summary) + '</p>'); });
+    list.forEach(function (o) { parts.push('<p class="pp-asw">' + (isPair ? '<b>' + esc(shown(o.id)) + ':</b> ' : '') + esc(o.summary) + '</p>'); });
     var blocks = shared ? [list[0]] : list;
     blocks.forEach(function (o) {
-      parts.push('<div class="pp-args-cols">' + (isPair && !shared ? '<p class="pp-args-alt">' + esc(o.id) + ': ' + esc(o.title) + '</p>' : '') +
+      parts.push('<div class="pp-args-cols">' + (isPair && !shared ? '<p class="pp-args-alt">' + esc(shown(o.id)) + ': ' + esc(o.title) + '</p>' : '') +
         '<div class="pp-args-col is-pro"><h4>Proponents say</h4><ul>' + o.pros.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join("") + '</ul></div>' +
         '<div class="pp-args-col is-con"><h4>Opponents say</h4><ul>' + o.cons.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join("") + '</ul></div></div>');
     });
     list.forEach(function (o) {
-      parts.push('<p class="pp-args-src">' + (list.length > 1 ? esc(o.id) + ' source: ' : 'Source: ') + esc(o.source) + (o.bookPage ? ' (April 2026 Options Book p. ' + o.bookPage + ')' : '') + (o.isNew && CONFIG.prototypeMode ? ' <span class="pp-draft">New in the September 2026 list: draft text for staff review.</span>' : '') + '</p>');
+      parts.push('<p class="pp-args-src">' + (list.length > 1 ? esc(shown(o.id)) + ' source: ' : 'Source: ') + esc(o.source) + (o.bookPage ? ' (April 2026 Options Book p. ' + o.bookPage + ')' : '') + (o.isNew && CONFIG.prototypeMode ? ' <span class="pp-draft">New in the September 2026 list: draft text for staff review.</span>' : '') + '</p>');
     });
     return '<details class="pp-args" data-args="' + esc(list[0].group || list[0].id) + '"><summary><span class="pp-plus" aria-hidden="true"></span>Arguments for and against</summary><div class="pp-args-body">' + parts.join("") + '</div></details>';
   }
   function singleCard(o) {
     var on = isOn(o.id);
     return '<article class="pp-card' + (on ? ' is-on' : '') + '" data-card="' + esc(o.id) + '" aria-labelledby="pp-o-' + esc(o.id) + '">' +
-      '<p class="pp-card-num" aria-hidden="true">' + esc(o.id) + '</p>' +
-      '<div class="pp-card-body"><h3 id="pp-o-' + esc(o.id) + '"><span class="pp-sr">Option ' + esc(o.id) + ': </span>' + esc(o.title) + '</h3>' + effectHtml(o) + meansHtml(o) + '</div>' +
+      '<p class="pp-card-num" aria-hidden="true">' + esc(shown(o.id)) + '</p>' +
+      '<div class="pp-card-body"><h3 id="pp-o-' + esc(o.id) + '"><span class="pp-sr">Option ' + esc(shown(o.id)) + ': </span>' + esc(o.title) + '</h3>' + effectHtml(o) + meansHtml(o) + '</div>' +
       '<div class="pp-card-act"><button type="button" class="pp-enact" data-toggle="' + esc(o.id) + '" aria-pressed="' + on + '" aria-describedby="pp-o-' + esc(o.id) + '"' + (state.readOnly ? ' disabled' : '') + '>' +
         '<span class="pp-switch" aria-hidden="true"></span><span class="pp-off-text">Enact this option</span><span class="pp-on-text">Enacted</span></button></div>' +
       argsHtml([o], false) + '</article>';
@@ -1793,18 +1797,18 @@ window.PPCore = (function () {
   function pairCard(g) {
     var alts = g.options.map(function (id) { return byId[id]; }).filter(Boolean);
     var current = alts.filter(function (o) { return isOn(o.id); })[0];
-    var t = TEACH.pairs[g.id] || { title: g.label, note: "Either/or: you may enact one of these, or neither, but not both." };
+    var t = TEACH.pairs[g.id] || { title: g.label.replace(/^Option \d+: /, ""), note: "Either/or: you may enact one of these, or neither, but not both." };
     var name = "pp-group-" + g.id;
     var choice = function (val, inner) {
       var checked = current ? current.id === val : val === "";
       return '<label class="pp-choice' + (checked && val ? ' is-picked' : '') + '"><input type="radio" name="' + name + '" value="' + esc(val) + '" data-group="' + esc(g.id) + '"' + (checked ? ' checked' : '') + (state.readOnly ? ' disabled' : '') + '><span class="pp-radio" aria-hidden="true"></span><span>' + inner + '</span></label>';
     };
     return '<article class="pp-card pp-pair' + (current ? ' is-on' : '') + '" data-pair="' + esc(g.id) + '" aria-labelledby="pp-g-' + esc(g.id) + '">' +
-      '<p class="pp-card-num" aria-hidden="true">' + esc(g.id) + '</p>' +
-      '<div class="pp-card-body"><h3 id="pp-g-' + esc(g.id) + '"><span class="pp-sr">Option ' + esc(g.id) + ': </span>' + esc(t.title) + '</h3><p class="pp-pair-note">' + esc(t.note) + '</p>' +
-      '<fieldset><legend class="pp-sr">' + esc(g.label) + '. Choose one or neither.</legend><div class="pp-choices">' +
+      '<p class="pp-card-num" aria-hidden="true">' + esc(shown(g.id)) + '</p>' +
+      '<div class="pp-card-body"><h3 id="pp-g-' + esc(g.id) + '"><span class="pp-sr">Option ' + esc(shown(g.id)) + ': </span>' + esc(t.title) + '</h3><p class="pp-pair-note">' + esc(t.note) + '</p>' +
+      '<fieldset><legend class="pp-sr">' + esc("Option " + shown(g.id) + ": " + t.title) + '. Choose one or neither.</legend><div class="pp-choices">' +
         choice("", '<span class="pp-choice-title">Neither</span><span class="pp-means" style="display:block">Keep current law.</span>') +
-        alts.map(function (o) { return choice(o.id, '<span class="pp-choice-title"><small>' + esc(o.id) + '</small>' + esc(o.title) + '</span>' + effectHtml(o) + (TEACH.plain[o.id] ? '<span class="pp-means" style="display:block">' + rich(TEACH.plain[o.id]) + '</span>' : '')); }).join("") +
+        alts.map(function (o) { return choice(o.id, '<span class="pp-choice-title"><small>' + esc(shown(o.id)) + '</small>' + esc(o.title) + '</span>' + effectHtml(o) + (TEACH.plain[o.id] ? '<span class="pp-means" style="display:block">' + rich(TEACH.plain[o.id]) + '</span>' : '')); }).join("") +
       '</div></fieldset></div>' +
       argsHtml(alts, true) + '</article>';
   }
@@ -2024,7 +2028,7 @@ window.PPCore = (function () {
       var list = catOptions(c.id).filter(function (o) { return isOn(o.id); });
       var v = sc.subtotals[c.id];
       return '<section><h4>' + esc(c.name) + '<span>' + (v === 0 ? '$0' : fmtB(v, true)) + '</span></h4><ul>' + (list.length ? list.map(function (o) {
-        return '<li><span>' + esc(o.id) + '</span><span>' + esc(o.title) + '</span><span>' + fmtB(o.effect, true) + '</span></li>';
+        return '<li><span>' + esc(shown(o.id)) + '</span><span>' + esc(o.title) + '</span><span>' + fmtB(o.effect, true) + '</span></li>';
       }).join("") : '<li class="pp-none">No options enacted in this category.</li>') + '</ul></section>';
     }).join("");
     var rows = cats.map(function (c) { return '<tr><td>' + esc(c.name) + '</td><td class="pp-num-col">' + fmtB(sc.subtotals[c.id], true) + '</td></tr>'; }).join("");
@@ -2258,7 +2262,7 @@ window.PPCore = (function () {
     return { firstName: first, lastName: last, name: first + " " + last, email: email,
       phone: digits ? digits.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3") : "", state: st, optIn: $("#pp-optin").checked,
       zip: zip.slice(0, 5), ageRange: opt("#pp-age"), role: opt("#pp-role"),
-      school: opt("#pp-role") === "student" ? opt("#pp-school") : "", gender: opt("#pp-gender"), heard: opt("#pp-heard"), party: opt("#pp-party") };
+      school: opt("#pp-role") === "student" ? opt("#pp-school") : "", heard: opt("#pp-heard"), party: opt("#pp-party") };
   }
   function srcParams() { var s = state.source; return { pp_source: s.source || "(direct)", pp_medium: s.medium || "", pp_campaign: s.campaign || "" }; }
   function recordCompletion() {
@@ -2382,7 +2386,7 @@ window.PPCore = (function () {
       render();
       if (shared.edit && !state.contact) { var want = state.step; state.step = 0; render(); openReg(want === 1 ? "start" : "continue", want); }
       if (shared.modelId && shared.modelId !== M.id) { toast("This link was made with a different option set (" + shared.modelId + "). Some choices may not match."); }
-      else if (res.errors.length) { toast(res.errors.join(" ")); }
+      else if (res.errors.length) { toast(res.errors.map(shownErr).join(" ")); }
     } else {
       var s = savedPlan();
       if (s) {
